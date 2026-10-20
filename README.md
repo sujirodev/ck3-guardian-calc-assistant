@@ -153,6 +153,18 @@ When the game updates, run step 2 against the new vanilla `interaction_confirmat
 
 The `.github/workflows/release.yml` workflow builds the zip with `tools/package.py`, checks that the tag matches the `descriptor.mod` version and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
 
+### Nexus Mods
+
+On tags, the workflow also uploads the zip to Nexus Mods with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), as a new version of the existing main file (the previous version is archived). The step is skipped until these are set in the repository settings:
+
+| Kind | Name | Value |
+|---|---|---|
+| Secret | `NEXUSMODS_API_KEY` | API key from https://www.nexusmods.com/settings/api-keys |
+| Variable | `NEXUS_MOD_ID` | mod ID of the Nexus Mods page |
+| Variable | `NEXUS_FILE_ID` | file ID of the main file on that page |
+
+The mod page and its first file have to be created by hand on Nexus Mods; the action can only add versions to an existing file.
+
 To build the zip locally: `python tools/package.py` (output in `dist/`).
 
 To test, run the game with `-debug_mode` and check `Documents/Paradox Interactive/Crusader Kings III/logs/error.log`. The warning `Event target 'tnt_ga_other' is used but is never set` is expected: that scope is filled in by the GUI.

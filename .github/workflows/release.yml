@@ -28,6 +28,7 @@ jobs:
             zip_path=$(python tools/package.py)
           fi
           echo "zip=$zip_path" >> "$GITHUB_OUTPUT"
+          echo "version=$(sed -n 's/^version="\(.*\)"/\1/p' descriptor.mod)" >> "$GITHUB_OUTPUT"
           unzip -l "$zip_path"
 
       - uses: actions/upload-artifact@v4
@@ -43,3 +44,21 @@ jobs:
           gh release create "$GITHUB_REF_NAME" "${{ steps.build.outputs.zip }}" \
             --title "Guardian Calculation Assistant $GITHUB_REF_NAME" \
             --generate-notes
+
+      # Adds the zip as a new version of an existing Nexus Mods file. Skipped
+      # until the repository variables NEXUS_MOD_ID and NEXUS_FILE_ID are set (the mod page and
+      # its first file must be created by hand on Nexus Mods first).
+      # Pinned to the commit of Nexus-Mods/upload-action v1.0.0-beta.11.
+      - name: Upload to Nexus Mods
+        if: github.ref_type == 'tag' && vars.NEXUS_FILE_ID != '' && vars.NEXUS_MOD_ID != ''
+        uses: Nexus-Mods/upload-action@98532f7670c27cbecc78fae03fa3e278147827e2
+        with:
+          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
+          file_id: ${{ vars.NEXUS_FILE_ID }}
+          mod_id: ${{ vars.NEXUS_MOD_ID }}
+          filename: ${{ steps.build.outputs.zip }}
+          version: ${{ steps.build.outputs.version }}
+          display_name: Guardian Calculation Assistant ${{ steps.build.outputs.version }}
+          changelog: See https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}
+          archive_existing_version: true
+          update_mod_version: true
