@@ -89,18 +89,13 @@ Os multiplicadores são lidos dos script values do próprio jogo (`educator_skil
 
 ## Instalação
 
-1. Copie a pasta `guardian_calc_assistant` para `Documentos/Paradox Interactive/Crusader Kings III/mod/`.
-2. Crie, ao lado dela, o arquivo `guardian_calc_assistant.mod`:
+1. Baixe o `guardian_calc_assistant-<versão>.zip` na página de **Releases**.
+2. Extraia dentro de `Documentos/Paradox Interactive/Crusader Kings III/mod/`. Devem ficar lado a lado:
 
    ```
-   version="1.0.0"
-   name="Guardian Calculation Assistant"
-   tags={
-   	"Interface"
-   	"Utilities"
-   }
-   supported_version="1.19.*"
-   path="C:/Users/<você>/Documents/Paradox Interactive/Crusader Kings III/mod/guardian_calc_assistant"
+   mod/
+     guardian_calc_assistant.mod
+     guardian_calc_assistant/
    ```
 
 3. Ative o mod no launcher.
@@ -130,7 +125,8 @@ gui/
   tnt_ga_character_list_item.gui                    linha da lista com a nota (gerado)
 localization/
   english/  braz_por/
-tools/                                              geradores dos dois arquivos de GUI
+tools/                                              geradores de GUI e empacotador (package.py)
+.github/workflows/release.yml                       zip e Release a cada tag
 ```
 
 ## Desenvolvimento
@@ -146,6 +142,20 @@ python tools/gen_confirm.py tools/gates.txt "<CK3>/game/gui/interaction_confirma
 ```
 
 Quando o jogo atualizar, rode o passo 2 com o novo `interaction_confirmation.gui` do vanilla para manter as mudanças da Paradox.
+
+### Lançar uma versão
+
+1. Atualize `version` em `descriptor.mod`.
+2. Faça o commit, crie a tag e envie:
+
+   ```sh
+   git tag v1.0.1
+   git push origin main v1.0.1
+   ```
+
+O workflow `.github/workflows/release.yml` gera o zip com `tools/package.py`, confere se a tag bate com a versão do `descriptor.mod` e publica a Release com o zip anexado. Em push e pull request comuns ele só gera o zip como artefato da execução.
+
+Para gerar o zip localmente: `python tools/package.py` (sai em `dist/`).
 
 Para testar, rode o jogo com `-debug_mode` e confira `Documentos/Paradox Interactive/Crusader Kings III/logs/error.log`. O aviso `Event target 'tnt_ga_other' is used but is never set` é esperado: esse scope é preenchido pelo GUI.
 

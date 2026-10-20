@@ -1,0 +1,45 @@
+name: Package
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build zip
+        id: build
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            zip_path=$(python tools/package.py --tag "$GITHUB_REF_NAME")
+          else
+            zip_path=$(python tools/package.py)
+          fi
+          echo "zip=$zip_path" >> "$GITHUB_OUTPUT"
+          unzip -l "$zip_path"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guardian_calc_assistant
+          path: ${{ steps.build.outputs.zip }}
+
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "${{ steps.build.outputs.zip }}" \
+            --title "Guardian Calculation Assistant $GITHUB_REF_NAME" \
+            --generate-notes
