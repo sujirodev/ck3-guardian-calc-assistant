@@ -1,0 +1,666 @@
+﻿########################################################################
+# Guardian Calculation Assistant 1.0
+#
+# Pure, GUI-evaluated values. Nothing here writes persistent state.
+# Mirrors vanilla education_point_acquisition_support_effect (CK3 1.19,
+# common/scripted_effects/00_education_effects.txt): every birthday from
+# age 6 to 15 the ward rolls success (+2 points in its focus) vs failure.
+# Vanilla factors are referenced by name so overhauls that retune them
+# are followed automatically.
+#
+# Public GUI contract:
+#   root               the list row (guardian OR ward candidate)
+#   scope:tnt_ga_other the other already-picked secondary character
+# The child of the pair is the ward, the adult the guardian. Internal
+# values read scope:tnt_ga_guardian and scope:tnt_ga_ward.
+########################################################################
+
+
+########################################################################
+# Pair resolution (inlined in each public wrapper below)
+########################################################################
+
+tnt_ga_root_is_guardian_trigger_value = {
+	value = 0
+	if = {
+		limit = {
+			exists = scope:tnt_ga_other
+			this != scope:tnt_ga_other
+			is_adult = yes
+			scope:tnt_ga_other = { is_adult = no }
+		}
+		value = 1
+	}
+}
+
+tnt_ga_root_is_ward_trigger_value = {
+	value = 0
+	if = {
+		limit = {
+			exists = scope:tnt_ga_other
+			this != scope:tnt_ga_other
+			is_adult = no
+			scope:tnt_ga_other = { is_adult = yes }
+		}
+		value = 1
+	}
+}
+
+
+########################################################################
+# Success weight components
+########################################################################
+
+# Guardian's skill in the ward's focus. Without a focus yet, assume the
+# guardian's best skill (min = lower bound, i.e. running maximum).
+tnt_ga_focus_skill_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_ward = { has_focus = education_diplomacy } }
+		value = scope:tnt_ga_guardian.diplomacy
+	}
+	else_if = {
+		limit = { scope:tnt_ga_ward = { has_focus = education_martial } }
+		value = scope:tnt_ga_guardian.martial
+	}
+	else_if = {
+		limit = { scope:tnt_ga_ward = { has_focus = education_stewardship } }
+		value = scope:tnt_ga_guardian.stewardship
+	}
+	else_if = {
+		limit = { scope:tnt_ga_ward = { has_focus = education_intrigue } }
+		value = scope:tnt_ga_guardian.intrigue
+	}
+	else_if = {
+		limit = { scope:tnt_ga_ward = { has_focus = education_learning } }
+		value = scope:tnt_ga_guardian.learning
+	}
+	else = {
+		value = scope:tnt_ga_guardian.diplomacy
+		min = scope:tnt_ga_guardian.martial
+		min = scope:tnt_ga_guardian.stewardship
+		min = scope:tnt_ga_guardian.intrigue
+		min = scope:tnt_ga_guardian.learning
+	}
+}
+
+tnt_ga_ward_has_focus_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_ward = { has_education_focus_trigger = yes } }
+		value = 1
+	}
+}
+
+# Independent modifiers, exactly as in vanilla.
+tnt_ga_ward_intellect_success_value = {
+	value = 0
+	scope:tnt_ga_ward = {
+		if = { limit = { has_trait = intellect_good_3 } add = 20 }
+		if = { limit = { has_trait = intellect_good_2 } add = 15 }
+		if = { limit = { OR = { has_trait = intellect_good_1 has_trait = shrewd } } add = 10 }
+	}
+}
+
+tnt_ga_ward_affinity_value = {
+	value = 0
+	scope:tnt_ga_ward = {
+		if = {
+			limit = { has_focus = education_diplomacy has_diplomacy_education_affinity_childhood_trait_trigger = yes }
+			add = matching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_martial has_martial_education_affinity_childhood_trait_trigger = yes }
+			add = matching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_stewardship has_stewardship_education_affinity_childhood_trait_trigger = yes }
+			add = matching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_intrigue has_intrigue_education_affinity_childhood_trait_trigger = yes }
+			add = matching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_learning has_learning_education_affinity_childhood_trait_trigger = yes }
+			add = matching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_diplomacy has_diplomacy_education_disaffinity_childhood_trait_trigger = yes }
+			add = mismatching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_martial has_martial_education_disaffinity_childhood_trait_trigger = yes }
+			add = mismatching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_stewardship has_stewardship_education_disaffinity_childhood_trait_trigger = yes }
+			add = mismatching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_intrigue has_intrigue_education_disaffinity_childhood_trait_trigger = yes }
+			add = mismatching_childhood_trait_modifier_value
+		}
+		if = {
+			limit = { has_focus = education_learning has_learning_education_disaffinity_childhood_trait_trigger = yes }
+			add = mismatching_childhood_trait_modifier_value
+		}
+	}
+}
+
+tnt_ga_guardian_intellect_success_value = {
+	value = 0
+	scope:tnt_ga_guardian = {
+		if = { limit = { has_trait = intellect_good_3 } value = 15 }
+		else_if = { limit = { has_trait = intellect_good_2 } value = 10 }
+		else_if = { limit = { OR = { has_trait = intellect_good_1 has_trait = shrewd } } value = 5 }
+	}
+}
+
+tnt_ga_guardian_skill_success_value = {
+	value = tnt_ga_focus_skill_value
+	multiply = educator_skill_modifier_factor
+}
+
+tnt_ga_guardian_learning_success_value = {
+	value = scope:tnt_ga_guardian.learning
+	multiply = educator_learning_skill_modifier_factor
+}
+
+# Vanilla writes "value = 10" after the sum, so a storyteller-type culture
+# REPLACES intellect + skill + learning with a flat 10. Reproduced as-is.
+tnt_ga_guardian_storyteller_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_guardian.culture = { has_cultural_parameter = better_ward_education } }
+		value = 1
+	}
+}
+
+tnt_ga_guardian_house_value = {
+	value = 0
+	if = {
+		limit = {
+			scope:tnt_ga_guardian.house ?= { has_house_aspiration_parameter = service_house_improved_educator_outcome_chance }
+		}
+		value = 5
+	}
+}
+
+tnt_ga_success_weight_core_value = {
+	value = 0
+	add = { value = 60 desc = tnt_ga_base_success }
+	if = {
+		limit = { tnt_ga_ward_intellect_success_value != 0 }
+		add = { value = tnt_ga_ward_intellect_success_value desc = tnt_ga_ward_intellect }
+	}
+	if = {
+		limit = { tnt_ga_ward_affinity_value != 0 }
+		add = { value = tnt_ga_ward_affinity_value desc = tnt_ga_ward_affinity }
+	}
+	if = {
+		limit = { tnt_ga_guardian_storyteller_value > 0 }
+		add = { value = 10 desc = tnt_ga_guardian_storyteller }
+	}
+	else = {
+		if = {
+			limit = { tnt_ga_guardian_intellect_success_value != 0 }
+			add = { value = tnt_ga_guardian_intellect_success_value desc = tnt_ga_guardian_intellect }
+		}
+		add = { value = tnt_ga_guardian_skill_success_value desc = tnt_ga_guardian_skill }
+		add = { value = tnt_ga_guardian_learning_success_value desc = tnt_ga_guardian_learning }
+	}
+	if = {
+		limit = { tnt_ga_guardian_house_value != 0 }
+		add = { value = tnt_ga_guardian_house_value desc = tnt_ga_guardian_house }
+	}
+}
+
+
+########################################################################
+# Failure weight components
+########################################################################
+
+tnt_ga_ward_intellect_failure_value = {
+	value = 0
+	scope:tnt_ga_ward = {
+		if = { limit = { OR = { has_trait = intellect_bad_3 has_trait = inbred } } add = 20 }
+		if = { limit = { has_trait = intellect_bad_2 } add = 15 }
+		if = { limit = { OR = { has_trait = intellect_bad_1 has_trait = dull } } add = 10 }
+	}
+}
+
+tnt_ga_guardian_intellect_failure_value = {
+	value = 0
+	scope:tnt_ga_guardian = {
+		if = { limit = { has_trait = intellect_bad_3 } value = 15 }
+		else_if = { limit = { has_trait = intellect_bad_2 } value = 10 }
+		else_if = { limit = { OR = { has_trait = intellect_bad_1 has_trait = dull } } value = 5 }
+	}
+}
+
+tnt_ga_failure_weight_core_value = {
+	value = 0
+	add = { value = 40 desc = tnt_ga_base_failure }
+	if = {
+		limit = { tnt_ga_ward_intellect_failure_value != 0 }
+		add = { value = tnt_ga_ward_intellect_failure_value desc = tnt_ga_ward_intellect }
+	}
+	if = {
+		limit = { tnt_ga_guardian_intellect_failure_value != 0 }
+		add = { value = tnt_ga_guardian_intellect_failure_value desc = tnt_ga_guardian_intellect }
+	}
+}
+
+
+########################################################################
+# Derived values
+########################################################################
+
+# Percent chance of +2 points per education birthday.
+tnt_ga_chance_core_value = {
+	value = tnt_ga_success_weight_core_value
+	min = 0
+	multiply = 100
+	divide = {
+		value = tnt_ga_success_weight_core_value
+		min = 0
+		add = tnt_ga_failure_weight_core_value
+		min = 1
+	}
+}
+
+# Birthdays at ages 6..15 still ahead of the ward.
+tnt_ga_rolls_left_core_value = {
+	value = 15
+	subtract = {
+		value = scope:tnt_ga_ward.age
+		min = 5
+	}
+	min = 0
+}
+
+tnt_ga_current_points_core_value = {
+	value = 0
+	scope:tnt_ga_ward = {
+		if = {
+			limit = { has_focus = education_diplomacy has_variable = education_diplomacy_variable }
+			value = var:education_diplomacy_variable
+		}
+		else_if = {
+			limit = { has_focus = education_martial has_variable = education_martial_variable }
+			value = var:education_martial_variable
+		}
+		else_if = {
+			limit = { has_focus = education_stewardship has_variable = education_stewardship_variable }
+			value = var:education_stewardship_variable
+		}
+		else_if = {
+			limit = { has_focus = education_intrigue has_variable = education_intrigue_variable }
+			value = var:education_intrigue_variable
+		}
+		else_if = {
+			limit = { has_focus = education_learning has_variable = education_learning_variable }
+			value = var:education_learning_variable
+		}
+	}
+}
+
+# Beacon of Learning: at coming of age, +round(points / 4), at most +3.
+tnt_ga_beacon_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_guardian.culture = { has_cultural_parameter = guardian_education_better_outcomes } }
+		value = 1
+	}
+}
+
+# Expected points from guardian rolls only; events, tutors, universities
+# and other one-off sources are not predicted.
+tnt_ga_projected_points_core_value = {
+	value = tnt_ga_current_points_core_value
+	add = {
+		value = tnt_ga_chance_core_value
+		multiply = tnt_ga_rolls_left_core_value
+		multiply = 2
+		divide = 100
+	}
+	if = {
+		limit = { tnt_ga_beacon_value > 0 }
+		save_temporary_value_as = tnt_ga_points_before_beacon
+		add = {
+			value = scope:tnt_ga_points_before_beacon
+			divide = 4
+			round = yes
+			max = 3
+		}
+	}
+}
+
+# Vanilla cut-offs education_level_1/2/3 (7/12/17). 4 means rank 4 or 5.
+tnt_ga_projected_rank_core_value = {
+	value = 4
+	if = { limit = { tnt_ga_projected_points_core_value <= education_level_1 } value = 1 }
+	else_if = { limit = { tnt_ga_projected_points_core_value <= education_level_2 } value = 2 }
+	else_if = { limit = { tnt_ga_projected_points_core_value <= education_level_3 } value = 3 }
+}
+
+# Notes: 1 = applies.
+tnt_ga_note_faith_core_value = {
+	value = 0
+	if = { limit = { scope:tnt_ga_guardian.faith != scope:tnt_ga_ward.faith } value = 1 }
+}
+
+tnt_ga_note_culture_core_value = {
+	value = 0
+	if = { limit = { scope:tnt_ga_guardian.culture != scope:tnt_ga_ward.culture } value = 1 }
+}
+
+tnt_ga_note_commander_core_value = {
+	value = 0
+	if = {
+		limit = {
+			scope:tnt_ga_guardian.culture = { has_cultural_parameter = guardians_can_transfer_commander_traits }
+			scope:tnt_ga_ward = { character_has_commander_trait_scope_does_not = scope:tnt_ga_guardian }
+		}
+		value = 1
+	}
+}
+
+tnt_ga_note_pedagogy_core_value = {
+	value = 0
+	if = { limit = { scope:tnt_ga_guardian = { has_perk = pedagogy_perk } } value = 1 }
+}
+
+tnt_ga_note_knighthood_core_value = {
+	value = 0
+	if = {
+		limit = {
+			scope:tnt_ga_ward = { has_focus = education_martial }
+			scope:tnt_ga_guardian.culture = { has_innovation = innovation_knighthood }
+			NOT = { scope:tnt_ga_ward.culture = { has_innovation = innovation_knighthood } }
+		}
+		value = 1
+	}
+}
+
+
+########################################################################
+# Public GUI wrappers. Each resolves the pair, then calls one core value.
+# Unresolvable pairs return 0 (available = 0 hides the widget).
+########################################################################
+
+tnt_ga_available_value = {
+	value = 0
+	if = { limit = { tnt_ga_root_is_guardian_trigger_value > 0 } value = 1 }
+	else_if = { limit = { tnt_ga_root_is_ward_trigger_value > 0 } value = 1 }
+}
+
+tnt_ga_has_focus_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_ward_has_focus_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_ward_has_focus_value
+	}
+}
+
+tnt_ga_chance_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_chance_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_chance_core_value
+	}
+}
+
+tnt_ga_success_weight_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		add = tnt_ga_success_weight_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		add = tnt_ga_success_weight_core_value
+	}
+}
+
+tnt_ga_failure_weight_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		add = tnt_ga_failure_weight_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		add = tnt_ga_failure_weight_core_value
+	}
+}
+
+tnt_ga_rolls_left_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_rolls_left_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_rolls_left_core_value
+	}
+}
+
+tnt_ga_current_points_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_current_points_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_current_points_core_value
+	}
+}
+
+tnt_ga_projected_points_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_projected_points_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_projected_points_core_value
+	}
+}
+
+tnt_ga_projected_rank_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_projected_rank_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_projected_rank_core_value
+	}
+}
+
+tnt_ga_beacon_note_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_beacon_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_beacon_value
+	}
+}
+
+tnt_ga_storyteller_note_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_guardian_storyteller_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_guardian_storyteller_value
+	}
+}
+
+tnt_ga_note_faith_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_note_faith_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_note_faith_core_value
+	}
+}
+
+tnt_ga_note_culture_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_note_culture_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_note_culture_core_value
+	}
+}
+
+tnt_ga_note_commander_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_note_commander_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_note_commander_core_value
+	}
+}
+
+tnt_ga_note_pedagogy_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_note_pedagogy_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_note_pedagogy_core_value
+	}
+}
+
+tnt_ga_note_knighthood_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_note_knighthood_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_note_knighthood_core_value
+	}
+}
+
+
+########################################################################
+# List filter: root = row character. 3 genius, 2 intelligent, 1 quick.
+########################################################################
+
+tnt_ga_intellect_level_value = {
+	value = 0
+	if = { limit = { has_trait = intellect_good_3 } value = 3 }
+	else_if = { limit = { has_trait = intellect_good_2 } value = 2 }
+	else_if = { limit = { has_trait = intellect_good_1 } value = 1 }
+}
+
+
+########################################################################
+# Sort capture: root = row candidate, scope:tnt_ga_other = the ward.
+# Chance in tenths of a percent (0..1000), rounded; unavailable rows sort
+# last at -10000. The GUI row guard recomputes this exact value.
+########################################################################
+
+tnt_ga_sort_capture_value = {
+	value = -10000
+	if = {
+		limit = { tnt_ga_available_value > 0 }
+		value = tnt_ga_chance_value
+		multiply = 10
+	}
+	round = yes
+}

@@ -1,0 +1,290 @@
+﻿# GCA native-list score sorting for the GCA guardian search, ported from MCA.
+# Start/context/finalize/clear are player-rooted; collect is candidate-rooted
+# and receives scope:actor = player. All persistent writes target the player.
+# Context = native list size + ward (the interaction recipient) + game day;
+# any change invalidates the snapshot and the GUI clears it.
+# Packed key = (score + 10000) * 100000 + 99999 - native index, score being
+# the chance in tenths of a percent. Sort descending by score; equal scores
+# keep native order. Decode by subtracting the integer remainder first.
+
+tnt_ga_sort_start = {
+	scope = character
+	saved_scopes = { tnt_ga_sort_n tnt_ga_sort_ward tnt_ga_sort_day }
+	is_valid = { is_ai = no }
+	effect = {
+		tnt_ga_sort_clear_all_effect = yes
+		set_variable = { name = tnt_ga_sort_state value = 3 }
+		set_variable = { name = tnt_ga_sort_expected value = 0 }
+		set_variable = { name = tnt_ga_sort_received value = 0 }
+		if = {
+			limit = {
+				exists = scope:tnt_ga_sort_n
+				exists = scope:tnt_ga_sort_ward
+				exists = scope:tnt_ga_sort_day
+				scope:tnt_ga_sort_n > 0
+				scope:tnt_ga_sort_n < 100000
+			}
+			save_scope_value_as = { name = tnt_ga_sort_integer_n value = { value = scope:tnt_ga_sort_n floor = yes } }
+			if = {
+				limit = { scope:tnt_ga_sort_n = scope:tnt_ga_sort_integer_n }
+				set_variable = { name = tnt_ga_sort_expected value = scope:tnt_ga_sort_n }
+				set_variable = { name = tnt_ga_sort_ward value = scope:tnt_ga_sort_ward }
+				set_variable = { name = tnt_ga_sort_day value = scope:tnt_ga_sort_day }
+				set_variable = { name = tnt_ga_sort_state value = 1 }
+			}
+		}
+	}
+}
+
+# Read-only. The GUI passes fresh context every frame.
+tnt_ga_sort_context_valid = {
+	scope = character
+	saved_scopes = { tnt_ga_sort_n tnt_ga_sort_ward tnt_ga_sort_day }
+	is_valid = {
+		has_variable = tnt_ga_sort_state
+		OR = { var:tnt_ga_sort_state = 1 var:tnt_ga_sort_state = 2 }
+		exists = scope:tnt_ga_sort_n
+		exists = scope:tnt_ga_sort_ward
+		exists = scope:tnt_ga_sort_day
+		has_variable = tnt_ga_sort_expected
+		has_variable = tnt_ga_sort_ward
+		has_variable = tnt_ga_sort_day
+		var:tnt_ga_sort_expected = scope:tnt_ga_sort_n
+		var:tnt_ga_sort_ward = { this = scope:tnt_ga_sort_ward }
+		var:tnt_ga_sort_day = scope:tnt_ga_sort_day
+	}
+}
+
+tnt_ga_sort_collect = {
+	scope = character
+	saved_scopes = { actor tnt_ga_other tnt_ga_sort_n tnt_ga_sort_index tnt_ga_sort_day }
+	# Every gate is inside the effect: late callbacks after clear/ready are no-ops.
+	effect = {
+		save_temporary_scope_as = tnt_ga_sort_candidate
+		if = {
+			limit = {
+				exists = scope:actor
+				scope:actor = {
+					is_ai = no
+					has_variable = tnt_ga_sort_state
+					has_variable = tnt_ga_sort_expected
+					has_variable = tnt_ga_sort_received
+					var:tnt_ga_sort_state = 1
+					var:tnt_ga_sort_received < var:tnt_ga_sort_expected
+				}
+			}
+			# Compute while root is still the candidate.
+			save_scope_value_as = { name = tnt_ga_sort_score value = tnt_ga_sort_capture_value }
+			scope:actor = {
+				if = {
+					limit = {
+						exists = scope:tnt_ga_sort_n
+						exists = scope:tnt_ga_sort_index
+						exists = scope:tnt_ga_sort_day
+						exists = scope:tnt_ga_other
+						exists = scope:tnt_ga_sort_candidate
+						scope:tnt_ga_sort_candidate = { is_alive = yes }
+						has_variable = tnt_ga_sort_ward
+						var:tnt_ga_sort_ward = { this = scope:tnt_ga_other }
+						var:tnt_ga_sort_expected = scope:tnt_ga_sort_n
+						var:tnt_ga_sort_day = scope:tnt_ga_sort_day
+						var:tnt_ga_sort_received < var:tnt_ga_sort_expected
+						scope:tnt_ga_sort_index >= 0
+						scope:tnt_ga_sort_index < var:tnt_ga_sort_expected
+						scope:tnt_ga_sort_score >= -10000
+						scope:tnt_ga_sort_score <= 10000
+					}
+					save_scope_value_as = { name = tnt_ga_sort_integer_index value = { value = scope:tnt_ga_sort_index floor = yes } }
+					save_scope_value_as = { name = tnt_ga_sort_integer_score value = { value = scope:tnt_ga_sort_score round = yes } }
+					save_scope_value_as = {
+						name = tnt_ga_sort_key
+						value = {
+							value = scope:tnt_ga_sort_integer_score
+							add = 10000
+							multiply = 100000
+							add = 99999
+							subtract = scope:tnt_ga_sort_integer_index
+						}
+					}
+					save_scope_value_as = {
+						name = tnt_ga_sort_decoded_index
+						value = { value = scope:tnt_ga_sort_key modulo = 100000 multiply = -1 add = 99999 }
+					}
+					save_scope_value_as = {
+						name = tnt_ga_sort_decoded_score
+						value = {
+							value = scope:tnt_ga_sort_key
+							subtract = { value = scope:tnt_ga_sort_key modulo = 100000 }
+							divide = 100000
+							subtract = 10000
+						}
+					}
+					if = {
+						limit = {
+							scope:tnt_ga_sort_index = scope:tnt_ga_sort_integer_index
+							scope:tnt_ga_sort_decoded_index = scope:tnt_ga_sort_index
+							scope:tnt_ga_sort_decoded_score = scope:tnt_ga_sort_integer_score
+						}
+						# The first callback fixes the direction (native order or reversed).
+						if = {
+							limit = { var:tnt_ga_sort_received = 0 }
+							if = {
+								limit = { scope:tnt_ga_sort_index = 0 }
+								set_variable = { name = tnt_ga_sort_direction value = 1 }
+							}
+							else = {
+								save_scope_value_as = { name = tnt_ga_sort_last_index value = { value = var:tnt_ga_sort_expected subtract = 1 } }
+								if = {
+									limit = { scope:tnt_ga_sort_index = scope:tnt_ga_sort_last_index }
+									set_variable = { name = tnt_ga_sort_direction value = -1 }
+								}
+								else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+							}
+						}
+						save_scope_value_as = { name = tnt_ga_sort_sequence_index value = var:tnt_ga_sort_received }
+						if = {
+							limit = { has_variable = tnt_ga_sort_direction var:tnt_ga_sort_direction = -1 }
+							save_scope_value_as = {
+								name = tnt_ga_sort_sequence_index
+								value = { value = var:tnt_ga_sort_expected subtract = 1 subtract = var:tnt_ga_sort_received }
+							}
+						}
+						if = {
+							limit = {
+								var:tnt_ga_sort_state = 1
+								has_variable = tnt_ga_sort_direction
+								OR = { var:tnt_ga_sort_direction = 1 var:tnt_ga_sort_direction = -1 }
+								scope:tnt_ga_sort_index = scope:tnt_ga_sort_sequence_index
+							}
+							add_to_variable_list = { name = tnt_ga_sort_seen target = scope:tnt_ga_sort_integer_index }
+							add_to_variable_list = { name = tnt_ga_sort_packed target = scope:tnt_ga_sort_key }
+							add_to_variable_list = { name = tnt_ga_sort_candidates target = scope:tnt_ga_sort_candidate }
+							change_variable = { name = tnt_ga_sort_received add = 1 }
+						}
+						else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+					}
+					else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+				}
+				else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+				# Fail closed: never keep a partial capture.
+				if = {
+					limit = { has_variable = tnt_ga_sort_state var:tnt_ga_sort_state = 3 }
+					tnt_ga_sort_clear_lists_effect = yes
+				}
+			}
+		}
+	}
+}
+
+tnt_ga_sort_finalize = {
+	scope = character
+	is_valid = {
+		is_ai = no
+		has_variable = tnt_ga_sort_state
+		var:tnt_ga_sort_state = 1
+	}
+	effect = {
+		if = {
+			limit = {
+				has_variable = tnt_ga_sort_state
+				has_variable = tnt_ga_sort_expected
+				has_variable = tnt_ga_sort_received
+				var:tnt_ga_sort_state = 1
+			}
+			if = {
+				limit = {
+					var:tnt_ga_sort_expected > 0
+					var:tnt_ga_sort_received = var:tnt_ga_sort_expected
+					variable_list_size = { name = tnt_ga_sort_seen value = var:tnt_ga_sort_expected }
+					variable_list_size = { name = tnt_ga_sort_packed value = var:tnt_ga_sort_expected }
+					variable_list_size = { name = tnt_ga_sort_candidates value = var:tnt_ga_sort_expected }
+					has_variable = tnt_ga_sort_direction
+					OR = { var:tnt_ga_sort_direction = 1 var:tnt_ga_sort_direction = -1 }
+				}
+				# Pass 1: every native index seen exactly once.
+				set_variable = { name = tnt_ga_sort_cursor value = { value = var:tnt_ga_sort_expected subtract = 1 } }
+				ordered_in_list = {
+					variable = tnt_ga_sort_seen
+					order_by = { save_temporary_scope_as = tnt_ga_sort_order_key value = scope:tnt_ga_sort_order_key }
+					max = var:tnt_ga_sort_expected
+					check_range_bounds = no
+					save_temporary_scope_as = tnt_ga_sort_item
+					root = {
+						if = {
+							limit = { scope:tnt_ga_sort_item = var:tnt_ga_sort_cursor }
+							change_variable = { name = tnt_ga_sort_cursor subtract = 1 }
+						}
+						else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+					}
+				}
+				if = {
+					limit = { var:tnt_ga_sort_state = 1 var:tnt_ga_sort_cursor = -1 }
+					# Pass 2: native indices and keys in descending score order.
+					set_variable = { name = tnt_ga_sort_output_count value = 0 }
+					ordered_in_list = {
+						variable = tnt_ga_sort_packed
+						order_by = { save_temporary_scope_as = tnt_ga_sort_order_key value = scope:tnt_ga_sort_order_key }
+						max = var:tnt_ga_sort_expected
+						check_range_bounds = no
+						save_temporary_scope_as = tnt_ga_sort_item
+						root = {
+							save_scope_value_as = {
+								name = tnt_ga_sort_output_index
+								value = { value = scope:tnt_ga_sort_item modulo = 100000 multiply = -1 add = 99999 }
+							}
+							add_to_variable_list = { name = tnt_ga_sort_indices target = scope:tnt_ga_sort_output_index }
+							add_to_variable_list = { name = tnt_ga_sort_keys target = scope:tnt_ga_sort_item }
+							change_variable = { name = tnt_ga_sort_output_count add = 1 }
+						}
+					}
+					# Pass 3: keys in native-index order for the fresh-score guards.
+					set_variable = { name = tnt_ga_sort_output_count value = 0 }
+					ordered_in_list = {
+						variable = tnt_ga_sort_packed
+						order_by = { save_temporary_scope_as = tnt_ga_sort_order_key value = scope:tnt_ga_sort_order_key modulo = 100000 }
+						max = var:tnt_ga_sort_expected
+						check_range_bounds = no
+						save_temporary_scope_as = tnt_ga_sort_item
+						root = {
+							save_scope_value_as = { name = tnt_ga_sort_output_index value = { value = scope:tnt_ga_sort_item modulo = 100000 multiply = -1 add = 99999 } }
+							if = {
+								limit = { scope:tnt_ga_sort_output_index = var:tnt_ga_sort_output_count }
+								add_to_variable_list = { name = tnt_ga_sort_keys_by_index target = scope:tnt_ga_sort_item }
+							}
+							else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+							change_variable = { name = tnt_ga_sort_output_count add = 1 }
+						}
+					}
+					if = {
+						limit = {
+							var:tnt_ga_sort_state = 1
+							var:tnt_ga_sort_output_count = var:tnt_ga_sort_expected
+							variable_list_size = { name = tnt_ga_sort_indices value = var:tnt_ga_sort_expected }
+							variable_list_size = { name = tnt_ga_sort_keys value = var:tnt_ga_sort_expected }
+							variable_list_size = { name = tnt_ga_sort_keys_by_index value = var:tnt_ga_sort_expected }
+							variable_list_size = { name = tnt_ga_sort_candidates value = var:tnt_ga_sort_expected }
+						}
+						set_variable = { name = tnt_ga_sort_state value = 2 }
+					}
+					else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+				}
+				else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+			}
+			else = { set_variable = { name = tnt_ga_sort_state value = 3 } }
+			if = {
+				limit = { var:tnt_ga_sort_state = 3 }
+				tnt_ga_sort_clear_lists_effect = yes
+			}
+			if = { limit = { has_variable_list = tnt_ga_sort_seen } clear_variable_list = tnt_ga_sort_seen }
+			if = { limit = { has_variable_list = tnt_ga_sort_packed } clear_variable_list = tnt_ga_sort_packed }
+			if = { limit = { has_variable = tnt_ga_sort_cursor } remove_variable = tnt_ga_sort_cursor }
+			if = { limit = { has_variable = tnt_ga_sort_output_count } remove_variable = tnt_ga_sort_output_count }
+		}
+	}
+}
+
+tnt_ga_sort_clear = {
+	scope = character
+	is_valid = { is_ai = no }
+	effect = { tnt_ga_sort_clear_all_effect = yes }
+}

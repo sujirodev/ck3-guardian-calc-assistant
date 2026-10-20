@@ -1,0 +1,24 @@
+﻿# GCA score sort, ported from MCA's native-list snapshot sort.
+# All state lives on the player; candidates are never stamped.
+
+# Working and output lists, keeping the scalar context.
+tnt_ga_sort_clear_lists_effect = {
+	if = { limit = { has_variable_list = tnt_ga_sort_seen } clear_variable_list = tnt_ga_sort_seen }
+	if = { limit = { has_variable_list = tnt_ga_sort_packed } clear_variable_list = tnt_ga_sort_packed }
+	if = { limit = { has_variable_list = tnt_ga_sort_indices } clear_variable_list = tnt_ga_sort_indices }
+	if = { limit = { has_variable_list = tnt_ga_sort_keys } clear_variable_list = tnt_ga_sort_keys }
+	if = { limit = { has_variable_list = tnt_ga_sort_keys_by_index } clear_variable_list = tnt_ga_sort_keys_by_index }
+	if = { limit = { has_variable_list = tnt_ga_sort_candidates } clear_variable_list = tnt_ga_sort_candidates }
+	if = { limit = { has_variable = tnt_ga_sort_direction } remove_variable = tnt_ga_sort_direction }
+	if = { limit = { has_variable = tnt_ga_sort_cursor } remove_variable = tnt_ga_sort_cursor }
+	if = { limit = { has_variable = tnt_ga_sort_output_count } remove_variable = tnt_ga_sort_output_count }
+}
+
+tnt_ga_sort_clear_all_effect = {
+	tnt_ga_sort_clear_lists_effect = yes
+	if = { limit = { has_variable = tnt_ga_sort_state } remove_variable = tnt_ga_sort_state }
+	if = { limit = { has_variable = tnt_ga_sort_expected } remove_variable = tnt_ga_sort_expected }
+	if = { limit = { has_variable = tnt_ga_sort_received } remove_variable = tnt_ga_sort_received }
+	if = { limit = { has_variable = tnt_ga_sort_ward } remove_variable = tnt_ga_sort_ward }
+	if = { limit = { has_variable = tnt_ga_sort_day } remove_variable = tnt_ga_sort_day }
+}

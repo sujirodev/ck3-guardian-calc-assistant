@@ -1,0 +1,38 @@
+﻿# GCA intellect filter. Root = player; the three flags live on the player.
+# tnt_ga_level: 1 quick, 2 intelligent, 3 genius.
+# tnt_ga_reopen = 1 inside the GCA search: reopen it so the list is rebuilt
+# by populate_recipient_list with the new filter.
+tnt_ga_toggle_filter = {
+	scope = character
+	saved_scopes = { tnt_ga_level tnt_ga_reopen tnt_ga_ward }
+	is_valid = { is_ai = no }
+	effect = {
+		if = {
+			limit = { exists = scope:tnt_ga_level scope:tnt_ga_level = 1 }
+			if = { limit = { has_variable = tnt_ga_f1 } remove_variable = tnt_ga_f1 }
+			else = { set_variable = tnt_ga_f1 }
+		}
+		else_if = {
+			limit = { exists = scope:tnt_ga_level scope:tnt_ga_level = 2 }
+			if = { limit = { has_variable = tnt_ga_f2 } remove_variable = tnt_ga_f2 }
+			else = { set_variable = tnt_ga_f2 }
+		}
+		else_if = {
+			limit = { exists = scope:tnt_ga_level scope:tnt_ga_level = 3 }
+			if = { limit = { has_variable = tnt_ga_f3 } remove_variable = tnt_ga_f3 }
+			else = { set_variable = tnt_ga_f3 }
+		}
+		if = {
+			limit = {
+				exists = scope:tnt_ga_reopen
+				scope:tnt_ga_reopen = 1
+				exists = scope:tnt_ga_ward
+			}
+			open_interaction_window = {
+				interaction = tnt_ga_find_guardian_interaction
+				actor = root
+				recipient = scope:tnt_ga_ward
+			}
+		}
+	}
+}

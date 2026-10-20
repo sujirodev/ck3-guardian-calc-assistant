@@ -1,0 +1,122 @@
+﻿########################################################################
+# Guardian Calculation Assistant: search guardians beyond your court.
+#
+# recipient           = the ward (a child at the player's court)
+# secondary_recipient = the chosen guardian
+# Candidates: the player, the player's courtiers, and every ruler in
+# diplomatic range plus their courtiers. Sending only opens the matching
+# vanilla interaction pre-filled (Educate Child for your own court,
+# Offer Ward otherwise); vanilla validity, costs and acceptance apply there.
+########################################################################
+
+tnt_ga_find_guardian_interaction = {
+	category = interaction_category_friendly
+	icon = child
+	interface_priority = 59
+	common_interaction = no
+	desc = tnt_ga_find_guardian_interaction_desc
+	send_name = tnt_ga_find_guardian_send
+	auto_accept = yes
+	# The ward is at our court; range is filtered per candidate court in
+	# populate_recipient_list, and Offer Ward re-checks it when sent.
+	use_diplomatic_range = no
+
+	is_shown = {
+		scope:actor = { is_ai = no }
+		scope:recipient = {
+			is_alive = yes
+			is_adult = no
+			is_courtier_of = scope:actor
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			num_of_relation_guardian = 0
+			is_imprisoned = no
+		}
+	}
+
+	populate_recipient_list = {
+		scope:actor = {
+			if = {
+				limit = { tnt_ga_guardian_candidate_trigger = yes tnt_ga_intellect_filter_trigger = yes }
+				add_to_list = characters
+			}
+			every_courtier = {
+				limit = { tnt_ga_guardian_candidate_trigger = yes tnt_ga_intellect_filter_trigger = yes }
+				add_to_list = characters
+			}
+		}
+		every_ruler = {
+			limit = {
+				this != scope:actor
+				is_playable_character = yes
+				in_diplomatic_range = scope:actor
+			}
+			if = {
+				limit = { tnt_ga_guardian_candidate_trigger = yes tnt_ga_intellect_filter_trigger = yes }
+				add_to_list = characters
+			}
+			save_temporary_scope_as = tnt_ga_court
+			every_courtier = {
+				limit = {
+					tnt_ga_guardian_candidate_trigger = yes
+					tnt_ga_intellect_filter_trigger = yes
+					NOR = {
+						is_theocratic_lessee = yes
+						is_consort_of = scope:tnt_ga_court
+					}
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	can_send = {
+		exists = scope:secondary_recipient
+	}
+
+	on_accept = {
+		if = {
+			limit = {
+				scope:secondary_recipient = {
+					OR = {
+						this = scope:actor
+						is_courtier_of = scope:actor
+					}
+				}
+			}
+			open_interaction_window = {
+				interaction = educate_child_interaction
+				redirect = no
+				actor = scope:actor
+				recipient = scope:actor
+				secondary_actor = scope:secondary_recipient
+				secondary_recipient = scope:recipient
+			}
+		}
+		else = {
+			scope:secondary_recipient = {
+				if = {
+					limit = { is_playable_character = yes }
+					save_scope_as = tnt_ga_guardian_liege
+				}
+				else = {
+					court_owner ?= { save_scope_as = tnt_ga_guardian_liege }
+				}
+			}
+			if = {
+				limit = { exists = scope:tnt_ga_guardian_liege }
+				open_interaction_window = {
+					interaction = offer_ward_interaction
+					redirect = no
+					actor = scope:actor
+					recipient = scope:tnt_ga_guardian_liege
+					secondary_actor = scope:recipient
+					secondary_recipient = scope:secondary_recipient
+				}
+			}
+		}
+	}
+}

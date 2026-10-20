@@ -1,0 +1,2 @@
+Or( Or( EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_educate_child_interaction') ), EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_offer_guardianship_interaction') ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_offer_ward_interaction') ) )
+EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') )

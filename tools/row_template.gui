@@ -1,0 +1,127 @@
+				# @COMMENT@
+				hbox = {
+					name = "tnt_ga_grade_@SIDE@"
+					min_height = 26
+					spacing = 4
+					alwaystransparent = no
+					visible = "[And( And( @PICK@, @GATE@ ), GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' ) )]"
+
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						raw_text = "#low GCA#! [@S@.ScriptValue('tnt_ga_chance_value')|0]%"
+					}
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
+						raw_text = "#low ~R#![@S@.ScriptValue('tnt_ga_projected_rank_value')|0]"
+					}
+
+					using = tooltip_ne
+					tooltipwidget = {
+						widget = {
+							using = DefaultTooltipBackground
+							alwaystransparent = no
+
+							vbox = {
+								set_parent_size_to_minimum = yes
+								margin = { 20 10 }
+								spacing = 4
+
+								text_label_left = {
+									layoutpolicy_horizontal = expanding
+									raw_text = "[Localize('tnt_ga_tt_title')]: [@S@.ScriptValue('tnt_ga_chance_value')|0]%"
+									default_format = "#T"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									raw_text = "#low [Localize('tnt_ga_tt_weights')] [@S@.ScriptValue('tnt_ga_success_weight_value')|1] / [@S@.ScriptValue('tnt_ga_failure_weight_value')|1]#!"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									text = "tnt_ga_tt_success_header"
+									default_format = "#P"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[@S@.GetScriptValueBreakdown('tnt_ga_success_weight_value')]"
+									blockoverride "background" {}
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									text = "tnt_ga_tt_failure_header"
+									default_format = "#N"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[@S@.GetScriptValueBreakdown('tnt_ga_failure_weight_value')]"
+									blockoverride "background" {}
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
+									raw_text = "[Localize('tnt_ga_tt_projection')] [@S@.ScriptValue('tnt_ga_current_points_value')|1] + [@S@.ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [@S@.ScriptValue('tnt_ga_chance_value')|0]% = #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [@S@.ScriptValue('tnt_ga_projected_rank_value')|0])"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+									text = "tnt_ga_tt_no_focus"
+									default_format = "#low"
+								}
+
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_storyteller_note_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_storyteller"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_beacon_note_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_beacon"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_note_pedagogy_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_pedagogy"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_note_commander_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_commander"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_note_knighthood_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_knighthood"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_note_faith_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_faith"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_note_culture_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_note_culture"
+								}
+
+								textbox = {
+									layoutpolicy_horizontal = expanding
+									margin_top = 4
+									margin_bottom = 8
+									max_width = 420
+									autoresize = yes
+									multiline = yes
+									using = DefaultTooltipText
+									text = "tnt_ga_tt_help"
+									default_format = "#low"
+								}
+							}
+						}
+					}
+				}

@@ -1,0 +1,745 @@
+﻿######################################################
+############# INTERACTION CONFIRMATION ###############
+######################################################
+
+window = {
+	name = "character_interaction_confirmation_window"
+	position = { 0 20 }
+	parentanchor = center
+	allow_outside = yes
+	layer = middle
+
+	using = Window_Size_MainTab
+	using = Window_Background
+	using = Window_Decoration_Spike
+
+	state = {
+		name = _show
+		on_start = "[GetVariableSystem.Clear( 'character_interaction_change_title' )]"
+		on_start = "[GetVariableSystem.Clear( 'character_interaction_change_artifact' )]"
+		on_start = "[GetVariableSystem.Clear( 'character_interaction_change_maa' )]"
+		using = Animation_FadeIn_Quick
+		using = Sound_WindowShow_Standard
+	}
+
+	state = {
+		name = _hide
+		using = Animation_FadeOut_Quick
+		using = Sound_WindowHide_Standard
+	}
+
+	vbox = {
+		set_parent_size_to_minimum = yes
+		using = Window_Margins
+
+		hbox = {
+			name = "interaction_window_heading"
+			visible = "[Not( CharacterInteractionConfirmationWindow.ShouldShowScheme )]"
+			layoutpolicy_vertical = expanding
+			layoutpolicy_horizontal = expanding
+
+			header_pattern_interaction = {
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+				minimumsize = { 100% -1 }
+
+				blockoverride "header_text" {
+					text = "[CharacterInteractionConfirmationWindow.GetSendName]"
+				}
+
+				blockoverride "button_close"
+				{
+					onclick = "[CharacterInteractionConfirmationWindow.Close]"
+				}
+
+				icon_character_interaction = {
+					size = { 50 50 }
+					position = { 5 5 }
+					tooltip = "[CharacterInteractionConfirmationWindow.GetInteractionTooltip]"
+				}
+			}
+		}
+
+		# Scheme header
+		scheme_header_widget = {
+			visible = "[CharacterInteractionConfirmationWindow.ShouldShowScheme]"
+
+			blockoverride "header_text" {
+				text = "[CharacterInteractionConfirmationWindow.GetSendName]"
+			}
+
+			blockoverride "button_close"
+			{
+				onclick = "[CharacterInteractionConfirmationWindow.Close]"
+			}
+		}
+
+		vbox_character_interaction_three_characters = {
+			visible = "[And(Not(GetVariableSystem.Exists('character_interaction_change_title')), CharacterInteractionConfirmationWindow.ShowThreeCharacters)]"
+			layoutpolicy_horizontal = expanding
+		}
+
+		# Artifact Picker
+		vbox = {
+			name = "interaction_window_artifact_picker"
+			visible = "[CharacterInteractionConfirmationWindow.UsesArtifactTarget]"
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin = { 14 10 }
+
+			hbox = {
+				visible = "[CharacterInteractionConfirmationWindow.HasSelectedArtifact]"
+				datacontext = "[CharacterInteractionConfirmationWindow.GetSelectedArtifact]"
+				layoutpolicy_vertical = expanding
+				spacing = 5
+
+				widget = {
+					size = { 80 80 }
+					alwaystransparent = yes
+
+					icon_artifact = {
+						size = { 100% 100% }
+					}
+
+					tooltipwidget = {
+						artifact_tooltip = {}
+					}
+				}
+
+				text_single = {
+					text = "[Artifact.GetName]"
+					using = Font_Size_Medium
+					align = nobaseline
+
+					tooltipwidget = {
+						artifact_tooltip = {}
+					}
+				}
+
+				button_round = {
+					name = "change"
+					datacontext = "[GetVariableSystem]"
+					onclick = "[VariableSystem.Toggle( 'character_interaction_change_artifact' )]"
+
+					tooltip = "CHARACTER_INTERACTION_WINDOW_SELECT_ARTIFACT_TOOLTIP"
+					using = tooltip_below
+
+					button_replace = {
+						parentanchor = center
+						alwaystransparent = yes
+					}
+				}
+			}
+
+			hbox = {
+				visible = "[Not( CharacterInteractionConfirmationWindow.HasSelectedArtifact )]"
+				minimumsize = { 0 112 }
+				margin = { 10 10 }
+
+				text_single = {
+					text = "CHARACTER_INTERACTION_NO_TARGET_SELECTED"
+					using = Font_Size_Medium
+					align = nobaseline
+				}
+			}
+
+			#### replaces character effects ###
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'character_interaction_change_artifact' )]"
+				layoutpolicy_horizontal = expanding
+				size = { 400 400 }
+
+				blockoverride "scrollbox_content"
+				{
+					vbox_list_interaction_artifact_selection = {
+						maximumsize = { 250 400 }
+						layoutpolicy_horizontal = expanding
+
+						blockoverride "button_toggles" {}
+					}
+				}
+			}
+		}
+
+		# MaA Picker
+		vbox = {
+			visible = "[CharacterInteractionConfirmationWindow.UsesMaaTarget]"
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+
+			hbox = {
+				visible = "[Not( CharacterInteractionConfirmationWindow.HasSelectedMaa )]"
+				minimumsize = { 0 112 }
+				margin = { 10 10 }
+
+				text_single = {
+					text = "CHARACTER_INTERACTION_NO_TARGET_SELECTED"
+					using = Font_Size_Medium
+					align = nobaseline
+				}
+			}
+
+			text_single = {
+				text = "[CharacterInteractionConfirmationWindow.GetSelectedMaa.GetName]"
+				visible = "[CharacterInteractionConfirmationWindow.HasSelectedMaa]"
+			}
+
+			button_round = {
+				name = "change"
+				datacontext = "[GetVariableSystem]"
+				onclick = "[VariableSystem.Toggle( 'character_interaction_change_maa' )]"
+
+				tooltip = "CHARACTER_INTERACTION_WINDOW_SELECT_ARTIFACT_TOOLTIP"
+				using = tooltip_below
+
+				button_replace = {
+					parentanchor = center
+					alwaystransparent = yes
+				}
+			}
+
+			#### replaces character effects ###
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists( 'character_interaction_change_maa' )]"
+				layoutpolicy_horizontal = expanding
+				size = { 400 400 }
+
+				blockoverride "scrollbox_content"
+				{
+					vbox_list_interaction_maa_selection = {
+						maximumsize = { 250 400 }
+						layoutpolicy_horizontal = expanding
+
+						blockoverride "button_toggles" {}
+					}
+				}
+			}
+		}
+
+		### EDUCATE CHILD ###
+		vbox = {
+			layoutpolicy_horizontal = expanding
+
+			widget_character_interaction_four_characters = {
+				visible = "[CharacterInteractionConfirmationWindow.ShowFourCharacters]"
+				layoutpolicy_horizontal = expanding
+			}
+
+			# GCA: intellect filter for guardian/ward lists. No box ticked = everyone.
+			# GCA search: applied by populate_recipient_list (window reopens).
+			# Vanilla guardian interactions: rows are hidden in the GUI.
+			hbox = {
+				name = "tnt_ga_intellect_filter"
+				visible = "[And( Or( Or( Or( EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_educate_child_interaction') ), EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_offer_guardianship_interaction') ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_offer_ward_interaction') ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ) ), Not( CharacterInteractionConfirmationWindow.HasPickedCharacters ) )]"
+				layoutpolicy_horizontal = expanding
+				margin = { 20 4 }
+				spacing = 15
+
+				text_single = {
+					text = "tnt_ga_filter_label"
+					align = nobaseline
+					default_format = "#low"
+				}
+				button_checkbox_label = {
+					onclick = "[GetVariableSystem.Clear( 'tnt_ga_sort_auto' )]"
+					onclick = "[GetScriptedGui('tnt_ga_toggle_filter').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'tnt_ga_level', MakeScopeValue( '(CFixedPoint)1' ) ).AddScope( 'tnt_ga_reopen', MakeScopeValue( Select_CFixedPoint( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), '(CFixedPoint)1', '(CFixedPoint)0' ) ) ).AddScope( 'tnt_ga_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).End )]"
+					tooltip = "tnt_ga_filter_tt"
+					blockoverride "checkbox" {
+						checked = "[GetPlayer.MakeScope.GetVariable('tnt_ga_f1').IsSet]"
+					}
+					blockoverride "text" {
+						text = "tnt_ga_filter_quick"
+					}
+				}
+				button_checkbox_label = {
+					onclick = "[GetVariableSystem.Clear( 'tnt_ga_sort_auto' )]"
+					onclick = "[GetScriptedGui('tnt_ga_toggle_filter').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'tnt_ga_level', MakeScopeValue( '(CFixedPoint)2' ) ).AddScope( 'tnt_ga_reopen', MakeScopeValue( Select_CFixedPoint( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), '(CFixedPoint)1', '(CFixedPoint)0' ) ) ).AddScope( 'tnt_ga_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).End )]"
+					tooltip = "tnt_ga_filter_tt"
+					blockoverride "checkbox" {
+						checked = "[GetPlayer.MakeScope.GetVariable('tnt_ga_f2').IsSet]"
+					}
+					blockoverride "text" {
+						text = "tnt_ga_filter_intelligent"
+					}
+				}
+				button_checkbox_label = {
+					onclick = "[GetVariableSystem.Clear( 'tnt_ga_sort_auto' )]"
+					onclick = "[GetScriptedGui('tnt_ga_toggle_filter').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope( 'tnt_ga_level', MakeScopeValue( '(CFixedPoint)3' ) ).AddScope( 'tnt_ga_reopen', MakeScopeValue( Select_CFixedPoint( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), '(CFixedPoint)1', '(CFixedPoint)0' ) ) ).AddScope( 'tnt_ga_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).End )]"
+					tooltip = "tnt_ga_filter_tt"
+					blockoverride "checkbox" {
+						checked = "[GetPlayer.MakeScope.GetVariable('tnt_ga_f3').IsSet]"
+					}
+					blockoverride "text" {
+						text = "tnt_ga_filter_genius"
+					}
+				}
+
+				expand = {}
+			}
+
+			vbox_interaction_character_list = {
+				visible = "[And( And( And( Not( GetVariableSystem.Exists( 'character_interaction_change_title' ) ), Not(GetVariableSystem.Exists( 'character_interaction_change_artifact' ) ) ), Not( GetVariableSystem.Exists( 'character_interaction_change_maa' ) ) ), Not( CharacterInteractionConfirmationWindow.HasPickedCharacters ) )]"
+				datacontext = "[CharacterInteractionConfirmationWindow.GetCharacterList]"
+				layoutpolicy_horizontal = expanding
+				minimumsize = { 640 480 }
+
+				blockoverride "item_size"
+				{
+					size = { 600 110 }
+					layoutpolicy_horizontal = expanding
+
+				}
+
+				# GCA score sort (ported from MCA): saveable player snapshot, cleared
+				# when the list closes. Callback states need a valid property.
+				state = {
+					name = _hide
+					scale = 1
+					on_start = "[GetVariableSystem.Clear( 'tnt_ga_sort_auto' )]"
+					on_start = "[GetScriptedGui('tnt_ga_sort_clear').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+				}
+
+				# Native sort dropdown kept; GCA buttons below it, GCA search only.
+				blockoverride "sort_buttons" {
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 4
+						hbox_list_sort_buttons = {
+							layoutpolicy_horizontal = expanding
+							enabled = "[Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ) )]"
+							blockoverride "margins" {
+								margin_left = 20
+								margin_right = 23
+								margin_top = 5
+								spacing = 5
+							}
+						}
+						hbox = {
+							visible = "[EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') )]"
+							margin_left = 20
+							margin_right = 23
+							spacing = 8
+							button_standard = {
+								name = "tnt_ga_sort_start_button"
+								tooltip = "[SelectLocalization( GreaterThan_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)99999' ), 'tnt_ga_sort_too_many', 'tnt_ga_sort_help' )]"
+								size = { 180 30 }
+								enabled = "[And( Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ) ), And( Not( CharacterSelectionList.IsBuildingList ), And( Not( CharacterSelectionList.FiltersShown ), And( GreaterThan_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)0' ), LessThanOrEqualTo_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)99999' ) ) ) ) )]"
+								onclick = "[GetScriptedGui('tnt_ga_sort_start').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End )]"
+								text_single = {
+									parentanchor = center
+									text = "tnt_ga_sort_score_button"
+									alwaystransparent = yes
+								}
+							}
+							button_standard = {
+								name = "tnt_ga_sort_native_button"
+								tooltip = "tnt_ga_sort_help"
+								size = { 160 30 }
+								enabled = "[GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' )]"
+								onclick = "[GetVariableSystem.Set( 'tnt_ga_sort_auto', 'yes' )]"
+								onclick = "[GetScriptedGui('tnt_ga_sort_clear').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+								text_single = {
+									parentanchor = center
+									text = "tnt_ga_sort_native_button"
+									alwaystransparent = yes
+								}
+							}
+							text_single = {
+								name = "tnt_ga_sort_progress"
+								layoutpolicy_horizontal = expanding
+								align = nobaseline
+								visible = "[GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' )]"
+								text = "[SelectLocalization( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), 'tnt_ga_sort_collecting', Select_CString( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)2' ), 'tnt_ga_sort_active', 'tnt_ga_sort_failed' ) )]"
+								alwaystransparent = yes
+							}
+						}
+					}
+				}
+
+				# Full-list collector keeps GetIndexInDataModel on the actual item widget.
+				widget = {
+					name = "tnt_ga_sort_collector"
+					size = { 1 1 }
+					alwaystransparent = yes
+					visible = "[And( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), Not( CharacterSelectionList.IsBuildingList ) )]"
+					datamodel = "[DataModelSubSpan( CharacterSelectionList.GetList, '(int32)0', Select_int32( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), GetDataModelSize( CharacterSelectionList.GetList ), '(int32)0' ) )]"
+					datamodel_reuse_widgets = yes
+					item = {
+						widget = {
+							name = "tnt_ga_sort_capture"
+							size = { 1 1 }
+							alwaystransparent = yes
+							state = {
+								name = "tnt_ga_sort_capture_active"
+								scale = 1
+								trigger_when = "[And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), Not( CharacterSelectionList.IsBuildingList ) )]"
+								on_start = "[GetScriptedGui('tnt_ga_sort_collect').Execute( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).AddScope('actor', GetPlayer.MakeScope).AddScope('tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).AddScope('tnt_ga_sort_index', MakeScopeValue( IntToFixedPoint( PdxGuiWidget.GetIndexInDataModel ) )).End )]"
+							}
+							state = {
+								name = "tnt_ga_sort_capture_idle"
+								scale = 1
+								trigger_when = "[Not( And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), Not( CharacterSelectionList.IsBuildingList ) ) )]"
+							}
+						}
+					}
+				}
+
+				# Auto-start once per opening (default = best GCA first), invalidate on
+				# any context change, finalize when every row has reported.
+				widget = {
+					name = "tnt_ga_sort_controller"
+					size = { 1 1 }
+					alwaystransparent = yes
+					state = {
+						name = "tnt_ga_sort_autostart"
+						scale = 1
+						trigger_when = "[And( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), And( Not( GetVariableSystem.Exists( 'tnt_ga_sort_auto' ) ), And( Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ) ), And( Not( CharacterSelectionList.IsBuildingList ), And( Not( CharacterSelectionList.FiltersShown ), And( GreaterThan_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)0' ), LessThanOrEqualTo_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)99999' ) ) ) ) ) ) )]"
+						on_start = "[GetVariableSystem.Set( 'tnt_ga_sort_auto', 'yes' )]"
+						on_start = "[GetScriptedGui('tnt_ga_sort_start').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End )]"
+					}
+					state = {
+						name = "tnt_ga_sort_invalidate"
+						scale = 1
+						trigger_when = "[And( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ), Or( CharacterSelectionList.IsBuildingList, Not( GetScriptedGui('tnt_ga_sort_context_valid').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End ) ) ) )]"
+						on_start = "[GetScriptedGui('tnt_ga_sort_clear').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+					state = {
+						name = "tnt_ga_sort_complete"
+						scale = 1
+						trigger_when = "[And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), And( Not( CharacterSelectionList.IsBuildingList ), And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_received').GetValueWithDefault('(CFixedPoint)0'), GetPlayer.MakeScope.GetVariable('tnt_ga_sort_expected').GetValueWithDefault('(CFixedPoint)0') ), GetScriptedGui('tnt_ga_sort_context_valid').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End ) ) ) )]"
+						on_start = "[GetScriptedGui('tnt_ga_sort_finalize').Execute( GuiScope.SetRoot( GetPlayer.MakeScope ).End )]"
+					}
+					state = {
+						name = "tnt_ga_sort_controller_idle"
+						scale = 1
+						trigger_when = "[Not( Or( Or( And( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), And( Not( GetVariableSystem.Exists( 'tnt_ga_sort_auto' ) ), And( Not( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ) ), And( Not( CharacterSelectionList.IsBuildingList ), And( Not( CharacterSelectionList.FiltersShown ), And( GreaterThan_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)0' ), LessThanOrEqualTo_int32( GetDataModelSize( CharacterSelectionList.GetList ), '(int32)99999' ) ) ) ) ) ) ), And( GreaterThan_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)0' ), Or( CharacterSelectionList.IsBuildingList, Not( GetScriptedGui('tnt_ga_sort_context_valid').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End ) ) ) ) ), And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), And( Not( CharacterSelectionList.IsBuildingList ), And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_received').GetValueWithDefault('(CFixedPoint)0'), GetPlayer.MakeScope.GetVariable('tnt_ga_sort_expected').GetValueWithDefault('(CFixedPoint)0') ), GetScriptedGui('tnt_ga_sort_context_valid').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End ) ) ) ) ) )]"
+					}
+				}
+
+				# GCA: the GCA search can list thousands of characters, so it uses a
+				# virtualized grid like the vanilla marriage window. Every other
+				# interaction keeps the vanilla vbox, with GUI-side intellect filtering.
+				# Each container gets an empty span when it is not the active one.
+				blockoverride "container_implementation"
+				{
+					vbox = {
+						name = "characters_grid"
+						datamodel = "[DataModelSubSpan( CharacterSelectionList.GetList, '(int32)0', Select_int32( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), '(int32)0', GetDataModelSize( CharacterSelectionList.GetList ) ) )]"
+						visible = "[And( Not( CharacterSelectionList.IsBuildingList ), Not( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ) ) )]"
+						layoutpolicy_horizontal = expanding
+						ignoreinvisible = yes
+
+						item = {
+							tnt_ga_widget_character_list_item = {
+								visible = "[Or( Not( Or( Or( Or( EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_educate_child_interaction') ), EqualTo_string( CharacterInteractionConfirmationWindow.GetActorSecondaryLabel, Localize('actor_secondary_offer_guardianship_interaction') ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_offer_ward_interaction') ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ) ) ), Or( Not( Or( Or( GetPlayer.MakeScope.GetVariable('tnt_ga_f1').IsSet, GetPlayer.MakeScope.GetVariable('tnt_ga_f2').IsSet ), GetPlayer.MakeScope.GetVariable('tnt_ga_f3').IsSet ) ), Or( Or( And( GetPlayer.MakeScope.GetVariable('tnt_ga_f1').IsSet, EqualTo_CFixedPoint( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).ScriptValue('tnt_ga_intellect_level_value'), '(CFixedPoint)1' ) ), And( GetPlayer.MakeScope.GetVariable('tnt_ga_f2').IsSet, EqualTo_CFixedPoint( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).ScriptValue('tnt_ga_intellect_level_value'), '(CFixedPoint)2' ) ) ), And( GetPlayer.MakeScope.GetVariable('tnt_ga_f3').IsSet, EqualTo_CFixedPoint( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).ScriptValue('tnt_ga_intellect_level_value'), '(CFixedPoint)3' ) ) ) ) )]"
+								size = { 600 110 }
+								layoutpolicy_horizontal = expanding
+							}
+						}
+					}
+
+					fixedgridbox = {
+						name = "tnt_ga_characters_grid"
+						datamodel = "[DataModelSubSpan( CharacterSelectionList.GetList, '(int32)0', Select_int32( EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ), GetDataModelSize( CharacterSelectionList.GetList ), '(int32)0' ) )]"
+						visible = "[And( And( Not( CharacterSelectionList.IsBuildingList ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ) ), Not( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)2' ) ) )]"
+						datamodel_reuse_widgets = yes
+						addcolumn = 600
+						addrow = 110
+
+						item = {
+							tnt_ga_widget_character_list_item = {
+								size = { 600 110 }
+							}
+						}
+					}
+
+					# Native index -> native item -> score packet -> captured reference.
+					# Rows show only while their fresh score and identity still match.
+					fixedgridbox = {
+						name = "tnt_ga_sorted_characters_grid"
+						visible = "[And( And( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_state').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)2' ), Not( CharacterSelectionList.IsBuildingList ) ), EqualTo_string( CharacterInteractionConfirmationWindow.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') ) )]"
+						enabled = "[And( Not( CharacterSelectionList.IsBuildingList ), GetScriptedGui('tnt_ga_sort_context_valid').IsValid( GuiScope.SetRoot( GetPlayer.MakeScope ).AddScope('tnt_ga_sort_n', MakeScopeValue( IntToFixedPoint( GetDataModelSize( CharacterSelectionList.GetList ) ) )).AddScope('tnt_ga_sort_ward', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).AddScope('tnt_ga_sort_day', MakeScopeValue( IntToFixedPoint( GetCurrentDate.GetDateAsTotalDays ) )).End ) )]"
+						datamodel = "[GetPlayer.MakeScope.GetList('tnt_ga_sort_indices')]"
+						datamodel_reuse_widgets = yes
+						addcolumn = 600
+						addrow = 110
+						item = {
+							widget = {
+								size = { 600 110 }
+								datamodel = "[DataModelSubSpan( CharacterSelectionList.GetList, FixedPointToInt( Scope.GetValue ), '(int32)1' )]"
+								item = {
+									widget = {
+										size = { 600 110 }
+										datamodel = "[DataModelSubSpan( GetPlayer.MakeScope.GetList('tnt_ga_sort_keys_by_index'), FixedPointToInt( Scope.GetValue ), '(int32)1' )]"
+										item = {
+											widget = {
+												size = { 600 110 }
+												name = "tnt_ga_sort_row_score_guard"
+												visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).AddScope('tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).ScriptValue('tnt_ga_sort_capture_value'), Subtract_CFixedPoint( Divide_CFixedPoint( Subtract_CFixedPoint( Scope.GetValue, Modulo_CFixedPoint( Scope.GetValue, '(CFixedPoint)100000' ) ), '(CFixedPoint)100000' ), '(CFixedPoint)10000' ) )]"
+												enabled = "[EqualTo_CFixedPoint( GuiScope.SetRoot( CharacterListItem.GetCharacter.MakeScope ).AddScope('tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope).ScriptValue('tnt_ga_sort_capture_value'), Subtract_CFixedPoint( Divide_CFixedPoint( Subtract_CFixedPoint( Scope.GetValue, Modulo_CFixedPoint( Scope.GetValue, '(CFixedPoint)100000' ) ), '(CFixedPoint)100000' ), '(CFixedPoint)10000' ) )]"
+												widget = {
+													size = { 600 110 }
+													datamodel = "[DataModelSubSpan( GetPlayer.MakeScope.GetList('tnt_ga_sort_candidates'), FixedPointToInt( Select_CFixedPoint( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_direction').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), Subtract_CFixedPoint( '(CFixedPoint)99999', Modulo_CFixedPoint( Scope.GetValue, '(CFixedPoint)100000' ) ), Subtract_CFixedPoint( Subtract_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_expected').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), Subtract_CFixedPoint( '(CFixedPoint)99999', Modulo_CFixedPoint( Scope.GetValue, '(CFixedPoint)100000' ) ) ) ) ), '(int32)1' )]"
+													item = {
+														widget = {
+															size = { 600 110 }
+															name = "tnt_ga_sort_row_identity_guard"
+															visible = "[And( Or( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_direction').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_direction').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)-1' ) ), ObjectsEqual( CharacterListItem.GetCharacter, Scope.Char ) )]"
+															enabled = "[And( Or( EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_direction').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)1' ), EqualTo_CFixedPoint( GetPlayer.MakeScope.GetVariable('tnt_ga_sort_direction').GetValueWithDefault('(CFixedPoint)0'), '(CFixedPoint)-1' ) ), ObjectsEqual( CharacterListItem.GetCharacter, Scope.Char ) )]"
+															tnt_ga_widget_character_list_item = {
+																size = { 600 110 }
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		## Scheme Information
+		vbox_scheme_info = {
+			visible = "[And( CharacterInteractionConfirmationWindow.ShouldShowScheme, Not( CharacterInteractionConfirmationWindow.IsActorRecipientSame ) )]"
+			datacontext = "[CharacterInteractionConfirmationWindow.GetSchemeInfo]"
+			layoutpolicy_horizontal = expanding
+		}
+
+		## Effects on Characters
+		vbox_character_interaction_effects = {
+			visible = "[And( And( And( And( Not( GetVariableSystem.Exists( 'character_interaction_change_title' ) ), Not(GetVariableSystem.Exists( 'character_interaction_change_artifact' ) ) ), Not( GetVariableSystem.Exists( 'character_interaction_change_maa' ) ) ), CharacterInteractionConfirmationWindow.HasPickedCharacters ), InteractionEffectsDescription.GetDisplayedEffects.HasAnyEffects )]"
+			datacontext = "[CharacterInteractionConfirmationWindow.GetEffectsDescription]"
+			layoutpolicy_horizontal = expanding
+		}
+
+		expand = {}
+
+		# Title Picker
+		vbox = {
+			name = "interaction_window_title_picker"
+			visible = "[CharacterInteractionConfirmationWindow.UsesTitleTarget]"
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			margin_top = 5
+			spacing = 10
+
+			hbox = {
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+				spacing = 10
+
+				expand = {}
+
+				hbox = {
+					visible = "[CharacterInteractionConfirmationWindow.GetSelectedTitle.IsValid]"
+					spacing = 5
+
+					background = {
+						margin_right = 30
+						margin_top = -15
+						margin_bottom = -10
+
+						texture = "gfx/interface/component_tiles/tile_title_bg_01.dds"
+						spriteType = Corneredtiled
+						spriteborder = { 40 8 }
+						texture_density = 2
+
+						modify_texture = {
+							name = "mask"
+							texture = "gfx/interface/component_masks/mask_fade_horizontal_middle_thick.dds"
+							spriteType = Corneredstretched
+							spriteborder = { 0 0 }
+							blend_mode = alphamultiply
+						}
+					}
+
+					widget = {
+						size = { 50 60 }
+
+						coa_title_small_crown = {
+							name = "selected_title_flag"
+							datacontext = "[CharacterInteractionConfirmationWindow.GetSelectedTitle]"
+							parentanchor = center
+							scale = 0.8
+						}
+					}
+
+					text_single = {
+						datacontext = "[CharacterInteractionConfirmationWindow.GetSelectedTitle]"
+						text = "[Title.GetNameNoTooltip|U]"
+						using = Font_Size_Medium
+					}
+				}
+
+				button_round = {
+					name = "change"
+					datacontext = "[GetVariableSystem]"
+					onclick = "[VariableSystem.Toggle( 'character_interaction_change_title' )]"
+
+					tooltip = "CHARACTER_INTERACTION_WINDOW_SELECT_TITLE_TOOLTIP"
+					using = tooltip_below
+
+					button_replace = {
+						parentanchor = center
+						alwaystransparent = yes
+					}
+				}
+
+				expand = {}
+			}
+
+			hbox = {
+				visible = "[Not( CharacterInteractionConfirmationWindow.HasSelectedTitle )]"
+				minimumsize = { 0 112 }
+				margin = { 10 10 }
+
+				text_single = {
+					text = "CHARACTER_INTERACTION_NO_TARGET_SELECTED"
+					using = Font_Size_Medium
+					align = nobaseline
+				}
+			}
+
+			#### replaces character effects ###
+			scrollbox = {
+				visible = "[GetVariableSystem.Exists('character_interaction_change_title')]"
+				layoutpolicy_horizontal = expanding
+				size = { 500 250 }
+
+				blockoverride "scrollbox_content"
+				{
+					vbox_list_interaction_title_selection = {
+						maximumsize = { 450 250 }
+						layoutpolicy_horizontal = expanding
+
+						blockoverride "button_toggles" {}
+					}
+				}
+			}
+		}
+
+		## Options
+		vbox_interaction_options = {
+			widgetid = "interaction_options"
+			visible = "[CharacterInteractionConfirmationWindow.HasOptions]"
+		}
+
+		### Acceptance
+		hbox_character_interaction_acceptance = {
+			visible = "[CharacterInteractionConfirmationWindow.ShouldShowAnswer]"
+			layoutpolicy_horizontal = expanding
+			margin_top = 15
+		}
+
+		text_multi_on_decline_summary = {}
+
+		vbox = {
+			spacing = 5
+			margin = { 20 10 }
+			
+			hbox = {
+				visible = "[CharacterInteractionConfirmationWindow.HasCost]"
+				spacing = 5
+
+				tooltip = "[CharacterInteractionConfirmationWindow.GetCostTooltip]"
+
+				text_single = {
+					text = "INTERACTION_COST"
+				}
+
+				text_single = {
+					text = "[CharacterInteractionConfirmationWindow.GetCostDescription]"
+				}
+			}
+
+			## Send Button
+			hbox = {
+				name = "button"
+				spacing = 10
+
+				button_primary_big = {
+					visible = "[Not( CharacterInteractionConfirmationWindow.ShouldShowScheme )]"
+					text = "[CharacterInteractionConfirmationWindow.GetSendName]"
+
+					onclick = "[CharacterInteractionConfirmationWindow.Send]"
+					enabled = "[CharacterInteractionConfirmationWindow.CanSend]"
+					tooltip = "[CharacterInteractionConfirmationWindow.GetCanSendDescription]"
+					clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_confirm"
+				}
+
+				## Send button Schemes
+				button_primary_big = {
+					visible = "[CharacterInteractionConfirmationWindow.ShouldShowScheme]"
+					datacontext = "[CharacterInteractionConfirmationWindow.GetSchemeInfo]"
+
+					text = "[CharacterInteractionConfirmationWindow.GetSendName]"
+
+					onclick = "[CharacterInteractionConfirmationWindow.Send]"
+					enabled = "[CharacterInteractionConfirmationWindow.CanSend]"
+
+					tooltip = "[CharacterInteractionConfirmationWindow.GetCanSendDescription]"
+
+					clicksound = "event:/SFX/UI/Generic/sfx_ui_generic_confirm"
+
+					widget = {
+						visible = "[InteractionSchemeInfo.IsReplace]"
+						parentanchor = center
+						size = { 100% 100% }
+
+						tooltip = "INTERACTION_REPLACE_SCHEME"
+
+						warning_icon = {
+							parentanchor = left|vcenter
+							position = { 5 0 }
+							size = { 30 30 }
+						}
+					}
+				}
+
+				button_standard = {
+					visible = "[InDebugMode]"
+					size = { 42 42 }
+					raw_text = "#D R#!"
+					tooltip = "[CharacterInteractionConfirmationWindow.GetDebugInfo]"
+				}
+			}
+		}
+	}
+
+	window_character_filter = {
+		datacontext = "[CharacterInteractionConfirmationWindow.GetCharacterList]"
+		blockoverride "addition_filter" {
+
+			filter_item = {
+				layoutpolicy_horizontal = expanding
+				datacontext = "[CharacterSelectionList.GetFilter('ruler_filter')]"
+			}
+
+			filter_item = {
+				layoutpolicy_horizontal = expanding
+				datacontext = "[CharacterSelectionList.GetFilter('religion_filter')]"
+			}
+
+			filter_item = {
+				layoutpolicy_horizontal = expanding
+				datacontext = "[CharacterSelectionList.GetFilter('culture_filter')]"
+			}
+
+			filter_item = {
+				layoutpolicy_horizontal = expanding
+				datacontext = "[CharacterSelectionList.GetFilter('dynasty_filter')]"
+			}
+
+			# GCA: native trait filter, as in the marriage window.
+			filter_item = {
+				layoutpolicy_horizontal = expanding
+				datacontext = "[CharacterSelectionList.GetFilter('trait_filter')]"
+			}
+		}
+	}
+}
