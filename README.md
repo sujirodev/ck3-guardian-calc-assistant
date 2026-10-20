@@ -123,7 +123,8 @@ gui/
   tnt_ga_character_list_item.gui                    list row with the score (generated)
 localization/
   english/  braz_por/
-tools/                                              GUI generators and packager (package.py)
+tools/                                              GUI generators, packager and Nexus Mods helper
+docs/                                               Nexus Mods page summary and description (BBCode)
 .github/workflows/release.yml                       zip and Release on every tag
 ```
 
@@ -155,13 +156,22 @@ The `.github/workflows/release.yml` workflow builds the zip with `tools/package.
 
 ### Nexus Mods
 
-On tags, the workflow also uploads the zip to Nexus Mods with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), as a new version of the existing main file (the previous version is archived). The step is skipped until these are set in the repository settings:
+On tags, the workflow also publishes to Nexus Mods (API v3):
+
+1. resolves the unique mod id from the page URL number (`tools/nexus_page.py resolve`);
+2. uploads the zip as a new version of the existing main file with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), archiving the previous version;
+3. replaces the page summary and full description with `docs/nexus_summary.txt` and `docs/nexus_description.bbcode` (`tools/nexus_page.py update`; the edit endpoint is marked Experimental by Nexus).
+
+Running the workflow manually (Actions > Package > Run workflow) repeats steps 1 and 3 only, to sync the page text without a release.
+
+The Nexus steps are skipped until these are set in the repository settings:
 
 | Kind | Name | Value |
 |---|---|---|
 | Secret | `NEXUSMODS_API_KEY` | API key from https://www.nexusmods.com/settings/api-keys |
-| Variable | `NEXUS_MOD_ID` | mod ID of the Nexus Mods page |
-| Variable | `NEXUS_FILE_ID` | file ID of the main file on that page |
+| Variable | `NEXUS_GAME_DOMAIN` | game part of the mod page URL, e.g. `crusaderkings3` in `nexusmods.com/crusaderkings3/mods/123` |
+| Variable | `NEXUS_GAME_MOD_ID` | number at the end of the mod page URL, e.g. `123` |
+| Variable | `NEXUS_FILE_ID` | file ID of the main file (Files tab > Advanced) |
 
 The mod page and its first file have to be created by hand on Nexus Mods; the action can only add versions to an existing file.
 

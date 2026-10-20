@@ -1,0 +1,1 @@
+Shows the real chance of education progress for every guardian candidate, using the vanilla formula, plus the projected education rank. Adds a Find Guardian search across every court in diplomatic range, sorting by score and a Quick/Intelligent/Genius filter. English and Brazilian Portuguese.

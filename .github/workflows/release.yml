@@ -5,6 +5,8 @@ on:
     branches: [main]
     tags: ["v*"]
   pull_request:
+  # Manual run: re-syncs the Nexus Mods page text without a new release.
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -45,20 +47,40 @@ jobs:
             --title "Guardian Calculation Assistant $GITHUB_REF_NAME" \
             --generate-notes
 
-      # Adds the zip as a new version of an existing Nexus Mods file. Skipped
-      # until the repository variables NEXUS_MOD_ID and NEXUS_FILE_ID are set (the mod page and
-      # its first file must be created by hand on Nexus Mods first).
+      # Nexus Mods steps run on tags and manual runs, and are skipped until the
+      # repository variables NEXUS_GAME_DOMAIN, NEXUS_GAME_MOD_ID and
+      # NEXUS_FILE_ID exist. The mod page and its first file must be created by
+      # hand on Nexus Mods first.
+      - name: Resolve Nexus Mods mod
+        id: nexus
+        if: (github.ref_type == 'tag' || github.event_name == 'workflow_dispatch') && vars.NEXUS_GAME_DOMAIN != '' && vars.NEXUS_GAME_MOD_ID != '' && vars.NEXUS_FILE_ID != ''
+        env:
+          NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
+        run: |
+          echo "mod_id=$(python tools/nexus_page.py resolve --game '${{ vars.NEXUS_GAME_DOMAIN }}' --game-mod-id '${{ vars.NEXUS_GAME_MOD_ID }}')" >> "$GITHUB_OUTPUT"
+
+      # Adds the zip as a new version of the existing Nexus Mods file.
       # Pinned to the commit of Nexus-Mods/upload-action v1.0.0-beta.11.
       - name: Upload to Nexus Mods
-        if: github.ref_type == 'tag' && vars.NEXUS_FILE_ID != '' && vars.NEXUS_MOD_ID != ''
+        if: github.ref_type == 'tag' && steps.nexus.outputs.mod_id != ''
         uses: Nexus-Mods/upload-action@98532f7670c27cbecc78fae03fa3e278147827e2
         with:
           api_key: ${{ secrets.NEXUSMODS_API_KEY }}
           file_id: ${{ vars.NEXUS_FILE_ID }}
-          mod_id: ${{ vars.NEXUS_MOD_ID }}
+          mod_id: ${{ steps.nexus.outputs.mod_id }}
           filename: ${{ steps.build.outputs.zip }}
           version: ${{ steps.build.outputs.version }}
           display_name: Guardian Calculation Assistant ${{ steps.build.outputs.version }}
           changelog: See https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}
           archive_existing_version: true
           update_mod_version: true
+
+      # Replaces the page summary and full description with docs/ (BBCode).
+      # The edit endpoint is marked Experimental in the Nexus Mods API v3.
+      - name: Update Nexus Mods page text
+        if: steps.nexus.outputs.mod_id != ''
+        env:
+          NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
+        run: |
+          python tools/nexus_page.py update --mod-id '${{ steps.nexus.outputs.mod_id }}' \
+            --summary docs/nexus_summary.txt --description docs/nexus_description.bbcode
