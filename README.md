@@ -20,7 +20,7 @@ GCA 64% ~R3
 Hover it for the breakdown:
 
 - progress and no-progress weights, factor by factor;
-- point projection: current points + birthdays left × 2 × chance;
+- point projection: current points + birthdays left x 2 x chance;
 - notes that apply to the pair: Beacon of Learning, Pedagogy, commander trait transfer, Knighthood, different faith or culture.
 
 The score works both ways. With the child picked, it rates guardians. With the guardian picked, it rates children.
@@ -62,8 +62,8 @@ GCA reproduces `education_point_acquisition_support_effect` (`common/scripted_ef
 | Child's intellect: Genius / Intelligent / Quick or Shrewd | +20 / +15 / +10 |
 | Childhood trait matching / opposing the focus | +20 / -20 |
 | Guardian's intellect: Genius / Intelligent / Quick or Shrewd | +15 / +10 / +5 |
-| Guardian's skill in the focus | × 0.4 |
-| Guardian's learning | × 0.2 |
+| Guardian's skill in the focus | x 0.4 |
+| Guardian's learning | x 0.2 |
 | Guardian's house aspiration (improved educator outcome) | +5 |
 
 | No progress | Weight |
