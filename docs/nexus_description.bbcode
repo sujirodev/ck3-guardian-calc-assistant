@@ -1,0 +1,115 @@
+[center][size=6][b][color=#d4af37]Guardian Calculation Assistant[/color][/b][/size]
+[size=3][color=#b8b8b8]Stop guessing who should raise your heir. See the real odds.[/color][/size]
+
+[size=2][color=#9a9a9a]Crusader Kings III 1.19  |  UI mod  |  Save-game safe  |  English & Portuguese (BR)[/color][/size][/center]
+
+[line]
+
+[center][size=4][b][color=#d4af37]What it does[/color][/b][/size][/center]
+
+Picking a guardian in vanilla means eyeballing skills and hoping. [b]GCA[/b] puts a number on every candidate: the actual chance that the child gains education progress with that guardian, computed with [b]the same formula the game uses[/b].
+
+[center][size=5][b][color=#7fc8f8]GCA 64%  ~R3[/color][/b][/size]
+[size=2][color=#9a9a9a]64% chance of +2 education points every birthday  |  projected rank 3 at adulthood[/color][/size][/center]
+
+[line]
+
+[center][size=4][b][color=#d4af37]Features[/color][/b][/size][/center]
+
+[size=3][b][color=#e8c766]GCA score on every candidate[/color][/b][/size]
+[list]
+[*]Shown in [b]Educate Child[/b], [b]Offer Guardianship[/b] and [b]Offer Ward[/b].
+[*]Works both ways: rate guardians for a child, or children for a guardian.
+[*]Hover for the full breakdown: every factor, the point projection and the notes that apply to the pair.
+[/list]
+
+[size=3][b][color=#e8c766]Find guardians beyond your court[/color][/b][/size]
+[list]
+[*]New [b]Find Guardian (GCA)[/b] interaction on any child at your court.
+[*]Searches your court [b]and every court in your diplomatic range[/b].
+[*]Pick someone and click [i]Continue[/i]: the right vanilla interaction opens already filled in ([i]Educate Child[/i] for your court, [i]Offer Ward[/i] for foreign courts).
+[/list]
+
+[size=3][b][color=#e8c766]Sorted by score[/color][/b][/size]
+[list]
+[*]The search opens with the [b]best guardian on top[/b].
+[*][b]GCA: by score[/b] and [b]Default list[/b] buttons sit under the native sort dropdown, which stays available.
+[/list]
+
+[size=3][b][color=#e8c766]Intellect filter[/color][/b][/size]
+[list]
+[*][b]Quick / Intelligent / Genius[/b] checkboxes to cut the list down instantly.
+[*]The native [i]Traits[/i] filter is added to the filter panel too.
+[/list]
+
+[size=3][b][color=#e8c766]Smart notes[/color][/b][/size]
+[list]
+[*]Beacon of Learning bonus, Pedagogy perk, commander trait transfer, Knighthood.
+[*]Different faith or culture (the ward only converts if you choose that option).
+[/list]
+
+[line]
+
+[center][size=4][b][color=#d4af37]Why trust the number?[/color][/b][/size][/center]
+
+GCA mirrors the vanilla education roll that runs on every birthday from 6 to 15. It reads the game's own factors, so overhaul mods that retune them are followed automatically.
+
+[spoiler]
+[b]Progress (+2 points in the focus)[/b]
+[list]
+[*]Base: 60
+[*]Child's intellect: Genius +20 / Intelligent +15 / Quick or Shrewd +10
+[*]Childhood trait matching / opposing the focus: +20 / -20
+[*]Guardian's intellect: Genius +15 / Intelligent +10 / Quick or Shrewd +5
+[*]Guardian's skill in the focus x 0.4
+[*]Guardian's learning x 0.2
+[*]Guardian's house aspiration (improved educator outcome): +5
+[/list]
+
+[b]No progress[/b]
+[list]
+[*]Base: 40
+[*]Child: Imbecile or Inbred +20 / Stupid +15 / Slow or Dull +10
+[*]Guardian: Imbecile +15 / Stupid +10 / Slow or Dull +5
+[/list]
+
+[b]Chance = progress / (progress + no progress)[/b]
+
+[b]Vanilla quirks kept as they are[/b]
+[list]
+[*]Cultures with "better ward education" (Storytellers and similar) [i]replace[/i] the guardian's intellect and skill bonus with a flat +10. GCA reproduces this and warns you.
+[*]No focus yet: the guardian's best skill is assumed.
+[*]Projected rank uses the vanilla cut-offs (7 / 12 / 17 points). ~R4 means rank 4 or 5.
+[*]The projection only counts the birthday rolls; events, tutors and universities can add more.
+[/list]
+[/spoiler]
+
+[line]
+
+[center][size=4][b][color=#d4af37]Installation[/color][/b][/size][/center]
+
+[list=1]
+[*]Download the zip from the [b]Files[/b] tab.
+[*]Extract it into [i]Documents/Paradox Interactive/Crusader Kings III/mod/[/i]. You should see [i]guardian_calc_assistant.mod[/i] next to the [i]guardian_calc_assistant[/i] folder.
+[*]Enable it in the launcher.
+[/list]
+
+Safe to add to or remove from an existing save.
+
+[line]
+
+[center][size=4][b][color=#d4af37]Compatibility[/color][/b][/size][/center]
+
+[list]
+[*][b]Game version:[/b] 1.19
+[*][b]Overrides:[/b] [i]gui/interaction_confirmation.gui[/i]. Conflicts with other mods that override that same file.
+[*][b]Marriage Calculation Assistant:[/b] compatible.
+[*]The list row inherits whatever row your playset uses, so other UI mods' tweaks are kept.
+[/list]
+
+[line]
+
+[center][size=3][b][color=#d4af37]Source & updates[/color][/b][/size]
+[url=https://github.com/sujirodev/ck3-guardian-calc-assistant]GitHub repository[/url]  |  [url=https://github.com/sujirodev/ck3-guardian-calc-assistant/releases]Changelog[/url]
+
+[size=2][color=#9a9a9a]Bug reports welcome in the Bugs tab or on GitHub. Please include your mod list.[/color][/size][/center]
