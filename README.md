@@ -156,3 +156,7 @@ The `.github/workflows/release.yml` workflow builds the zip with `tools/package.
 To build the zip locally: `python tools/package.py` (output in `dist/`).
 
 To test, run the game with `-debug_mode` and check `Documents/Paradox Interactive/Crusader Kings III/logs/error.log`. The warning `Event target 'tnt_ga_other' is used but is never set` is expected: that scope is filled in by the GUI.
+
+## License
+
+[MIT](LICENSE), covering the mod's own code and text. `gui/interaction_confirmation.gui` is generated from the vanilla Crusader Kings III file, and the vanilla content in it remains the property of Paradox Interactive. Crusader Kings III is a trademark of Paradox Interactive AB.

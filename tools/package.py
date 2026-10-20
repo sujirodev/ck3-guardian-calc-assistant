@@ -13,7 +13,7 @@ from pathlib import Path
 
 MOD_DIR = "guardian_calc_assistant"
 ROOT = Path(__file__).resolve().parent.parent
-INCLUDE = ["descriptor.mod", "README.md", "thumbnail.png", "common", "gui", "localization"]
+INCLUDE = ["descriptor.mod", "README.md", "LICENSE", "thumbnail.png", "common", "gui", "localization"]
 # Fixed timestamp so identical sources give identical zips.
 STAMP = (2020, 1, 1, 0, 0, 0)
 
