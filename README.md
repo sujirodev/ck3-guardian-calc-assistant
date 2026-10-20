@@ -1,5 +1,7 @@
 # Guardian Calculation Assistant (GCA)
 
+![Guardian Calculation Assistant](docs/images/banner.png)
+
 An interface mod for **Crusader Kings III** that helps you pick a guardian for a child. Every candidate in the list gets a score with the real chance of education progress, computed with the same formula the game uses.
 
 Inspired by the Marriage Calculation Assistant (MCA), which does the same for marriages.
@@ -106,7 +108,7 @@ Safe to add to existing saves, and safe to remove at any time. The only variable
 - **Overridden vanilla file:** `gui/interaction_confirmation.gui`. Conflicts with other mods that override the same file.
 - **Derived types:** the list row inherits whichever `widget_character_list_item` the playset provides, so other mods' changes to that row are kept.
 - **Marriage Calculation Assistant:** compatible; the two use different windows.
-- **Languages:** English and Brazilian Portuguese (`braz_por`).
+- **Languages:** English and Brazilian Portuguese. Portuguese shows when the game runs with the community PT-BR translation, which adds the `braz_por` language; everyone else gets English. Want another language? [Request a translation](../../issues/new?template=translation_request.yml) or see [CONTRIBUTING.md](CONTRIBUTING.md#translations).
 
 ## Layout
 
@@ -123,8 +125,8 @@ gui/
   tnt_ga_character_list_item.gui                    list row with the score (generated)
 localization/
   english/  braz_por/
-tools/                                              GUI generators, packager and Nexus Mods helper
-docs/                                               Nexus Mods page summary and description (BBCode)
+tools/                                              GUI generators, packager, Nexus Mods helper, image renderer
+docs/                                               Nexus Mods page text (BBCode) and images (docs/images/src: HTML sources)
 .github/workflows/release.yml                       zip and Release on every tag
 ```
 

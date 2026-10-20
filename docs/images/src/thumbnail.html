@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+  .canvas { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+  .canvas::before { inset: 10px; }
+  .canvas::after { inset: 16px; }
+  .crest { width: 190px; height: 220px; }
+  .title { font-size: 44px; line-height: 1.02; text-align: center; }
+  .chip { font-size: 26px; padding: 8px 18px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <svg class="crest" viewBox="0 0 250 290" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d27a"/><stop offset="1" stop-color="#9b7a2a"/></linearGradient>
+      <linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e2a2d"/><stop offset="1" stop-color="#4a1214"/></linearGradient>
+    </defs>
+    <path d="M125 8 L236 44 V140 C236 210 186 258 125 282 C64 258 14 210 14 140 V44 Z" fill="url(#r)" stroke="url(#g)" stroke-width="8"/>
+    <path d="M58 118 C82 106 104 108 122 120 V206 C104 194 82 192 58 204 Z" fill="#efe3c6" stroke="url(#g)" stroke-width="4"/>
+    <path d="M192 118 C168 106 146 108 128 120 V206 C146 194 168 192 192 204 Z" fill="#efe3c6" stroke="url(#g)" stroke-width="4"/>
+    <path d="M70 136 C86 130 100 131 112 138 M70 154 C86 148 100 149 112 156 M70 172 C86 166 100 167 112 174" stroke="#8a7232" stroke-width="3" fill="none"/>
+    <path d="M180 136 C164 130 150 131 138 138 M180 154 C164 148 150 149 138 156 M180 172 C164 166 150 167 138 174" stroke="#8a7232" stroke-width="3" fill="none"/>
+    <path d="M78 96 L90 62 L108 84 L125 52 L142 84 L160 62 L172 96 Z" fill="url(#g)" stroke="#5c4a1a" stroke-width="3"/>
+  </svg>
+  <div class="title">Guardian<br>Calculation<br>Assistant</div>
+  <div class="chip"><span class="tag">GCA</span><span class="pct">68%</span><span class="rank">~R3</span></div>
+</div>
+</body>
+</html>

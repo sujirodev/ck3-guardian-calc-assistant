@@ -1,0 +1,31 @@
+name: Bug report
+description: Something in GCA does not work or shows a wrong number.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you saw. Screenshots of the list or tooltip help a lot.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Game version and GCA version.
+      placeholder: "CK3 1.19.0, GCA 1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Mod list
+      description: Other enabled mods, in load order.
+  - type: textarea
+    id: log
+    attributes:
+      label: error.log lines
+      description: Lines mentioning tnt_ga from Documents/Paradox Interactive/Crusader Kings III/logs/error.log. The tnt_ga_other "never set" warning is expected and can be left out.
+      render: text

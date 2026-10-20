@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+  .canvas { padding: 64px 80px; display: flex; flex-direction: column; gap: 34px; }
+  .head .kicker { font-size: 20px; }
+  .head .title { font-size: 56px; margin-top: 6px; }
+  .body { display: flex; gap: 44px; align-items: flex-start; }
+  .list { flex: 1.15; display: flex; flex-direction: column; gap: 14px; }
+  .row { display: flex; align-items: center; gap: 22px; padding: 18px 22px; }
+  .row.best { border-color: var(--gold); box-shadow: inset 0 0 0 1px rgba(212,175,55,.35), 0 0 30px rgba(212,175,55,.18); }
+  .avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--gold-dim);
+    background: radial-gradient(circle at 50% 35%, #6b5a45 0 22%, transparent 23%), radial-gradient(circle at 50% 110%, #6b5a45 0 45%, #2b241d 46%); }
+  .who { flex: 1; }
+  .name { font-size: 26px; color: var(--parchment); font-weight: 700; }
+  .meta { font-size: 18px; color: var(--muted); margin-top: 4px; }
+  .row .chip { font-size: 28px; padding: 10px 18px; }
+  .tip { flex: 1; padding: 26px 30px; display: flex; flex-direction: column; gap: 10px; font-size: 21px; }
+  .tip h3 { font-family: "Cinzel", serif; color: var(--gold); font-size: 26px; margin-bottom: 4px; }
+  .sec { color: var(--gold-soft); font-weight: 700; margin-top: 8px; }
+  .line { display: flex; justify-content: space-between; color: var(--ink); }
+  .line .v { font-weight: 700; }
+  .pos { color: var(--good); }
+  .neg { color: var(--bad); }
+  .total { border-top: 1px solid var(--stone-3); padding-top: 8px; }
+  .note { color: var(--muted); font-size: 18px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="head">
+    <div class="kicker">Feature</div>
+    <div class="title">A real score on every candidate</div>
+  </div>
+  <div class="body">
+    <div class="list">
+      <div class="row panel best">
+        <div class="avatar"></div>
+        <div class="who"><div class="name">Brother Anselm</div><div class="meta">Genius · Diplomacy 18 · Learning 14</div></div>
+        <div class="chip"><span class="tag">GCA</span><span class="pct">68%</span><span class="rank">~R3</span></div>
+      </div>
+      <div class="row panel">
+        <div class="avatar"></div>
+        <div class="who"><div class="name">Lady Mathilde</div><div class="meta">Diplomacy 16 · Learning 12</div></div>
+        <div class="chip"><span class="tag">GCA</span><span class="pct">63%</span><span class="rank">~R2</span></div>
+      </div>
+      <div class="row panel">
+        <div class="avatar"></div>
+        <div class="who"><div class="name">Sir Aldric</div><div class="meta">Diplomacy 9 · Learning 6</div></div>
+        <div class="chip"><span class="tag">GCA</span><span class="pct">62%</span><span class="rank">~R2</span></div>
+      </div>
+    </div>
+    <div class="tip panel">
+      <h3>Progress chance per birthday: 68%</h3>
+      <div class="sec">Progress (+2 points)</div>
+      <div class="line"><span>Base chance of progress</span><span class="v">60</span></div>
+      <div class="line"><span>Guardian's intelligence (Genius)</span><span class="v pos">+15</span></div>
+      <div class="line"><span>Guardian's Diplomacy 18 (focus, x0.4)</span><span class="v pos">+7.2</span></div>
+      <div class="line"><span>Guardian's learning 14 (x0.2)</span><span class="v pos">+2.8</span></div>
+      <div class="line total"><span>Progress weight</span><span class="v">85</span></div>
+      <div class="sec">No progress</div>
+      <div class="line"><span>Base chance of no progress</span><span class="v neg">40</span></div>
+      <div class="sec">Projection</div>
+      <div class="line"><span>4 + 6 x 2 x 68%</span><span class="v" style="color:var(--blue)">12.2 points (~rank 3)</span></div>
+      <div class="note">Hover the score in game for the full breakdown and notes.</div>
+    </div>
+  </div>
+  <div class="label-illustration">ILLUSTRATION · NOT AN IN-GAME SCREENSHOT</div>
+</div>
+</body>
+</html>

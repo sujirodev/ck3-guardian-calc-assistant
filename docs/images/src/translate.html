@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+  .canvas { display: flex; align-items: center; justify-content: center; gap: 70px; padding: 0 90px; }
+  .globe { width: 190px; height: 190px; flex: none; }
+  .text { display: flex; flex-direction: column; gap: 16px; }
+  .kicker { font-size: 20px; }
+  .title { font-size: 54px; }
+  .sub { font-size: 24px; color: var(--parchment); opacity: .85; }
+  .langs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .lang { padding: 8px 14px; border: 2px solid var(--gold-dim); border-radius: 5px; font-size: 19px; font-weight: 700; color: var(--parchment); background: var(--stone-3); }
+  .lang.have { border-color: var(--good); color: var(--good); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <svg class="globe" viewBox="0 0 190 190">
+    <circle cx="95" cy="95" r="82" fill="#26201a" stroke="#d4af37" stroke-width="6"/>
+    <ellipse cx="95" cy="95" rx="36" ry="82" fill="none" stroke="#d4af37" stroke-width="4"/>
+    <path d="M13 95 H177 M24 55 H166 M24 135 H166" stroke="#d4af37" stroke-width="4" fill="none"/>
+  </svg>
+  <div class="text">
+    <div class="kicker">Translations</div>
+    <div class="title">Want GCA in your language?</div>
+    <div class="sub">Request it on GitHub, or send the translated file yourself.</div>
+    <div class="langs">
+      <span class="lang have">English</span><span class="lang have">Português (BR)</span>
+      <span class="lang">Français</span><span class="lang">Deutsch</span><span class="lang">Español</span>
+      <span class="lang">Русский</span><span class="lang">Polski</span><span class="lang">中文</span><span class="lang">한국어</span><span class="lang">日本語</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -5,3 +5,4 @@ tags={
 	"Utilities"
 }
 supported_version="1.19.*"
+picture="thumbnail.png"

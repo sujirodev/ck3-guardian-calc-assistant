@@ -1,0 +1,43 @@
+name: Translation request
+description: Ask for Guardian Calculation Assistant in another language, or offer to translate it.
+title: "[Translation] "
+labels: ["translation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for wanting GCA in your language! The mod has 40 short strings.
+        If you can translate them yourself, see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md#translations).
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - French
+        - German
+        - Spanish
+        - Russian
+        - Polish
+        - Simplified Chinese
+        - Korean
+        - Japanese
+        - Other (write it below)
+    validations:
+      required: true
+  - type: input
+    id: other
+    attributes:
+      label: Other language
+      description: Only if you picked "Other". Say which community translation mod adds it, if any.
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Can you help?
+      options:
+        - label: I can translate the strings myself.
+        - label: I can review a translation made by someone else.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else, such as terms the official game translation uses for "guardian", "ward" or "education".

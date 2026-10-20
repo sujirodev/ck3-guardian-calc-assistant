@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="style.css">
+<style>
+  .canvas { padding: 70px 80px; display: flex; flex-direction: column; gap: 34px; }
+  .head .kicker { font-size: 20px; }
+  .head .title { font-size: 50px; margin-top: 6px; }
+  .cols { display: flex; gap: 40px; }
+  .card { flex: 1; padding: 26px 30px; display: flex; flex-direction: column; gap: 12px; font-size: 22px; }
+  .card h3 { font-family: "Cinzel", serif; font-size: 28px; margin-bottom: 6px; }
+  .card.good h3 { color: var(--good); }
+  .card.bad h3 { color: var(--bad); }
+  .line { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px dashed var(--stone-3); padding-bottom: 8px; }
+  .line .v { font-weight: 700; color: var(--parchment); white-space: nowrap; }
+  .eq { text-align: center; font-family: "Cinzel", serif; font-size: 36px; color: var(--gold); }
+  .eq small { display: block; font-family: "Inter", sans-serif; font-size: 20px; color: var(--muted); margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="head">
+    <div class="kicker">Under the hood</div>
+    <div class="title">The vanilla roll, every birthday 6 to 15</div>
+  </div>
+  <div class="cols">
+    <div class="card panel good">
+      <h3>Progress (+2 points)</h3>
+      <div class="line"><span>Base</span><span class="v">60</span></div>
+      <div class="line"><span>Child: Genius / Intelligent / Quick, Shrewd</span><span class="v">+20 / +15 / +10</span></div>
+      <div class="line"><span>Childhood trait vs. focus</span><span class="v">+20 / -20</span></div>
+      <div class="line"><span>Guardian: Genius / Intelligent / Quick, Shrewd</span><span class="v">+15 / +10 / +5</span></div>
+      <div class="line"><span>Guardian's skill in the focus</span><span class="v">x 0.4</span></div>
+      <div class="line"><span>Guardian's learning</span><span class="v">x 0.2</span></div>
+      <div class="line"><span>Guardian's house aspiration</span><span class="v">+5</span></div>
+    </div>
+    <div class="card panel bad">
+      <h3>No progress</h3>
+      <div class="line"><span>Base</span><span class="v">40</span></div>
+      <div class="line"><span>Child: Imbecile, Inbred / Stupid / Slow, Dull</span><span class="v">+20 / +15 / +10</span></div>
+      <div class="line"><span>Guardian: Imbecile / Stupid / Slow, Dull</span><span class="v">+15 / +10 / +5</span></div>
+      <div class="eq" style="margin-top:28px">chance = progress / (progress + no progress)
+        <small>Factors are read from the game's own script values, so overhauls are followed.</small></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
