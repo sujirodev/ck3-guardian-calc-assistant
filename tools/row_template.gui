@@ -14,6 +14,13 @@
 					}
 					# Projected education trait icon (one per trait; only the match shows).
 @TRAIT_ICONS@
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+						raw_text = "#low ?#!"
+					}
 
 					using = tooltip_ne
 					tooltipwidget = {
@@ -59,7 +66,6 @@
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
 									raw_text = "[Localize('tnt_ga_tt_projection')] [@S@.ScriptValue('tnt_ga_current_points_value')|1] + [@S@.ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [@S@.ScriptValue('tnt_ga_chance_value')|0]% = #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [@S@.ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
@@ -67,8 +73,7 @@
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
-									text = "tnt_ga_tt_no_focus"
-									default_format = "#low"
+									raw_text = "#low [Localize('tnt_ga_tt_no_focus')] #V [Localize( Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)1' ), 'education_diplomacy', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)2' ), 'education_martial', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)3' ), 'education_stewardship', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)4' ), 'education_intrigue', 'education_learning' ) ) ) ) )]#!#!"
 								}
 
 								text_single = {

@@ -8,6 +8,8 @@ Each entry is one line starting with `- ` (one changelog line on Nexus Mods).
 
 - The score now shows the icon of the projected education trait instead of ~R1-~R4.
 - The tooltip names the projected education trait, with its icon.
+- Children without an education focus yet now get a projection too, assuming the guardian's best skill as the focus; the icon shows a ? and the tooltip names the assumed focus.
+- With an assumed focus, the child's childhood trait now counts for or against it, as it will once that focus is chosen.
 
 ## [1.0.1] - 2026-10-20
 

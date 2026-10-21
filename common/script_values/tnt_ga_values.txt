@@ -51,36 +51,76 @@ tnt_ga_root_is_ward_trigger_value = {
 # Success weight components
 ########################################################################
 
-# Guardian's skill in the ward's focus. Without a focus yet, assume the
-# guardian's best skill (min = lower bound, i.e. running maximum).
-tnt_ga_focus_skill_value = {
+# Effective focus, 1..5 = diplomacy, martial, stewardship, intrigue, learning:
+# the ward's education focus, or without one yet the guardian's best skill
+# (ties go to the first in that order). Everything focus-dependent uses it.
+tnt_ga_effective_focus_value = {
 	value = 0
 	if = {
 		limit = { scope:tnt_ga_ward = { has_focus = education_diplomacy } }
-		value = scope:tnt_ga_guardian.diplomacy
+		value = 1
 	}
 	else_if = {
 		limit = { scope:tnt_ga_ward = { has_focus = education_martial } }
-		value = scope:tnt_ga_guardian.martial
+		value = 2
 	}
 	else_if = {
 		limit = { scope:tnt_ga_ward = { has_focus = education_stewardship } }
-		value = scope:tnt_ga_guardian.stewardship
+		value = 3
 	}
 	else_if = {
 		limit = { scope:tnt_ga_ward = { has_focus = education_intrigue } }
-		value = scope:tnt_ga_guardian.intrigue
+		value = 4
 	}
 	else_if = {
 		limit = { scope:tnt_ga_ward = { has_focus = education_learning } }
-		value = scope:tnt_ga_guardian.learning
+		value = 5
 	}
 	else = {
+		scope:tnt_ga_guardian = {
+			if = {
+				limit = { diplomacy >= martial diplomacy >= stewardship diplomacy >= intrigue diplomacy >= learning }
+				value = 1
+			}
+			else_if = {
+				limit = { martial >= stewardship martial >= intrigue martial >= learning }
+				value = 2
+			}
+			else_if = {
+				limit = { stewardship >= intrigue stewardship >= learning }
+				value = 3
+			}
+			else_if = {
+				limit = { intrigue >= learning }
+				value = 4
+			}
+			else = { value = 5 }
+		}
+	}
+}
+
+# Guardian's skill in the effective focus.
+tnt_ga_focus_skill_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_effective_focus_value = 1 }
 		value = scope:tnt_ga_guardian.diplomacy
-		min = scope:tnt_ga_guardian.martial
-		min = scope:tnt_ga_guardian.stewardship
-		min = scope:tnt_ga_guardian.intrigue
-		min = scope:tnt_ga_guardian.learning
+	}
+	else_if = {
+		limit = { tnt_ga_effective_focus_value = 2 }
+		value = scope:tnt_ga_guardian.martial
+	}
+	else_if = {
+		limit = { tnt_ga_effective_focus_value = 3 }
+		value = scope:tnt_ga_guardian.stewardship
+	}
+	else_if = {
+		limit = { tnt_ga_effective_focus_value = 4 }
+		value = scope:tnt_ga_guardian.intrigue
+	}
+	else_if = {
+		limit = { tnt_ga_effective_focus_value = 5 }
+		value = scope:tnt_ga_guardian.learning
 	}
 }
 
@@ -102,49 +142,78 @@ tnt_ga_ward_intellect_success_value = {
 	}
 }
 
+# Childhood trait vs. the effective focus (independent modifiers, as in vanilla).
 tnt_ga_ward_affinity_value = {
 	value = 0
-	scope:tnt_ga_ward = {
-		if = {
-			limit = { has_focus = education_diplomacy has_diplomacy_education_affinity_childhood_trait_trigger = yes }
-			add = matching_childhood_trait_modifier_value
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 1
+			scope:tnt_ga_ward = { has_diplomacy_education_affinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_martial has_martial_education_affinity_childhood_trait_trigger = yes }
-			add = matching_childhood_trait_modifier_value
+		add = matching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 1
+			scope:tnt_ga_ward = { has_diplomacy_education_disaffinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_stewardship has_stewardship_education_affinity_childhood_trait_trigger = yes }
-			add = matching_childhood_trait_modifier_value
+		add = mismatching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 2
+			scope:tnt_ga_ward = { has_martial_education_affinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_intrigue has_intrigue_education_affinity_childhood_trait_trigger = yes }
-			add = matching_childhood_trait_modifier_value
+		add = matching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 2
+			scope:tnt_ga_ward = { has_martial_education_disaffinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_learning has_learning_education_affinity_childhood_trait_trigger = yes }
-			add = matching_childhood_trait_modifier_value
+		add = mismatching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 3
+			scope:tnt_ga_ward = { has_stewardship_education_affinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_diplomacy has_diplomacy_education_disaffinity_childhood_trait_trigger = yes }
-			add = mismatching_childhood_trait_modifier_value
+		add = matching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 3
+			scope:tnt_ga_ward = { has_stewardship_education_disaffinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_martial has_martial_education_disaffinity_childhood_trait_trigger = yes }
-			add = mismatching_childhood_trait_modifier_value
+		add = mismatching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 4
+			scope:tnt_ga_ward = { has_intrigue_education_affinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_stewardship has_stewardship_education_disaffinity_childhood_trait_trigger = yes }
-			add = mismatching_childhood_trait_modifier_value
+		add = matching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 4
+			scope:tnt_ga_ward = { has_intrigue_education_disaffinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_intrigue has_intrigue_education_disaffinity_childhood_trait_trigger = yes }
-			add = mismatching_childhood_trait_modifier_value
+		add = mismatching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 5
+			scope:tnt_ga_ward = { has_learning_education_affinity_childhood_trait_trigger = yes }
 		}
-		if = {
-			limit = { has_focus = education_learning has_learning_education_disaffinity_childhood_trait_trigger = yes }
-			add = mismatching_childhood_trait_modifier_value
+		add = matching_childhood_trait_modifier_value
+	}
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 5
+			scope:tnt_ga_ward = { has_learning_education_disaffinity_childhood_trait_trigger = yes }
 		}
+		add = mismatching_childhood_trait_modifier_value
 	}
 }
 
@@ -669,28 +738,13 @@ tnt_ga_sort_capture_value = {
 ########################################################################
 # Projected education trait as focus * 10 + rank: 11..15 diplomacy,
 # 21..25 martial, 31..35 stewardship, 41..45 intrigue, 51..55 learning
-# (rank 4 stands for 4 or 5). 0 without a focus. Drives the trait icon.
+# (rank 4 stands for 4 or 5). Uses the effective focus. Drives the trait icon.
 ########################################################################
 
-tnt_ga_focus_index_core_value = {
-	value = 0
-	scope:tnt_ga_ward = {
-		if = { limit = { has_focus = education_diplomacy } value = 1 }
-		else_if = { limit = { has_focus = education_martial } value = 2 }
-		else_if = { limit = { has_focus = education_stewardship } value = 3 }
-		else_if = { limit = { has_focus = education_intrigue } value = 4 }
-		else_if = { limit = { has_focus = education_learning } value = 5 }
-	}
-}
-
 tnt_ga_projected_trait_core_value = {
-	value = 0
-	if = {
-		limit = { tnt_ga_focus_index_core_value > 0 }
-		value = tnt_ga_focus_index_core_value
-		multiply = 10
-		add = tnt_ga_projected_rank_core_value
-	}
+	value = tnt_ga_effective_focus_value
+	multiply = 10
+	add = tnt_ga_projected_rank_core_value
 }
 
 tnt_ga_projected_trait_value = {
@@ -706,5 +760,21 @@ tnt_ga_projected_trait_value = {
 		save_temporary_scope_as = tnt_ga_ward
 		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
 		value = tnt_ga_projected_trait_core_value
+	}
+}
+
+tnt_ga_effective_focus_public_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_effective_focus_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_effective_focus_value
 	}
 }

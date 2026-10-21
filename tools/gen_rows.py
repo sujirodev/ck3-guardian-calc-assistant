@@ -29,7 +29,7 @@ LINE = '''								hbox = {{
 									}}
 									text_single = {{
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}}
 									expand = {{}}
 								}}'''

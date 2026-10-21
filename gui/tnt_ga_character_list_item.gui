@@ -175,6 +175,13 @@ types TntGuardianAssistant
 						alwaystransparent = yes
 						texture = "[Trait.GetIcon( Character.Self )]"
 					}
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+						raw_text = "#low ?#!"
+					}
 
 					using = tooltip_ne
 					tooltipwidget = {
@@ -220,7 +227,6 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
@@ -235,7 +241,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -250,7 +256,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -265,7 +271,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -280,7 +286,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -295,7 +301,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -310,7 +316,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -325,7 +331,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -340,7 +346,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -355,7 +361,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -370,7 +376,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -385,7 +391,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -400,7 +406,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -415,7 +421,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -430,7 +436,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -445,7 +451,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -460,7 +466,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -475,7 +481,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -490,7 +496,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -505,7 +511,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -520,15 +526,14 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
-									text = "tnt_ga_tt_no_focus"
-									default_format = "#low"
+									raw_text = "#low [Localize('tnt_ga_tt_no_focus')] #V [Localize( Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)1' ), 'education_diplomacy', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)2' ), 'education_martial', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)3' ), 'education_stewardship', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)4' ), 'education_intrigue', 'education_learning' ) ) ) ) )]#!#!"
 								}
 
 								text_single = {
@@ -738,6 +743,13 @@ types TntGuardianAssistant
 						alwaystransparent = yes
 						texture = "[Trait.GetIcon( Character.Self )]"
 					}
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+						raw_text = "#low ?#!"
+					}
 
 					using = tooltip_ne
 					tooltipwidget = {
@@ -783,7 +795,6 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
@@ -798,7 +809,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -813,7 +824,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -828,7 +839,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -843,7 +854,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -858,7 +869,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -873,7 +884,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -888,7 +899,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -903,7 +914,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -918,7 +929,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -933,7 +944,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -948,7 +959,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -963,7 +974,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -978,7 +989,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -993,7 +1004,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1008,7 +1019,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1023,7 +1034,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1038,7 +1049,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1053,7 +1064,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1068,7 +1079,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1083,15 +1094,14 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
-									text = "tnt_ga_tt_no_focus"
-									default_format = "#low"
+									raw_text = "#low [Localize('tnt_ga_tt_no_focus')] #V [Localize( Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)1' ), 'education_diplomacy', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)2' ), 'education_martial', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)3' ), 'education_stewardship', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)4' ), 'education_intrigue', 'education_learning' ) ) ) ) )]#!#!"
 								}
 
 								text_single = {
@@ -1301,6 +1311,13 @@ types TntGuardianAssistant
 						alwaystransparent = yes
 						texture = "[Trait.GetIcon( Character.Self )]"
 					}
+					text_single = {
+						align = left|nobaseline
+						using = Font_Size_Medium
+						alwaystransparent = yes
+						visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+						raw_text = "#low ?#!"
+					}
 
 					using = tooltip_ne
 					tooltipwidget = {
@@ -1346,7 +1363,6 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
@@ -1361,7 +1377,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1376,7 +1392,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1391,7 +1407,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1406,7 +1422,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1421,7 +1437,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1436,7 +1452,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1451,7 +1467,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1466,7 +1482,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1481,7 +1497,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1496,7 +1512,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1511,7 +1527,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1526,7 +1542,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1541,7 +1557,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1556,7 +1572,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1571,7 +1587,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1586,7 +1602,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1601,7 +1617,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1616,7 +1632,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1631,7 +1647,7 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
@@ -1646,15 +1662,14 @@ types TntGuardianAssistant
 									}
 									text_single = {
 										align = nobaseline
-										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
 									}
 									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
-									text = "tnt_ga_tt_no_focus"
-									default_format = "#low"
+									raw_text = "#low [Localize('tnt_ga_tt_no_focus')] #V [Localize( Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)1' ), 'education_diplomacy', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)2' ), 'education_martial', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)3' ), 'education_stewardship', Select_CString( EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)4' ), 'education_intrigue', 'education_learning' ) ) ) ) )]#!#!"
 								}
 
 								text_single = {
