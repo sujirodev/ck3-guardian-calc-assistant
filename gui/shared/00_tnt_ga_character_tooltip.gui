@@ -1,8 +1,10 @@
 ﻿# Character tooltip with the GCA education block (generated into
-# gui/shared/zz_tnt_ga_character_tooltip.gui by tools/gen_rows.py).
+# gui/shared/00_tnt_ga_character_tooltip.gui by tools/gen_rows.py).
 # Redefines the vanilla type cooltip_type from gui/shared/cooltip.gui
 # (copied as is) and fills its empty extra_info block. Portrait tooltips
-# instantiate cooltip_type directly, so this reaches them too.
+# instantiate cooltip_type directly, so this reaches them too. At game start
+# the first definition of a type wins, so this file must sort before
+# cooltip.gui (hence the 00_ prefix).
 types TntGaCharacterTooltip
 {
 	type cooltip_type = widget {
