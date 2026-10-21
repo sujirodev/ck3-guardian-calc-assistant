@@ -1,5 +1,5 @@
 # Generates gui/tnt_ga_character_list_item.gui from tools/row_template.gui.
-# Usage: python tools/gen_rows.py tools/row_template.gui gui/tnt_ga_character_list_item.gui tools/gates.txt [tools/tooltip_template.gui gui/shared/00_tnt_ga_character_tooltip.gui]
+# Usage: python tools/gen_rows.py tools/row_template.gui gui/tnt_ga_character_list_item.gui tools/gates.txt [tools/tooltip_template.gui gui/shared/zz_tnt_ga_character_tooltip.gui]
 import sys
 tpl=open(sys.argv[1],encoding='utf-8').read()
 W="CharacterInteractionConfirmationWindow"
