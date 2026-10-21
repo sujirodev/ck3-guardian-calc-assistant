@@ -390,10 +390,6 @@ types TntGaCharacterTooltip
 							text = "tnt_ga_ct_no_focus"
 							default_format = "#low"
 						}
-						widget = {
-							size = { 420 30 }
-@TRAIT_LINES@
-						}
 						hbox = {
 							spacing = 14
 @ODDS@
