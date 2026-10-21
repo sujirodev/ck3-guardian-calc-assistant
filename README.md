@@ -83,7 +83,7 @@ Vanilla details kept as they are:
 - **Projected rank**: uses the vanilla cut-offs `education_level_1/2/3` (7/12/17 points). `~R4` means rank 4 or 5 (rank 5 depends on dynasty or estate bonuses).
 - **Beacon of Learning** on the guardian's culture adds `round(points / 4)`, up to +3, at coming of age. This is included in the projection.
 
-The projection only counts these birthday rolls. Events, court tutors, universities and other sources can add more.
+The projection then adds the average of the coming-of-age bonuses that already apply, in the vanilla order: studying at a university (+2.4), the dynasty's second Kin legacy (+2.4), Beacon of Learning, the ward's culture (+0.6 diplomacy / -1 martial) and the court tutor at the guardian's court, where the ward lives (about +2.4 to +3 depending on aptitude). Events, the court owner's patronage spouse and Confucian study are not predicted.
 
 The multipliers are read from the game's own script values (`educator_skill_modifier_factor`, `matching_childhood_trait_modifier_value`, etc.), so mods that change them are followed automatically.
 

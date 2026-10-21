@@ -259,7 +259,12 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									raw_text = "[Localize('tnt_ga_tt_projection')] #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									default_format = "#P"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).GetScriptValueBreakdown('tnt_ga_projected_points_value')]"
+									blockoverride "background" {}
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
 								widget = {
@@ -842,7 +847,12 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									raw_text = "[Localize('tnt_ga_tt_projection')] #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									default_format = "#P"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).GetScriptValueBreakdown('tnt_ga_projected_points_value')]"
+									blockoverride "background" {}
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
 								widget = {
@@ -1425,7 +1435,12 @@ types TntGuardianAssistant
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									raw_text = "[Localize('tnt_ga_tt_projection')] #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
+									default_format = "#P"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).GetScriptValueBreakdown('tnt_ga_projected_points_value')]"
+									blockoverride "background" {}
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
 								widget = {

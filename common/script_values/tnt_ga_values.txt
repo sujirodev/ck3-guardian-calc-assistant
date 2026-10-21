@@ -384,15 +384,170 @@ tnt_ga_beacon_value = {
 	}
 }
 
-# Expected points from guardian rolls only; events, tutors, universities
-# and other one-off sources are not predicted.
+# Coming-of-age bonuses (coming_of_age_events.txt), as expected values in
+# the vanilla order: university, kin legacy, Beacon of Learning, the ward's
+# own culture, court tutor. The ward lives at the guardian's court, so the
+# tutor is the one at the guardian's court. Not modelled: the court owner's
+# patronage spouse, Confucian study, the tutor's booner bonus, events.
+
+# Ward is studying at a university: +2 (60%) or +3 (40%).
+tnt_ga_university_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_ward = { has_character_modifier = studying_at_university_modifier } }
+		value = 2.4
+	}
+}
+
+# Ward's dynasty has the second Kin legacy: +2 (60%) or +3 (40%).
+tnt_ga_kin_legacy_value = {
+	value = 0
+	if = {
+		limit = { scope:tnt_ga_ward.dynasty ?= { has_dynasty_perk = kin_legacy_2 } }
+		value = 2.4
+	}
+}
+
+# Ward's own culture: +1 at 60% for diplomacy, -1 for martial.
+tnt_ga_ward_culture_bonus_value = {
+	value = 0
+	if = {
+		limit = {
+			tnt_ga_effective_focus_value = 1
+			scope:tnt_ga_ward.culture = { has_cultural_parameter = diplomacy_education_better_outcomes }
+		}
+		value = 0.6
+	}
+	else_if = {
+		limit = {
+			tnt_ga_effective_focus_value = 2
+			scope:tnt_ga_ward.culture = { has_cultural_parameter = martial_education_worse_outcomes }
+		}
+		value = -1
+	}
+}
+
+# Court where the ward comes of age: the guardian's court.
+# Best court tutor aptitude there (0..4, the tutor vanilla picks), or -1 if
+# none. Without a tutor, a guru is used and judged by the tutor aptitude.
+tnt_ga_tutor_aptitude_value = {
+	value = -1
+	scope:tnt_ga_guardian = {
+		court_owner ?= {
+			if = {
+				limit = {
+					employs_court_position = court_tutor_court_position
+					any_court_position_holder = { type = court_tutor_court_position }
+				}
+				every_court_position_holder = {
+					type = court_tutor_court_position
+					min = aptitude:court_tutor_court_position
+				}
+			}
+			else_if = {
+				limit = {
+					employs_court_position = court_guru_court_position
+					any_court_position_holder = { type = court_guru_court_position }
+				}
+				every_court_position_holder = {
+					type = court_guru_court_position
+					min = aptitude:court_tutor_court_position
+				}
+			}
+		}
+	}
+}
+
+tnt_ga_tutor_confucian_value = {
+	value = 0
+	if = {
+		limit = {
+			scope:tnt_ga_guardian.court_owner ?= {
+				any_court_position_holder = {
+					type = court_tutor_court_position
+					has_trait = confucian_education
+				}
+			}
+		}
+		value = 1
+	}
+}
+
+# Vanilla random_list weights for +4 / +3 / +2.
+tnt_ga_tutor_w4_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_effective_focus_value = 1 tnt_ga_tutor_aptitude_value = 4 }
+		value = 10
+	}
+}
+
+tnt_ga_tutor_w3_value = {
+	value = 40
+	if = { limit = { tnt_ga_tutor_aptitude_value = 4 } add = 20 }
+	else_if = { limit = { tnt_ga_tutor_aptitude_value = 3 } add = 10 }
+	if = {
+		limit = {
+			OR = { tnt_ga_effective_focus_value = 3 tnt_ga_effective_focus_value = 5 }
+			tnt_ga_tutor_confucian_value > 0
+		}
+		add = 20
+	}
+}
+
+tnt_ga_tutor_w2_value = {
+	value = 50
+	if = { limit = { tnt_ga_tutor_aptitude_value = 2 } add = 10 }
+	else_if = { limit = { tnt_ga_tutor_aptitude_value = 1 } add = 20 }
+	if = {
+		limit = {
+			OR = { tnt_ga_effective_focus_value = 3 tnt_ga_effective_focus_value = 5 }
+			tnt_ga_tutor_confucian_value > 0
+		}
+		value = 0
+	}
+}
+
+tnt_ga_tutor_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_tutor_aptitude_value >= 0 }
+		value = {
+			value = tnt_ga_tutor_w4_value
+			multiply = 4
+			add = { value = tnt_ga_tutor_w3_value multiply = 3 }
+			add = { value = tnt_ga_tutor_w2_value multiply = 2 }
+		}
+		divide = {
+			value = tnt_ga_tutor_w4_value
+			add = tnt_ga_tutor_w3_value
+			add = tnt_ga_tutor_w2_value
+			min = 1
+		}
+	}
+}
+
+# Expected points at coming of age, as a breakdown in the vanilla order.
 tnt_ga_projected_points_core_value = {
-	value = tnt_ga_current_points_core_value
+	value = 0
+	if = {
+		limit = { tnt_ga_current_points_core_value != 0 }
+		add = { value = tnt_ga_current_points_core_value desc = tnt_ga_proj_current }
+	}
 	add = {
 		value = tnt_ga_chance_core_value
 		multiply = tnt_ga_rolls_left_core_value
 		multiply = 2
 		divide = 100
+		desc = tnt_ga_proj_rolls
+	}
+	if = {
+		limit = { tnt_ga_university_value > 0 }
+		add = { value = tnt_ga_university_value desc = tnt_ga_proj_university }
+	}
+	if = {
+		limit = { tnt_ga_kin_legacy_value > 0 }
+		add = { value = tnt_ga_kin_legacy_value desc = tnt_ga_proj_kin_legacy }
 	}
 	if = {
 		limit = { tnt_ga_beacon_value > 0 }
@@ -402,7 +557,16 @@ tnt_ga_projected_points_core_value = {
 			divide = 4
 			round = yes
 			max = 3
+			desc = tnt_ga_proj_beacon
 		}
+	}
+	if = {
+		limit = { tnt_ga_ward_culture_bonus_value != 0 }
+		add = { value = tnt_ga_ward_culture_bonus_value desc = tnt_ga_proj_culture }
+	}
+	if = {
+		limit = { tnt_ga_tutor_value > 0 }
+		add = { value = tnt_ga_tutor_value desc = tnt_ga_proj_tutor }
 	}
 }
 

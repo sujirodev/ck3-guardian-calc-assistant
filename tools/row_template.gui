@@ -78,7 +78,12 @@
 
 								text_single = {
 									layoutpolicy_horizontal = expanding
-									raw_text = "[Localize('tnt_ga_tt_projection')] [@S@.ScriptValue('tnt_ga_current_points_value')|1] + [@S@.ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [@S@.ScriptValue('tnt_ga_chance_value')|0]% = #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [@S@.ScriptValue('tnt_ga_projected_rank_value')|0])"
+									raw_text = "[Localize('tnt_ga_tt_projection')] #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [@S@.ScriptValue('tnt_ga_projected_rank_value')|0])"
+									default_format = "#P"
+								}
+								widget_value_breakdown_list = {
+									datacontext = "[@S@.GetScriptValueBreakdown('tnt_ga_projected_points_value')]"
+									blockoverride "background" {}
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
 								widget = {
