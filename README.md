@@ -6,6 +6,8 @@ An interface mod for **Crusader Kings III** that helps you pick a guardian for a
 
 Inspired by the Marriage Calculation Assistant (MCA), which does the same for marriages.
 
+Development and releases use [ck3-mod-maker](https://github.com/sujirodev/ck3-mod-maker), a study project for agent-driven CK3 modding (its mod template and release pipeline came from this repo).
+
 ## Features
 
 ### GCA score on every candidate
