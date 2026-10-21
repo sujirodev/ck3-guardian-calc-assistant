@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   release:
-    uses: MatheusAlves96/ck3-mod-maker/.github/workflows/mod-release.yml@v1
+    uses: sujirodev/ck3-mod-maker/.github/workflows/mod-release.yml@v1
     with:
       pipeline_ref: v1
       nexus_game_domain: ${{ vars.NEXUS_GAME_DOMAIN }}

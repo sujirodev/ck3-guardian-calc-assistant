@@ -159,7 +159,7 @@ When the game updates, run step 2 against the new vanilla `interaction_confirmat
    git push origin main v1.0.1
    ```
 
-The `.github/workflows/release.yml` workflow calls the shared pipeline from [ck3-mod-maker](https://github.com/MatheusAlves96/ck3-mod-maker) (`mod-release.yml`): it builds the zip from the files listed in `ck3mod.toml`, checks that the tag matches the `descriptor.mod` version, takes the notes from `CHANGELOG.md` and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
+The `.github/workflows/release.yml` workflow calls the shared pipeline from [ck3-mod-maker](https://github.com/sujirodev/ck3-mod-maker) (`mod-release.yml`): it builds the zip from the files listed in `ck3mod.toml`, checks that the tag matches the `descriptor.mod` version, takes the notes from `CHANGELOG.md` and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
 
 ### Nexus Mods
 
