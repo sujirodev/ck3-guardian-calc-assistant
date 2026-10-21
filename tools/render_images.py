@@ -11,15 +11,21 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "docs" / "images" / "src"
 OUT = ROOT / "docs" / "images"
 
-# name: (width, height, extra copy destination relative to ROOT or None)
-IMAGES = {
-    "banner": (1920, 480, None),
-    "feature_score": (1600, 820, None),
-    "feature_search": (1600, 720, None),
-    "feature_formula": (1600, 720, None),
-    "translate": (1600, 500, None),
-    "thumbnail": (512, 512, "thumbnail.png"),
-}
+# (source, output, width, height, scale, extra copy relative to ROOT or None)
+# Output size is width x height times scale.
+IMAGES = [
+    ("banner", "banner", 1920, 480, 1, None),
+    ("feature_score", "feature_score", 1600, 820, 1, None),
+    ("feature_search", "feature_search", 1600, 720, 1, None),
+    ("feature_formula", "feature_formula", 1600, 720, 1, None),
+    ("translate", "translate", 1600, 500, 1, None),
+    ("thumbnail", "thumbnail", 512, 512, 1, "thumbnail.png"),
+    # Nexus Mods page: header 1300x372 (rendered at 2x), gallery 1920x1080.
+    ("banner", "nexus_header", 1625, 465, 1.6, None),
+    ("feature_score", "nexus_gallery_1_score", 1600, 900, 1.2, None),
+    ("feature_search", "nexus_gallery_2_search", 1600, 900, 1.2, None),
+    ("feature_formula", "nexus_gallery_3_formula", 1600, 900, 1.2, None),
+]
 
 CANDIDATES = [
     os.environ.get("CHROME", ""),
@@ -39,16 +45,17 @@ def browser():
 
 def main():
     exe = browser()
-    names = sys.argv[1:] or list(IMAGES)
-    for name in names:
-        w, h, copy = IMAGES[name]
+    wanted = set(sys.argv[1:])
+    for src, name, w, h, scale, copy in IMAGES:
+        if wanted and name not in wanted and src not in wanted:
+            continue
         out = OUT / f"{name}.png"
         subprocess.run(
             [
                 exe, "--headless=new", "--disable-gpu", "--hide-scrollbars",
-                "--force-device-scale-factor=1", "--virtual-time-budget=4000",
+                f"--force-device-scale-factor={scale}", "--virtual-time-budget=4000",
                 f"--window-size={w},{h}", f"--screenshot={out}",
-                (SRC / f"{name}.html").as_uri(),
+                (SRC / f"{src}.html").as_uri(),
             ],
             check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
         )
