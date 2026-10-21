@@ -360,11 +360,11 @@ types TntGaCharacterTooltip
 					# with the guardian check, independent of the GCA block below.
 					text_single = {
 						visible = "[InDebugMode]"
-						raw_text = "#low GCA tooltip (debug) | guardian: [Select_CString( Character.HasGuardian, 'yes', 'no' )] | available: [@S@.ScriptValue('tnt_ga_available_value')|0]#!"
+						raw_text = "#low GCA tooltip (debug) | ward with guardian: [@S@.ScriptValue('tnt_ga_available_value')|0]#!"
 					}
 					vbox = {
 						layoutpolicy_horizontal = expanding
-						visible = "[And( Character.HasGuardian, GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' ) )]"
+						visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' )]"
 						ignoreinvisible = yes
 						margin_top = 6
 						spacing = 3

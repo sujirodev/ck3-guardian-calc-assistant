@@ -119,10 +119,11 @@ open(sys.argv[2],'w',encoding='utf-8',newline='\n').write(out)
 # Gates for tools/gen_confirm.py, one per line.
 open(sys.argv[3],'w',encoding='utf-8').write(vanilla_gate + "\n" + gca_gate + "\n")
 
-# Optional: character tooltip (child with a guardian). The guardian is the
-# other pair member, so every public tnt_ga_* value works unchanged.
+# Optional: character tooltip (child with a guardian).
 if len(sys.argv) > 5:
     ct = open(sys.argv[4], encoding='utf-8').read()
-    ct_scope = "GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', Character.GetRelationOfType('guardian').MakeScope )"
+    # No tnt_ga_other: the values find the ward's guardian themselves, so a
+    # child without a guardian never builds a scope from a null character.
+    ct_scope = "GuiScope.SetRoot( Character.MakeScope )"
     ct = ct.replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds).replace("@S@", ct_scope)
     open(sys.argv[5], 'w', encoding='utf-8', newline='\n').write('﻿' + ct)

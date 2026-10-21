@@ -44,6 +44,15 @@ tnt_ga_root_is_ward_trigger_value = {
 		}
 		value = 1
 	}
+	# No other pair member given (character tooltip): the ward's own guardian.
+	else_if = {
+		limit = {
+			NOT = { exists = scope:tnt_ga_other }
+			is_adult = no
+			any_relation = { type = guardian is_adult = yes }
+		}
+		value = 1
+	}
 }
 
 
@@ -664,7 +673,13 @@ tnt_ga_has_focus_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_ward_has_focus_value
 	}
 }
@@ -680,7 +695,13 @@ tnt_ga_chance_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_chance_core_value
 	}
 }
@@ -696,7 +717,13 @@ tnt_ga_success_weight_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		add = tnt_ga_success_weight_core_value
 	}
 }
@@ -712,7 +739,13 @@ tnt_ga_failure_weight_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		add = tnt_ga_failure_weight_core_value
 	}
 }
@@ -728,7 +761,13 @@ tnt_ga_rolls_left_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_rolls_left_core_value
 	}
 }
@@ -744,7 +783,13 @@ tnt_ga_current_points_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_current_points_core_value
 	}
 }
@@ -760,7 +805,13 @@ tnt_ga_projected_points_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_projected_points_core_value
 	}
 }
@@ -776,7 +827,13 @@ tnt_ga_projected_rank_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_projected_rank_core_value
 	}
 }
@@ -792,7 +849,13 @@ tnt_ga_beacon_note_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_beacon_value
 	}
 }
@@ -808,7 +871,13 @@ tnt_ga_storyteller_note_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_guardian_storyteller_value
 	}
 }
@@ -824,7 +893,13 @@ tnt_ga_note_faith_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_note_faith_core_value
 	}
 }
@@ -840,7 +915,13 @@ tnt_ga_note_culture_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_note_culture_core_value
 	}
 }
@@ -856,7 +937,13 @@ tnt_ga_note_commander_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_note_commander_core_value
 	}
 }
@@ -872,7 +959,13 @@ tnt_ga_note_pedagogy_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_note_pedagogy_core_value
 	}
 }
@@ -888,7 +981,13 @@ tnt_ga_note_knighthood_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_note_knighthood_core_value
 	}
 }
@@ -946,7 +1045,13 @@ tnt_ga_projected_trait_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_projected_trait_core_value
 	}
 }
@@ -962,7 +1067,13 @@ tnt_ga_effective_focus_public_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_effective_focus_value
 	}
 }
@@ -1021,7 +1132,13 @@ tnt_ga_rank5_eligible_public_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_rank5_eligible_value
 	}
 }
@@ -1080,7 +1197,13 @@ tnt_ga_university_available_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		value = tnt_ga_university_available_core_value
 	}
 }
@@ -1110,7 +1233,13 @@ tnt_ga_show_university_odds_value = {
 	else_if = {
 		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { exists = scope:tnt_ga_other }
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		}
+		else = {
+			every_relation = { type = guardian save_temporary_scope_as = tnt_ga_guardian }
+		}
 		if = {
 			limit = { tnt_ga_university_available_core_value > 0 tnt_ga_university_value <= 0 }
 			value = 1

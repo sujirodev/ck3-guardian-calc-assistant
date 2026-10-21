@@ -67,7 +67,13 @@ tnt_ga_odds_rank_{rank}{suffix}_value = {{
 	else_if = {{
 		limit = {{ tnt_ga_root_is_ward_trigger_value > 0 }}
 		save_temporary_scope_as = tnt_ga_ward
-		scope:tnt_ga_other = {{ save_temporary_scope_as = tnt_ga_guardian }}
+		if = {{
+			limit = {{ exists = scope:tnt_ga_other }}
+			scope:tnt_ga_other = {{ save_temporary_scope_as = tnt_ga_guardian }}
+		}}
+		else = {{
+			every_relation = {{ type = guardian save_temporary_scope_as = tnt_ga_guardian }}
+		}}
 		value = tnt_ga_odds_rank_{rank}{suffix}_core_value
 	}}
 }}"""
