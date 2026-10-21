@@ -33,6 +33,11 @@ tnt_ga_sort_start = {
 				set_variable = { name = tnt_ga_sort_state value = 1 }
 			}
 		}
+		# Debug mode only: header for the row logs below.
+		if = {
+			limit = { debug_only = yes exists = scope:tnt_ga_sort_ward exists = scope:tnt_ga_sort_n }
+			debug_log = tnt_ga_debug_start
+		}
 	}
 }
 
@@ -61,6 +66,29 @@ tnt_ga_sort_collect = {
 	# Every gate is inside the effect: late callbacks after clear/ready are no-ops.
 	effect = {
 		save_temporary_scope_as = tnt_ga_sort_candidate
+		# Debug mode only: one log line per native row, with every factor.
+		if = {
+			limit = { debug_only = yes exists = scope:tnt_ga_other exists = scope:tnt_ga_sort_index }
+			save_temporary_scope_as = tnt_ga_guardian
+			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+			save_scope_value_as = { name = tnt_ga_dbg_chance value = tnt_ga_chance_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_s value = tnt_ga_success_weight_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_f value = tnt_ga_failure_weight_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_focus value = tnt_ga_effective_focus_value }
+			save_scope_value_as = { name = tnt_ga_dbg_hasfocus value = tnt_ga_ward_has_focus_value }
+			save_scope_value_as = { name = tnt_ga_dbg_pts value = tnt_ga_projected_points_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_rank value = tnt_ga_projected_rank_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_trait value = tnt_ga_projected_trait_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_rolls value = tnt_ga_rolls_left_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_current value = tnt_ga_current_points_core_value }
+			save_scope_value_as = { name = tnt_ga_dbg_univ value = tnt_ga_university_value }
+			save_scope_value_as = { name = tnt_ga_dbg_kin value = tnt_ga_kin_legacy_value }
+			save_scope_value_as = { name = tnt_ga_dbg_beacon value = tnt_ga_beacon_value }
+			save_scope_value_as = { name = tnt_ga_dbg_culture value = tnt_ga_ward_culture_bonus_value }
+			save_scope_value_as = { name = tnt_ga_dbg_tutorapt value = tnt_ga_tutor_aptitude_value }
+			save_scope_value_as = { name = tnt_ga_dbg_tutor value = tnt_ga_tutor_value }
+			debug_log = tnt_ga_debug_row
+		}
 		if = {
 			limit = {
 				exists = scope:actor
@@ -235,6 +263,20 @@ tnt_ga_sort_finalize = {
 							add_to_variable_list = { name = tnt_ga_sort_indices target = scope:tnt_ga_sort_output_index }
 							add_to_variable_list = { name = tnt_ga_sort_keys target = scope:tnt_ga_sort_item }
 							change_variable = { name = tnt_ga_sort_output_count add = 1 }
+							if = {
+								limit = { debug_only = yes }
+								save_scope_value_as = { name = tnt_ga_dbg_pos value = var:tnt_ga_sort_output_count }
+								save_scope_value_as = {
+									name = tnt_ga_dbg_score
+									value = {
+										value = scope:tnt_ga_sort_item
+										subtract = { value = scope:tnt_ga_sort_item modulo = 100000 }
+										divide = 100000
+										subtract = 10000
+									}
+								}
+								debug_log = tnt_ga_debug_sorted
+							}
 						}
 					}
 					# Pass 3: keys in native-index order for the fresh-score guards.
@@ -279,6 +321,12 @@ tnt_ga_sort_finalize = {
 			if = { limit = { has_variable_list = tnt_ga_sort_packed } clear_variable_list = tnt_ga_sort_packed }
 			if = { limit = { has_variable = tnt_ga_sort_cursor } remove_variable = tnt_ga_sort_cursor }
 			if = { limit = { has_variable = tnt_ga_sort_output_count } remove_variable = tnt_ga_sort_output_count }
+			if = {
+				limit = { debug_only = yes }
+				save_scope_value_as = { name = tnt_ga_dbg_state value = var:tnt_ga_sort_state }
+				save_scope_value_as = { name = tnt_ga_dbg_expected value = var:tnt_ga_sort_expected }
+				debug_log = tnt_ga_debug_done
+			}
 		}
 	}
 }
