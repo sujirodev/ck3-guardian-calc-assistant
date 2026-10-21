@@ -22,6 +22,7 @@ IMAGES = [
     ("thumbnail", "thumbnail", 512, 512, 1, "thumbnail.png"),
     # Nexus Mods page: header 1300x372 (rendered at 2x), gallery 1920x1080.
     ("banner", "nexus_header", 1625, 465, 1.6, None),
+    ("cover", "nexus_gallery_0_cover", 1920, 1080, 1, None),
     ("feature_score", "nexus_gallery_1_score", 1600, 900, 1.2, None),
     ("feature_search", "nexus_gallery_2_search", 1600, 900, 1.2, None),
     ("feature_formula", "nexus_gallery_3_formula", 1600, 900, 1.2, None),
