@@ -1084,3 +1084,36 @@ tnt_ga_university_available_value = {
 		value = tnt_ga_university_available_core_value
 	}
 }
+
+tnt_ga_odds_rank_5_univ_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_rank5_eligible_public_value > 0 }
+		value = tnt_ga_odds_rank_4_univ_value
+		multiply = 0.5
+	}
+}
+
+# 1 when the "with university" odds are worth showing: a university is
+# available and the ward is not studying at one already.
+tnt_ga_show_university_odds_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		if = {
+			limit = { tnt_ga_university_available_core_value > 0 tnt_ga_university_value <= 0 }
+			value = 1
+		}
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		if = {
+			limit = { tnt_ga_university_available_core_value > 0 tnt_ga_university_value <= 0 }
+			value = 1
+		}
+	}
+}

@@ -38,8 +38,8 @@ LINE = '''									hbox = {{
 icons = "\n".join(ICON.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
 lines = "\n".join(LINE.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
 EFF = "@S@.ScriptValue('tnt_ga_effective_focus_public_value')"
-def odds_entry(rank):
-    pct = "100" if rank == 1 else f"[@S@.ScriptValue('tnt_ga_odds_rank_{rank}_value')|0]"
+def odds_entry(rank, suffix=""):
+    pct = "100" if rank == 1 else f"[@S@.ScriptValue('tnt_ga_odds_rank_{rank}{suffix}_value')|0]"
     icons_r = "\n".join(
         f'''										icon = {{
 											visible = "[EqualTo_CFixedPoint( {EFF}, '(CFixedPoint){f}' )]"
@@ -60,7 +60,9 @@ def odds_entry(rank):
 										}}
 									}}'''
 odds = "\n".join(odds_entry(r) for r in range(1, 6))
-tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds)
+odds_univ = "\n".join(odds_entry(r, "_univ") for r in range(1, 6))
+tpl = (tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines)
+       .replace("@ODDS_UNIV@", odds_univ).replace("@ODDS@", odds))
 
 def v(side,pick,other,gate,comment):
     s=f"GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', {W}.{other}.MakeScope )"

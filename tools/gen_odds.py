@@ -25,12 +25,14 @@ def pmf(k):
     return "\n".join(lines)
 
 
-def odds(rank, threshold):
+def odds(rank, threshold, suffix="", univ=False):
     adds = "\n".join(
         f"\tif = {{ limit = {{ scope:tnt_ga_kstar <= {k} scope:tnt_ga_n >= {k} }} add = tnt_ga_pmf_{k}_value }}"
         for k in range(MAX_N + 1))
-    return f"""# Percent chance of ending at rank {rank} or better (more than {threshold} points).
-tnt_ga_odds_rank_{rank}_core_value = {{
+    # Sending to a university adds its average, unless the ward already studies.
+    univ_line = "\tif = { limit = { tnt_ga_university_value <= 0 } add = 2.4 }\n" if univ else ""
+    return f"""# Percent chance of ending at rank {rank} or better (more than {threshold} points){" if sent to a university" if univ else ""}.
+tnt_ga_odds_rank_{rank}{suffix}_core_value = {{
 	value = tnt_ga_chance_core_value
 	divide = 100
 	save_temporary_value_as = tnt_ga_p
@@ -41,7 +43,7 @@ tnt_ga_odds_rank_{rank}_core_value = {{
 	save_temporary_value_as = tnt_ga_n
 	value = tnt_ga_projected_points_core_value
 	subtract = {{ value = scope:tnt_ga_p multiply = scope:tnt_ga_n multiply = 2 }}
-	save_temporary_value_as = tnt_ga_shift
+{univ_line}	save_temporary_value_as = tnt_ga_shift
 	value = {threshold}
 	subtract = scope:tnt_ga_shift
 	divide = 2
@@ -54,19 +56,19 @@ tnt_ga_odds_rank_{rank}_core_value = {{
 	max = 100
 }}
 
-tnt_ga_odds_rank_{rank}_value = {{
+tnt_ga_odds_rank_{rank}{suffix}_value = {{
 	value = 0
 	if = {{
 		limit = {{ tnt_ga_root_is_guardian_trigger_value > 0 }}
 		save_temporary_scope_as = tnt_ga_guardian
 		scope:tnt_ga_other = {{ save_temporary_scope_as = tnt_ga_ward }}
-		value = tnt_ga_odds_rank_{rank}_core_value
+		value = tnt_ga_odds_rank_{rank}{suffix}_core_value
 	}}
 	else_if = {{
 		limit = {{ tnt_ga_root_is_ward_trigger_value > 0 }}
 		save_temporary_scope_as = tnt_ga_ward
 		scope:tnt_ga_other = {{ save_temporary_scope_as = tnt_ga_guardian }}
-		value = tnt_ga_odds_rank_{rank}_core_value
+		value = tnt_ga_odds_rank_{rank}{suffix}_core_value
 	}}
 }}"""
 
@@ -76,6 +78,8 @@ out = ["﻿" + "#" * 72,
        "# tools/gen_odds.py; do not edit by hand).",
        "#" * 72, ""]
 out += [pmf(k) + "\n" for k in range(MAX_N + 1)]
-out += [odds(r, t) + "\n" for r, t in [(2, "education_level_1"), (3, "education_level_2"), (4, "education_level_3")]]
+LEVELS = [(2, "education_level_1"), (3, "education_level_2"), (4, "education_level_3")]
+out += [odds(r, t) + "\n" for r, t in LEVELS]
+out += [odds(r, t, "_univ", True) + "\n" for r, t in LEVELS]
 open(sys.argv[1], "w", encoding="utf-8", newline="\n").write("\n".join(out))
 print(sys.argv[1])

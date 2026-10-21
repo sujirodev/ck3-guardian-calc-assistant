@@ -109,9 +109,25 @@
 									text = "tnt_ga_tt_odds_header"
 									default_format = "#low"
 								}
+								text_single = {
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_show_university_odds_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_tt_odds_without"
+									default_format = "#low"
+								}
 								hbox = {
 									spacing = 14
 @ODDS@
+									expand = {}
+								}
+								text_single = {
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_show_university_odds_value'), '(CFixedPoint)0' )]"
+									text = "tnt_ga_tt_odds_with"
+									default_format = "#low"
+								}
+								hbox = {
+									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_show_university_odds_value'), '(CFixedPoint)0' )]"
+									spacing = 14
+@ODDS_UNIV@
 									expand = {}
 								}
 								text_single = {
