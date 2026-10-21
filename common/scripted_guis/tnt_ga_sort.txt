@@ -66,9 +66,10 @@ tnt_ga_sort_collect = {
 	# Every gate is inside the effect: late callbacks after clear/ready are no-ops.
 	effect = {
 		save_temporary_scope_as = tnt_ga_sort_candidate
-		# Debug mode only: one log line per native row, with every factor.
+		# Debug mode only, first 40 native rows: dump every factor. debug_log
+		# messages cannot read values saved during the effect, debug_log_scopes can.
 		if = {
-			limit = { debug_only = yes exists = scope:tnt_ga_other exists = scope:tnt_ga_sort_index }
+			limit = { debug_only = yes exists = scope:tnt_ga_other exists = scope:tnt_ga_sort_index scope:tnt_ga_sort_index < 40 }
 			save_scope_as = tnt_ga_dbg_char
 			save_temporary_scope_as = tnt_ga_guardian
 			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
@@ -89,6 +90,7 @@ tnt_ga_sort_collect = {
 			save_scope_value_as = { name = tnt_ga_dbg_tutorapt value = tnt_ga_tutor_aptitude_value }
 			save_scope_value_as = { name = tnt_ga_dbg_tutor value = tnt_ga_tutor_value }
 			debug_log = tnt_ga_debug_row
+			debug_log_scopes = yes
 		}
 		if = {
 			limit = {
@@ -264,20 +266,6 @@ tnt_ga_sort_finalize = {
 							add_to_variable_list = { name = tnt_ga_sort_indices target = scope:tnt_ga_sort_output_index }
 							add_to_variable_list = { name = tnt_ga_sort_keys target = scope:tnt_ga_sort_item }
 							change_variable = { name = tnt_ga_sort_output_count add = 1 }
-							if = {
-								limit = { debug_only = yes }
-								save_scope_value_as = { name = tnt_ga_dbg_pos value = var:tnt_ga_sort_output_count }
-								save_scope_value_as = {
-									name = tnt_ga_dbg_score
-									value = {
-										value = scope:tnt_ga_sort_item
-										subtract = { value = scope:tnt_ga_sort_item modulo = 100000 }
-										divide = 100000
-										subtract = 10000
-									}
-								}
-								debug_log = tnt_ga_debug_sorted
-							}
 						}
 					}
 					# Pass 3: keys in native-index order for the fresh-score guards.
