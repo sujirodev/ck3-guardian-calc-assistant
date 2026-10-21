@@ -22,7 +22,7 @@
  tnt_ga_note_knighthood:0 "#P Knighthood:#! allows a prowess education trait."
  tnt_ga_note_faith:0 "Different faith: the ward may convert only if you pick that option."
  tnt_ga_note_culture:0 "Different culture: the ward may convert only if you pick that option."
- tnt_ga_tt_help:0 "GCA reproduces the vanilla roll made every birthday from age 6 to 15. The projection only counts these rolls; events, tutors and universities can add more. ~R4 means rank 4 or 5."
+ tnt_ga_tt_help:0 "GCA reproduces the vanilla roll made every birthday from age 6 to 15. The projection only counts these rolls; events, tutors and universities can add more. The icon next to the score is the projected education trait; rank 4 can still become rank 5."
  tnt_ga_find_guardian_interaction:0 "Find Guardian (GCA)"
  tnt_ga_find_guardian_interaction_desc:0 "Compare [guardian|E] candidates for this child at your [court|E] and at every court in [diplomatic_range|E], with the GCA score. Choosing one opens Educate Child or Offer Ward already filled in."
  tnt_ga_find_guardian_send:0 "Continue"
@@ -39,3 +39,4 @@
  tnt_ga_sort_active:0 "By GCA score"
  tnt_ga_sort_failed:0 "Unable to sort"
  tnt_ga_sort_too_many:0 "Too many candidates: GCA can sort up to 99,999. Narrow the list with filters, close the filters, then try again."
+ tnt_ga_tt_projected_trait:0 "Projected education trait:"

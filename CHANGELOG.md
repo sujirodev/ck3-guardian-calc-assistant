@@ -4,6 +4,11 @@ One section per version, newest first. The release workflow publishes the sectio
 
 Each entry is one line starting with `- ` (one changelog line on Nexus Mods).
 
+## [1.0.2] - 2026-10-21
+
+- The score now shows the icon of the projected education trait instead of ~R1-~R4.
+- The tooltip names the projected education trait, with its icon.
+
 ## [1.0.1] - 2026-10-20
 
 - Added a launcher thumbnail.

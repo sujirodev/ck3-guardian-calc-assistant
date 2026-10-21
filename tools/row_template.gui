@@ -12,13 +12,8 @@
 						alwaystransparent = yes
 						raw_text = "#low GCA#! [@S@.ScriptValue('tnt_ga_chance_value')|0]%"
 					}
-					text_single = {
-						align = left|nobaseline
-						using = Font_Size_Medium
-						alwaystransparent = yes
-						visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
-						raw_text = "#low ~R#![@S@.ScriptValue('tnt_ga_projected_rank_value')|0]"
-					}
+					# Projected education trait icon (one per trait; only the match shows).
+@TRAIT_ICONS@
 
 					using = tooltip_ne
 					tooltipwidget = {
@@ -67,6 +62,8 @@
 									visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' )]"
 									raw_text = "[Localize('tnt_ga_tt_projection')] [@S@.ScriptValue('tnt_ga_current_points_value')|1] + [@S@.ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [@S@.ScriptValue('tnt_ga_chance_value')|0]% = #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [@S@.ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
+								# Projected trait: icon + name (one per trait; only the match shows).
+@TRAIT_LINES@
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"

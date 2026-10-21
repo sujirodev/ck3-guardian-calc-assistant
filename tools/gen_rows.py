@@ -7,6 +7,36 @@ vanilla_gate=(f"Or( Or( EqualTo_string( {W}.GetActorSecondaryLabel, Localize('ac
       f"EqualTo_string( {W}.GetActorSecondaryLabel, Localize('actor_secondary_offer_guardianship_interaction') ) ), "
       f"EqualTo_string( {W}.GetRecipientSecondaryLabel, Localize('recipient_secondary_offer_ward_interaction') ) )")
 gca_gate=f"EqualTo_string( {W}.GetRecipientSecondaryLabel, Localize('recipient_secondary_tnt_ga_find_guardian_interaction') )"
+# Education traits by tnt_ga_projected_trait_value code (focus * 10 + rank).
+FOCI = ["diplomacy", "martial", "stewardship", "intrigue", "learning"]
+TRAITS = [(f * 10 + r, f"education_{name}_{r}") for f, name in enumerate(FOCI, 1) for r in range(1, 5)]
+MATCH = "EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint){code}' )"
+ICON = '''					icon = {{
+						visible = "[{match}]"
+						datacontext = "[GetTrait( '{key}' )]"
+						size = {{ 26 26 }}
+						alwaystransparent = yes
+						texture = "[Trait.GetIcon( Character.Self )]"
+					}}'''
+LINE = '''								hbox = {{
+									visible = "[{match}]"
+									layoutpolicy_horizontal = expanding
+									spacing = 6
+									datacontext = "[GetTrait( '{key}' )]"
+									icon = {{
+										size = {{ 30 30 }}
+										texture = "[Trait.GetIcon( Character.Self )]"
+									}}
+									text_single = {{
+										align = nobaseline
+										raw_text = "[Localize('tnt_ga_tt_projected_trait')] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									}}
+									expand = {{}}
+								}}'''
+icons = "\n".join(ICON.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
+lines = "\n".join(LINE.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
+tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines)
+
 def v(side,pick,other,gate,comment):
     s=f"GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', {W}.{other}.MakeScope )"
     return tpl.replace('@S@',s).replace('@PICK@',f"{W}.{pick}").replace('@GATE@',gate).replace('@SIDE@',side).replace('@COMMENT@',comment)

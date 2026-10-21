@@ -664,3 +664,47 @@ tnt_ga_sort_capture_value = {
 	}
 	round = yes
 }
+
+
+########################################################################
+# Projected education trait as focus * 10 + rank: 11..15 diplomacy,
+# 21..25 martial, 31..35 stewardship, 41..45 intrigue, 51..55 learning
+# (rank 4 stands for 4 or 5). 0 without a focus. Drives the trait icon.
+########################################################################
+
+tnt_ga_focus_index_core_value = {
+	value = 0
+	scope:tnt_ga_ward = {
+		if = { limit = { has_focus = education_diplomacy } value = 1 }
+		else_if = { limit = { has_focus = education_martial } value = 2 }
+		else_if = { limit = { has_focus = education_stewardship } value = 3 }
+		else_if = { limit = { has_focus = education_intrigue } value = 4 }
+		else_if = { limit = { has_focus = education_learning } value = 5 }
+	}
+}
+
+tnt_ga_projected_trait_core_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_focus_index_core_value > 0 }
+		value = tnt_ga_focus_index_core_value
+		multiply = 10
+		add = tnt_ga_projected_rank_core_value
+	}
+}
+
+tnt_ga_projected_trait_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_projected_trait_core_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_projected_trait_core_value
+	}
+}
