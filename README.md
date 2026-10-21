@@ -147,21 +147,22 @@ When the game updates, run step 2 against the new vanilla `interaction_confirmat
 ### Releasing a version
 
 1. Bump `version` in `descriptor.mod`.
-2. Commit, tag and push:
+2. Add a `## [x.y.z] - YYYY-MM-DD` section to `CHANGELOG.md`, one `- ` line per change. It becomes the GitHub Release notes and the Nexus Mods changelog; the tag build fails without it.
+3. Commit, tag and push:
 
    ```sh
    git tag v1.0.1
    git push origin main v1.0.1
    ```
 
-The `.github/workflows/release.yml` workflow builds the zip with `tools/package.py`, checks that the tag matches the `descriptor.mod` version and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
+The `.github/workflows/release.yml` workflow builds the zip with `tools/package.py`, checks that the tag matches the `descriptor.mod` version, takes the notes from `CHANGELOG.md` (`tools/changelog.py`) and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
 
 ### Nexus Mods
 
 On tags, the workflow also publishes to Nexus Mods (API v3):
 
 1. resolves the unique mod id from the page URL number (`tools/nexus_page.py resolve`);
-2. uploads the zip as a new version of the existing main file with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), archiving the previous version;
+2. uploads the zip, with that version's `CHANGELOG.md` entries as the Nexus changelog, as a new version of the existing main file with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), archiving the previous version;
 3. replaces the page summary and full description with `docs/nexus_summary.txt` and `docs/nexus_description.bbcode` (`tools/nexus_page.py update`; the edit endpoint is marked Experimental by Nexus).
 
 Running the workflow manually (Actions > Package > Run workflow) repeats steps 1 and 3 only, to sync the page text without a release.

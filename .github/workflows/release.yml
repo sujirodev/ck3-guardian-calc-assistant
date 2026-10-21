@@ -30,8 +30,22 @@ jobs:
             zip_path=$(python tools/package.py)
           fi
           echo "zip=$zip_path" >> "$GITHUB_OUTPUT"
-          echo "version=$(sed -n 's/^version="\(.*\)"/\1/p' descriptor.mod)" >> "$GITHUB_OUTPUT"
+          echo "version=$(sed -n 's/^version="\(.*\)"/\1/p' descriptor.mod | tr -d '\r')" >> "$GITHUB_OUTPUT"
           unzip -l "$zip_path"
+
+      # CHANGELOG.md is the single source of release notes. Tags fail here,
+      # before anything is published, if the version has no section.
+      - name: Changelog
+        id: changelog
+        if: github.ref_type == 'tag'
+        run: |
+          python tools/changelog.py "${{ steps.build.outputs.version }}" --format md > dist/release_notes.md
+          {
+            echo "text<<GCA_CHANGELOG_EOF"
+            python tools/changelog.py "${{ steps.build.outputs.version }}" --format text
+            echo "GCA_CHANGELOG_EOF"
+          } >> "$GITHUB_OUTPUT"
+          cat dist/release_notes.md
 
       - uses: actions/upload-artifact@v4
         with:
@@ -45,7 +59,7 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" "${{ steps.build.outputs.zip }}" \
             --title "Guardian Calculation Assistant $GITHUB_REF_NAME" \
-            --generate-notes
+            --notes-file dist/release_notes.md
 
       # Nexus Mods steps run on tags and manual runs, and are skipped until the
       # repository variables NEXUS_GAME_DOMAIN, NEXUS_GAME_MOD_ID and
@@ -71,7 +85,7 @@ jobs:
           filename: ${{ steps.build.outputs.zip }}
           version: ${{ steps.build.outputs.version }}
           display_name: Guardian Calculation Assistant ${{ steps.build.outputs.version }}
-          changelog: See https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}
+          changelog: ${{ steps.changelog.outputs.text }}
           archive_existing_version: true
           update_mod_version: true
 
