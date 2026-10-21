@@ -1,5 +1,7 @@
 name: Package
 
+# Thin caller: the pipeline lives in ck3-mod-maker (.github/workflows/mod-release.yml + pipeline/). To update it,
+# change both refs below to the new ck3-mod-maker tag.
 on:
   push:
     branches: [main]
@@ -12,92 +14,12 @@ permissions:
   contents: write
 
 jobs:
-  package:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Build zip
-        id: build
-        run: |
-          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
-            zip_path=$(python tools/package.py --tag "$GITHUB_REF_NAME")
-          else
-            zip_path=$(python tools/package.py)
-          fi
-          echo "zip=$zip_path" >> "$GITHUB_OUTPUT"
-          echo "version=$(sed -n 's/^version="\(.*\)"/\1/p' descriptor.mod | tr -d '\r')" >> "$GITHUB_OUTPUT"
-          unzip -l "$zip_path"
-
-      # CHANGELOG.md is the single source of release notes. Tags fail here,
-      # before anything is published, if the version has no section.
-      - name: Changelog
-        id: changelog
-        if: github.ref_type == 'tag'
-        run: |
-          python tools/changelog.py "${{ steps.build.outputs.version }}" --format md > dist/release_notes.md
-          {
-            echo "text<<GCA_CHANGELOG_EOF"
-            python tools/changelog.py "${{ steps.build.outputs.version }}" --format text
-            echo "GCA_CHANGELOG_EOF"
-          } >> "$GITHUB_OUTPUT"
-          cat dist/release_notes.md
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: guardian_calc_assistant
-          path: ${{ steps.build.outputs.zip }}
-
-      - name: Publish release
-        if: github.ref_type == 'tag'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "$GITHUB_REF_NAME" "${{ steps.build.outputs.zip }}" \
-            --title "Guardian Calculation Assistant $GITHUB_REF_NAME" \
-            --notes-file dist/release_notes.md
-
-      # Nexus Mods steps run on tags and manual runs, and are skipped until the
-      # repository variables NEXUS_GAME_DOMAIN, NEXUS_GAME_MOD_ID and
-      # NEXUS_FILE_ID exist. The mod page and its first file must be created by
-      # hand on Nexus Mods first.
-      - name: Resolve Nexus Mods mod
-        id: nexus
-        if: (github.ref_type == 'tag' || github.event_name == 'workflow_dispatch') && vars.NEXUS_GAME_DOMAIN != '' && vars.NEXUS_GAME_MOD_ID != '' && vars.NEXUS_FILE_ID != ''
-        env:
-          NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
-        run: |
-          # Assign first so a failed lookup fails the step (inside echo it would not).
-          mod_id=$(python tools/nexus_page.py resolve --game '${{ vars.NEXUS_GAME_DOMAIN }}' --game-mod-id '${{ vars.NEXUS_GAME_MOD_ID }}')
-          echo "Nexus Mods unique mod id: $mod_id"
-          echo "mod_id=$mod_id" >> "$GITHUB_OUTPUT"
-
-      # Adds the zip as a new version of the existing Nexus Mods file.
-      # Pinned to the commit of Nexus-Mods/upload-action v1.0.0-beta.11.
-      - name: Upload to Nexus Mods
-        if: github.ref_type == 'tag' && steps.nexus.outputs.mod_id != ''
-        uses: Nexus-Mods/upload-action@98532f7670c27cbecc78fae03fa3e278147827e2
-        with:
-          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
-          file_id: ${{ vars.NEXUS_FILE_ID }}
-          mod_id: ${{ steps.nexus.outputs.mod_id }}
-          filename: ${{ steps.build.outputs.zip }}
-          version: ${{ steps.build.outputs.version }}
-          display_name: Guardian Calculation Assistant ${{ steps.build.outputs.version }}
-          changelog: ${{ steps.changelog.outputs.text }}
-          archive_existing_version: true
-          update_mod_version: true
-
-      # Replaces the page summary and full description with docs/ (BBCode).
-      # The edit endpoint is marked Experimental in the Nexus Mods API v3.
-      - name: Update Nexus Mods page text
-        if: steps.nexus.outputs.mod_id != ''
-        env:
-          NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
-        run: |
-          python tools/nexus_page.py update --mod-id '${{ steps.nexus.outputs.mod_id }}' \
-            --summary docs/nexus_summary.txt --description docs/nexus_description.bbcode
+  release:
+    uses: MatheusAlves96/ck3-mod-maker/.github/workflows/mod-release.yml@v1
+    with:
+      pipeline_ref: v1
+      nexus_game_domain: ${{ vars.NEXUS_GAME_DOMAIN }}
+      nexus_game_mod_id: ${{ vars.NEXUS_GAME_MOD_ID }}
+      nexus_file_id: ${{ vars.NEXUS_FILE_ID }}
+    secrets:
+      NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}

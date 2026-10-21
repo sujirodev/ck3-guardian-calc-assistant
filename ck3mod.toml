@@ -1,0 +1,5 @@
+# Release settings read by the shared pipeline (ck3-mod-maker/pipeline). Only `include` goes into the zip.
+[mod]
+dir = "guardian_calc_assistant"
+title = "Guardian Calculation Assistant"
+include = ["descriptor.mod", "README.md", "LICENSE", "thumbnail.png", "common", "gui", "localization"]

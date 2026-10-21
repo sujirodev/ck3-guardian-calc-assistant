@@ -159,15 +159,15 @@ When the game updates, run step 2 against the new vanilla `interaction_confirmat
    git push origin main v1.0.1
    ```
 
-The `.github/workflows/release.yml` workflow builds the zip with `tools/package.py`, checks that the tag matches the `descriptor.mod` version, takes the notes from `CHANGELOG.md` (`tools/changelog.py`) and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
+The `.github/workflows/release.yml` workflow calls the shared pipeline from [ck3-mod-maker](https://github.com/MatheusAlves96/ck3-mod-maker) (`mod-release.yml`): it builds the zip from the files listed in `ck3mod.toml`, checks that the tag matches the `descriptor.mod` version, takes the notes from `CHANGELOG.md` and publishes the Release with the zip attached. On regular pushes and pull requests it only uploads the zip as a run artifact.
 
 ### Nexus Mods
 
 On tags, the workflow also publishes to Nexus Mods (API v3):
 
-1. resolves the unique mod id from the page URL number (`tools/nexus_page.py resolve`);
+1. resolves the unique mod id from the page URL number (`pipeline/nexus_page.py resolve` in ck3-mod-maker);
 2. uploads the zip, with that version's `CHANGELOG.md` entries as the Nexus changelog, as a new version of the existing main file with the official [Nexus-Mods/upload-action](https://github.com/Nexus-Mods/upload-action), archiving the previous version;
-3. replaces the page summary and full description with `docs/nexus_summary.txt` and `docs/nexus_description.bbcode` (`tools/nexus_page.py update`; the edit endpoint is marked Experimental by Nexus).
+3. replaces the page summary and full description with `docs/nexus_summary.txt` and `docs/nexus_description.bbcode` (`pipeline/nexus_page.py update`; the edit endpoint is marked Experimental by Nexus).
 
 Running the workflow manually (Actions > Package > Run workflow) repeats steps 1 and 3 only, to sync the page text without a release.
 
@@ -182,7 +182,7 @@ The Nexus steps are skipped until these are set in the repository settings:
 
 The mod page and its first file have to be created by hand on Nexus Mods; the action can only add versions to an existing file.
 
-To build the zip locally: `python tools/package.py` (output in `dist/`).
+To build the zip locally, from a ck3-mod-maker checkout: `python pipeline/package.py --mod <this folder>` (output in `dist/`).
 
 To test, run the game with `-debug_mode` and check `Documents/Paradox Interactive/Crusader Kings III/logs/error.log`. The warning `Event target 'tnt_ga_other' is used but is never set` is expected: that scope is filled in by the GUI.
 
