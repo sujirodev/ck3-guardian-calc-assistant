@@ -37,7 +37,30 @@ LINE = '''									hbox = {{
 									}}'''
 icons = "\n".join(ICON.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
 lines = "\n".join(LINE.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
-tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines)
+EFF = "@S@.ScriptValue('tnt_ga_effective_focus_public_value')"
+def odds_entry(rank):
+    pct = "100" if rank == 1 else f"[@S@.ScriptValue('tnt_ga_odds_rank_{rank}_value')|0]"
+    icons_r = "\n".join(
+        f'''										icon = {{
+											visible = "[EqualTo_CFixedPoint( {EFF}, '(CFixedPoint){f}' )]"
+											datacontext = "[GetTrait( 'education_{name}_{rank}' )]"
+											position = {{ 0 0 }}
+											size = {{ 30 30 }}
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}}''' for f, name in enumerate(FOCI, 1))
+    return f'''									hbox = {{
+										spacing = 4
+										widget = {{
+											size = {{ 30 30 }}
+{icons_r}
+										}}
+										text_single = {{
+											align = nobaseline
+											raw_text = "#V {pct}%#!"
+										}}
+									}}'''
+odds = "\n".join(odds_entry(r) for r in range(1, 5))
+tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds)
 
 def v(side,pick,other,gate,comment):
     s=f"GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', {W}.{other}.MakeScope )"

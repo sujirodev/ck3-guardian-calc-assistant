@@ -85,6 +85,8 @@ Vanilla details kept as they are:
 
 The projection then adds the average of the coming-of-age bonuses that already apply, in the vanilla order: studying at a university (+2.4), the dynasty's second Kin legacy (+2.4), Beacon of Learning, the ward's culture (+0.6 diplomacy / -1 martial) and the court tutor at the guardian's court, where the ward lives (about +2.4 to +3 depending on aptitude). Events, the court owner's patronage spouse and Confucian study are not predicted.
 
+The tooltip also shows the chance of reaching each level of the projected trait. The birthday rolls are independent, so the number of successes follows a binomial distribution; the coming-of-age bonuses enter at their average. This matters near a cut-off: an average of 12.7 points looks like rank 3, but rank 3 needs more than 12, which may only happen about half the time.
+
 The multipliers are read from the game's own script values (`educator_skill_modifier_factor`, `matching_childhood_trait_modifier_value`, etc.), so mods that change them are followed automatically.
 
 ## Installation
@@ -125,7 +127,7 @@ gui/
   tnt_ga_character_list_item.gui                    list row with the score (generated)
 localization/
   english/  braz_por/
-tools/                                              GUI generators, packager, Nexus Mods helper, image renderer
+tools/                                              GUI and rank-odds generators, packager, Nexus Mods helper, image renderer
 docs/                                               Nexus Mods page text (BBCode) and images (docs/images/src: HTML sources)
 .github/workflows/release.yml                       zip and Release on every tag
 ```

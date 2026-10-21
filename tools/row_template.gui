@@ -90,6 +90,17 @@
 									size = { 420 30 }
 @TRAIT_LINES@
 								}
+								# Odds of reaching each rank of the (effective) focus.
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									text = "tnt_ga_tt_odds_header"
+									default_format = "#low"
+								}
+								hbox = {
+									spacing = 14
+@ODDS@
+									expand = {}
+								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
