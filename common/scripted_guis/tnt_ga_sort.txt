@@ -69,6 +69,7 @@ tnt_ga_sort_collect = {
 		# Debug mode only: one log line per native row, with every factor.
 		if = {
 			limit = { debug_only = yes exists = scope:tnt_ga_other exists = scope:tnt_ga_sort_index }
+			save_scope_as = tnt_ga_dbg_char
 			save_temporary_scope_as = tnt_ga_guardian
 			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
 			save_scope_value_as = { name = tnt_ga_dbg_chance value = tnt_ga_chance_core_value }
