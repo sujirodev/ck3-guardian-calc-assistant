@@ -11,28 +11,30 @@ gca_gate=f"EqualTo_string( {W}.GetRecipientSecondaryLabel, Localize('recipient_s
 FOCI = ["diplomacy", "martial", "stewardship", "intrigue", "learning"]
 TRAITS = [(f * 10 + r, f"education_{name}_{r}") for f, name in enumerate(FOCI, 1) for r in range(1, 5)]
 MATCH = "EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint){code}' )"
-ICON = '''					icon = {{
-						visible = "[{match}]"
-						datacontext = "[GetTrait( '{key}' )]"
-						size = {{ 26 26 }}
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}}'''
-LINE = '''								hbox = {{
-									visible = "[{match}]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( '{key}' )]"
-									icon = {{
-										size = {{ 30 30 }}
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}}
-									text_single = {{
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}}
-									expand = {{}}
-								}}'''
+# All icons overlap inside one fixed footprint (the MCA pattern), so the
+# hidden ones can never take layout space.
+ICON = '''						icon = {{
+							visible = "[{match}]"
+							datacontext = "[GetTrait( '{key}' )]"
+							position = {{ 0 0 }}
+							size = {{ 26 26 }}
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}}'''
+LINE = '''									hbox = {{
+										visible = "[{match}]"
+										position = {{ 0 0 }}
+										spacing = 6
+										datacontext = "[GetTrait( '{key}' )]"
+										icon = {{
+											size = {{ 30 30 }}
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}}
+										text_single = {{
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}}
+									}}'''
 icons = "\n".join(ICON.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
 lines = "\n".join(LINE.format(match=MATCH.format(code=c), key=k) for c, k in TRAITS)
 tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines)

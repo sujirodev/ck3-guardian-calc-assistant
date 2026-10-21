@@ -37,145 +37,169 @@ types TntGuardianAssistant
 						raw_text = "#low GCA#! [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]%"
 					}
 					# Projected education trait icon (one per trait; only the match shows).
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+					widget = {
 						size = { 26 26 }
 						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-						datacontext = "[GetTrait( 'education_martial_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-						datacontext = "[GetTrait( 'education_martial_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-						datacontext = "[GetTrait( 'education_martial_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-						datacontext = "[GetTrait( 'education_martial_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-						datacontext = "[GetTrait( 'education_stewardship_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-						datacontext = "[GetTrait( 'education_stewardship_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-						datacontext = "[GetTrait( 'education_stewardship_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-						datacontext = "[GetTrait( 'education_stewardship_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-						datacontext = "[GetTrait( 'education_intrigue_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-						datacontext = "[GetTrait( 'education_intrigue_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-						datacontext = "[GetTrait( 'education_intrigue_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-						datacontext = "[GetTrait( 'education_intrigue_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-						datacontext = "[GetTrait( 'education_learning_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-						datacontext = "[GetTrait( 'education_learning_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-						datacontext = "[GetTrait( 'education_learning_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-						datacontext = "[GetTrait( 'education_learning_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+							datacontext = "[GetTrait( 'education_martial_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+							datacontext = "[GetTrait( 'education_martial_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+							datacontext = "[GetTrait( 'education_martial_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+							datacontext = "[GetTrait( 'education_martial_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+							datacontext = "[GetTrait( 'education_stewardship_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+							datacontext = "[GetTrait( 'education_stewardship_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+							datacontext = "[GetTrait( 'education_stewardship_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+							datacontext = "[GetTrait( 'education_stewardship_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+							datacontext = "[GetTrait( 'education_intrigue_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+							datacontext = "[GetTrait( 'education_intrigue_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+							datacontext = "[GetTrait( 'education_intrigue_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+							datacontext = "[GetTrait( 'education_intrigue_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+							datacontext = "[GetTrait( 'education_learning_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+							datacontext = "[GetTrait( 'education_learning_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+							datacontext = "[GetTrait( 'education_learning_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+							datacontext = "[GetTrait( 'education_learning_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
 					}
 					text_single = {
 						align = left|nobaseline
@@ -233,305 +257,288 @@ types TntGuardianAssistant
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+								widget = {
+									size = { 420 30 }
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
@@ -608,145 +615,169 @@ types TntGuardianAssistant
 						raw_text = "#low GCA#! [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]%"
 					}
 					# Projected education trait icon (one per trait; only the match shows).
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+					widget = {
 						size = { 26 26 }
 						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-						datacontext = "[GetTrait( 'education_martial_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-						datacontext = "[GetTrait( 'education_martial_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-						datacontext = "[GetTrait( 'education_martial_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-						datacontext = "[GetTrait( 'education_martial_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-						datacontext = "[GetTrait( 'education_stewardship_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-						datacontext = "[GetTrait( 'education_stewardship_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-						datacontext = "[GetTrait( 'education_stewardship_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-						datacontext = "[GetTrait( 'education_stewardship_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-						datacontext = "[GetTrait( 'education_intrigue_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-						datacontext = "[GetTrait( 'education_intrigue_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-						datacontext = "[GetTrait( 'education_intrigue_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-						datacontext = "[GetTrait( 'education_intrigue_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-						datacontext = "[GetTrait( 'education_learning_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-						datacontext = "[GetTrait( 'education_learning_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-						datacontext = "[GetTrait( 'education_learning_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-						datacontext = "[GetTrait( 'education_learning_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+							datacontext = "[GetTrait( 'education_martial_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+							datacontext = "[GetTrait( 'education_martial_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+							datacontext = "[GetTrait( 'education_martial_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+							datacontext = "[GetTrait( 'education_martial_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+							datacontext = "[GetTrait( 'education_stewardship_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+							datacontext = "[GetTrait( 'education_stewardship_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+							datacontext = "[GetTrait( 'education_stewardship_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+							datacontext = "[GetTrait( 'education_stewardship_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+							datacontext = "[GetTrait( 'education_intrigue_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+							datacontext = "[GetTrait( 'education_intrigue_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+							datacontext = "[GetTrait( 'education_intrigue_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+							datacontext = "[GetTrait( 'education_intrigue_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+							datacontext = "[GetTrait( 'education_learning_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+							datacontext = "[GetTrait( 'education_learning_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+							datacontext = "[GetTrait( 'education_learning_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+							datacontext = "[GetTrait( 'education_learning_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
 					}
 					text_single = {
 						align = left|nobaseline
@@ -804,305 +835,288 @@ types TntGuardianAssistant
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+								widget = {
+									size = { 420 30 }
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
@@ -1179,145 +1193,169 @@ types TntGuardianAssistant
 						raw_text = "#low GCA#! [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]%"
 					}
 					# Projected education trait icon (one per trait; only the match shows).
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+					widget = {
 						size = { 26 26 }
 						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-						datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-						datacontext = "[GetTrait( 'education_martial_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-						datacontext = "[GetTrait( 'education_martial_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-						datacontext = "[GetTrait( 'education_martial_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-						datacontext = "[GetTrait( 'education_martial_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-						datacontext = "[GetTrait( 'education_stewardship_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-						datacontext = "[GetTrait( 'education_stewardship_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-						datacontext = "[GetTrait( 'education_stewardship_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-						datacontext = "[GetTrait( 'education_stewardship_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-						datacontext = "[GetTrait( 'education_intrigue_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-						datacontext = "[GetTrait( 'education_intrigue_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-						datacontext = "[GetTrait( 'education_intrigue_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-						datacontext = "[GetTrait( 'education_intrigue_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-						datacontext = "[GetTrait( 'education_learning_1' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-						datacontext = "[GetTrait( 'education_learning_2' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-						datacontext = "[GetTrait( 'education_learning_3' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
-					}
-					icon = {
-						visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-						datacontext = "[GetTrait( 'education_learning_4' )]"
-						size = { 26 26 }
-						alwaystransparent = yes
-						texture = "[Trait.GetIcon( Character.Self )]"
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+							datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+							datacontext = "[GetTrait( 'education_martial_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+							datacontext = "[GetTrait( 'education_martial_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+							datacontext = "[GetTrait( 'education_martial_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+							datacontext = "[GetTrait( 'education_martial_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+							datacontext = "[GetTrait( 'education_stewardship_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+							datacontext = "[GetTrait( 'education_stewardship_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+							datacontext = "[GetTrait( 'education_stewardship_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+							datacontext = "[GetTrait( 'education_stewardship_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+							datacontext = "[GetTrait( 'education_intrigue_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+							datacontext = "[GetTrait( 'education_intrigue_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+							datacontext = "[GetTrait( 'education_intrigue_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+							datacontext = "[GetTrait( 'education_intrigue_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+							datacontext = "[GetTrait( 'education_learning_1' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+							datacontext = "[GetTrait( 'education_learning_2' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+							datacontext = "[GetTrait( 'education_learning_3' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
+						icon = {
+							visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+							datacontext = "[GetTrait( 'education_learning_4' )]"
+							position = { 0 0 }
+							size = { 26 26 }
+							alwaystransparent = yes
+							texture = "[Trait.GetIcon( Character.Self )]"
+						}
 					}
 					text_single = {
 						align = left|nobaseline
@@ -1375,305 +1413,288 @@ types TntGuardianAssistant
 									raw_text = "[Localize('tnt_ga_tt_projection')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_current_points_value')|1] + [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_rolls_left_value')|0] x 2 x [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_chance_value')|0]% = #V [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_points_value')|1]#! (~[Localize('tnt_ga_tt_rank')] [GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_rank_value')|0])"
 								}
 								# Projected trait: icon + name (one per trait; only the match shows).
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+								widget = {
+									size = { 420 30 }
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)11' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)12' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_diplomacy_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)13' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)14' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_diplomacy_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_martial_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)21' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)22' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_stewardship_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)23' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)24' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_martial_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_intrigue_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)31' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_1' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_2' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)32' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_3' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+									hbox = {
+										visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
+										position = { 0 0 }
+										spacing = 6
+										datacontext = "[GetTrait( 'education_learning_4' )]"
+										icon = {
+											size = { 30 30 }
+											texture = "[Trait.GetIcon( Character.Self )]"
+										}
+										text_single = {
+											align = nobaseline
+											raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
+										}
 									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)33' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)34' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_stewardship_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)41' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)42' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)43' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)44' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_intrigue_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)51' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_1' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)52' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_2' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)53' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_3' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
-								}
-								hbox = {
-									visible = "[EqualTo_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_projected_trait_value'), '(CFixedPoint)54' )]"
-									layoutpolicy_horizontal = expanding
-									spacing = 6
-									datacontext = "[GetTrait( 'education_learning_4' )]"
-									icon = {
-										size = { 30 30 }
-										texture = "[Trait.GetIcon( Character.Self )]"
-									}
-									text_single = {
-										align = nobaseline
-										raw_text = "[SelectLocalization( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ), 'tnt_ga_tt_projected_trait', 'tnt_ga_tt_assumed_trait' )] #V [Trait.GetNameNoTooltip( Character.Self )]#!"
-									}
-									expand = {}
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
