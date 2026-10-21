@@ -21,4 +21,5 @@ tnt_ga_sort_clear_all_effect = {
 	if = { limit = { has_variable = tnt_ga_sort_received } remove_variable = tnt_ga_sort_received }
 	if = { limit = { has_variable = tnt_ga_sort_ward } remove_variable = tnt_ga_sort_ward }
 	if = { limit = { has_variable = tnt_ga_sort_day } remove_variable = tnt_ga_sort_day }
+	if = { limit = { has_variable = tnt_ga_dbg_logged } remove_variable = tnt_ga_dbg_logged }
 }

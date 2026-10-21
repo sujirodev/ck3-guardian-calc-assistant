@@ -427,49 +427,73 @@ tnt_ga_ward_culture_bonus_value = {
 	}
 }
 
-# Court where the ward comes of age: the guardian's court.
-# Best court tutor aptitude there (0..4, the tutor vanilla picks), or -1 if
-# none. Without a tutor, a guru is used and judged by the tutor aptitude.
+# Court where the ward comes of age: the guardian's court, i.e. the
+# guardian when ruling, otherwise the guardian's court owner.
+# Root = that court owner. Best court tutor aptitude there (0..4, the tutor
+# vanilla picks), or -1 if none. Without a tutor, a guru is used and judged
+# by the tutor aptitude, as vanilla does.
+tnt_ga_court_tutor_aptitude_value = {
+	value = -1
+	if = {
+		limit = {
+			employs_court_position = court_tutor_court_position
+			any_court_position_holder = { type = court_tutor_court_position }
+		}
+		every_court_position_holder = {
+			type = court_tutor_court_position
+			min = aptitude:court_tutor_court_position
+		}
+	}
+	else_if = {
+		limit = {
+			employs_court_position = court_guru_court_position
+			any_court_position_holder = { type = court_guru_court_position }
+		}
+		every_court_position_holder = {
+			type = court_guru_court_position
+			min = aptitude:court_tutor_court_position
+		}
+	}
+}
+
+tnt_ga_court_tutor_confucian_value = {
+	value = 0
+	if = {
+		limit = {
+			any_court_position_holder = {
+				type = court_tutor_court_position
+				has_trait = confucian_education
+			}
+		}
+		value = 1
+	}
+}
+
 tnt_ga_tutor_aptitude_value = {
 	value = -1
 	scope:tnt_ga_guardian = {
-		court_owner ?= {
-			if = {
-				limit = {
-					employs_court_position = court_tutor_court_position
-					any_court_position_holder = { type = court_tutor_court_position }
-				}
-				every_court_position_holder = {
-					type = court_tutor_court_position
-					min = aptitude:court_tutor_court_position
-				}
-			}
-			else_if = {
-				limit = {
-					employs_court_position = court_guru_court_position
-					any_court_position_holder = { type = court_guru_court_position }
-				}
-				every_court_position_holder = {
-					type = court_guru_court_position
-					min = aptitude:court_tutor_court_position
-				}
-			}
+		if = {
+			limit = { is_ruler = yes }
+			value = tnt_ga_court_tutor_aptitude_value
+		}
+		else_if = {
+			limit = { exists = court_owner }
+			court_owner = { value = tnt_ga_court_tutor_aptitude_value }
 		}
 	}
 }
 
 tnt_ga_tutor_confucian_value = {
 	value = 0
-	if = {
-		limit = {
-			scope:tnt_ga_guardian.court_owner ?= {
-				any_court_position_holder = {
-					type = court_tutor_court_position
-					has_trait = confucian_education
-				}
-			}
+	scope:tnt_ga_guardian = {
+		if = {
+			limit = { is_ruler = yes }
+			value = tnt_ga_court_tutor_confucian_value
 		}
-		value = 1
+		else_if = {
+			limit = { exists = court_owner }
+			court_owner = { value = tnt_ga_court_tutor_confucian_value }
+		}
 	}
 }
 

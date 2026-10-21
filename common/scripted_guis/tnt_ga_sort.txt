@@ -13,6 +13,7 @@ tnt_ga_sort_start = {
 	is_valid = { is_ai = no }
 	effect = {
 		tnt_ga_sort_clear_all_effect = yes
+		if = { limit = { has_variable = tnt_ga_dbg_logged } remove_variable = tnt_ga_dbg_logged }
 		set_variable = { name = tnt_ga_sort_state value = 3 }
 		set_variable = { name = tnt_ga_sort_expected value = 0 }
 		set_variable = { name = tnt_ga_sort_received value = 0 }
@@ -66,10 +67,35 @@ tnt_ga_sort_collect = {
 	# Every gate is inside the effect: late callbacks after clear/ready are no-ops.
 	effect = {
 		save_temporary_scope_as = tnt_ga_sort_candidate
-		# Debug mode only, first 40 native rows: dump every factor. debug_log
-		# messages cannot read values saved during the effect, debug_log_scopes can.
+		# Debug mode only: dump every factor for the first 10 native rows and,
+		# up to 60 logged rows per sort, every row with a coming-of-age bonus.
+		# debug_log messages cannot read values saved during the effect,
+		# debug_log_scopes can.
 		if = {
-			limit = { debug_only = yes exists = scope:tnt_ga_other exists = scope:tnt_ga_sort_index scope:tnt_ga_sort_index < 40 }
+			limit = {
+				debug_only = yes
+				exists = scope:tnt_ga_other
+				exists = scope:tnt_ga_sort_index
+				exists = scope:actor
+				OR = {
+					NOT = { exists = scope:actor.var:tnt_ga_dbg_logged }
+					scope:actor.var:tnt_ga_dbg_logged < 60
+				}
+				OR = {
+					scope:tnt_ga_sort_index < 10
+					is_ruler = yes
+					court_owner ?= {
+						OR = {
+							employs_court_position = court_tutor_court_position
+							employs_court_position = court_guru_court_position
+						}
+					}
+					scope:tnt_ga_other = { has_character_modifier = studying_at_university_modifier }
+					scope:tnt_ga_other.dynasty ?= { has_dynasty_perk = kin_legacy_2 }
+					culture = { has_cultural_parameter = guardian_education_better_outcomes }
+				}
+			}
+			scope:actor = { change_variable = { name = tnt_ga_dbg_logged add = 1 } }
 			save_scope_as = tnt_ga_dbg_char
 			save_temporary_scope_as = tnt_ga_guardian
 			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
