@@ -126,4 +126,8 @@ if len(sys.argv) > 5:
     # child without a guardian never builds a scope from a null character.
     ct_scope = "GuiScope.SetRoot( Character.MakeScope )"
     ct = ct.replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds).replace("@S@", ct_scope)
-    open(sys.argv[5], 'w', encoding='utf-8', newline='\n').write('﻿' + ct)
+    if sys.argv[5] == sys.argv[2]:
+        # Same file as the list row: append the tooltip types after it.
+        open(sys.argv[5], 'a', encoding='utf-8', newline='\n').write('\n' + ct)
+    else:
+        open(sys.argv[5], 'w', encoding='utf-8', newline='\n').write('﻿' + ct)
