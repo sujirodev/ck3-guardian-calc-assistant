@@ -23,6 +23,8 @@ types TntGuardianAssistant
 				# Vanilla, picking the secondary actor: the other pair member is the secondary recipient.
 				hbox = {
 					name = "tnt_ga_grade_a"
+					# Only one trait icon is visible; hidden ones must not take space.
+					ignoreinvisible = yes
 					min_height = 26
 					spacing = 4
 					alwaystransparent = no
@@ -191,6 +193,7 @@ types TntGuardianAssistant
 
 							vbox = {
 								set_parent_size_to_minimum = yes
+								ignoreinvisible = yes
 								margin = { 20 10 }
 								spacing = 4
 
@@ -591,6 +594,8 @@ types TntGuardianAssistant
 				# Vanilla, picking the secondary recipient: the other pair member is the secondary actor.
 				hbox = {
 					name = "tnt_ga_grade_b"
+					# Only one trait icon is visible; hidden ones must not take space.
+					ignoreinvisible = yes
 					min_height = 26
 					spacing = 4
 					alwaystransparent = no
@@ -759,6 +764,7 @@ types TntGuardianAssistant
 
 							vbox = {
 								set_parent_size_to_minimum = yes
+								ignoreinvisible = yes
 								margin = { 20 10 }
 								spacing = 4
 
@@ -1159,6 +1165,8 @@ types TntGuardianAssistant
 				# GCA search: the row is a guardian candidate, the recipient is the ward.
 				hbox = {
 					name = "tnt_ga_grade_c"
+					# Only one trait icon is visible; hidden ones must not take space.
+					ignoreinvisible = yes
 					min_height = 26
 					spacing = 4
 					alwaystransparent = no
@@ -1327,6 +1335,7 @@ types TntGuardianAssistant
 
 							vbox = {
 								set_parent_size_to_minimum = yes
+								ignoreinvisible = yes
 								margin = { 20 10 }
 								spacing = 4
 

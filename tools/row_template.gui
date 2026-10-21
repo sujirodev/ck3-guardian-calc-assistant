@@ -1,6 +1,8 @@
 				# @COMMENT@
 				hbox = {
 					name = "tnt_ga_grade_@SIDE@"
+					# Only one trait icon is visible; hidden ones must not take space.
+					ignoreinvisible = yes
 					min_height = 26
 					spacing = 4
 					alwaystransparent = no
@@ -30,6 +32,7 @@
 
 							vbox = {
 								set_parent_size_to_minimum = yes
+								ignoreinvisible = yes
 								margin = { 20 10 }
 								spacing = 4
 
