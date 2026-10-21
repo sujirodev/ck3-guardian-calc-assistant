@@ -1,0 +1,59 @@
+{
+  "mod": "guardian_calc_assistant",
+  "features": [
+    {
+      "id": "f01",
+      "name": "GCA score on every candidate",
+      "description": "Educate Child, Offer Guardianship and Offer Ward rows show the chance of education progress, the projected trait icon and the university icon",
+      "depends_on": [],
+      "status": "done",
+      "test": "open Educate Child for a child at your court and check the GCA column; error.log has nothing from tnt_ga except the expected tnt_ga_other warning",
+      "evidence": "Shipped in 1.0.2 (CHANGELOG, 2026-10-21); no recorded in-game check yet"
+    },
+    {
+      "id": "f02",
+      "name": "Breakdown tooltip",
+      "description": "Progress weights, point projection factor by factor, odds of each trait level 1 to 5 (with and without a university) and pair notes",
+      "depends_on": ["f01"],
+      "status": "done",
+      "test": "hover the GCA score; check the projection lines and the per-level odds",
+      "evidence": "Shipped in 1.0.2 (CHANGELOG, 2026-10-21); no recorded in-game check yet"
+    },
+    {
+      "id": "f03",
+      "name": "Find Guardian (GCA) interaction",
+      "description": "Searches your court and every court in diplomatic range, then opens Educate Child or Offer Ward pre-filled",
+      "depends_on": [],
+      "status": "done",
+      "test": "use Find Guardian (GCA) on a child at your court without a guardian; pick a courtier and a foreign candidate and check which vanilla interaction opens",
+      "evidence": "Shipped in 1.0.0 (CHANGELOG, 2026-10-20); no recorded in-game check yet"
+    },
+    {
+      "id": "f04",
+      "name": "Sort by score",
+      "description": "The search opens sorted by the highest score; GCA: by score and Default list buttons",
+      "depends_on": ["f01", "f03"],
+      "status": "done",
+      "test": "open Find Guardian and check the order; let a game day pass with the window open (1.0.2 fix)",
+      "evidence": "Shipped in 1.0.0, fixed in 1.0.2 (CHANGELOG); no recorded in-game check yet"
+    },
+    {
+      "id": "f05",
+      "name": "Quick / Intelligent / Genius filter",
+      "description": "Checkboxes above the list and the native Traits filter in the filter panel",
+      "depends_on": ["f03"],
+      "status": "done",
+      "test": "tick each box and check the list only shows characters with that trait",
+      "evidence": "Shipped in 1.0.0 (CHANGELOG, 2026-10-20); no recorded in-game check yet"
+    },
+    {
+      "id": "f06",
+      "name": "Release through the shared pipeline",
+      "description": "Replace the repo's own package/changelog/Nexus scripts and workflow with the reusable ck3-mod-maker workflow, keeping the same zip",
+      "depends_on": [],
+      "status": "in_progress",
+      "test": "pipeline/package.py from ck3-mod-maker builds the same zip as the old tools/package.py; the Package workflow run on push is green",
+      "evidence": ""
+    }
+  ]
+}

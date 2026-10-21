@@ -32,4 +32,4 @@ Use the terms the game itself uses in your language for "guardian", "ward", "edu
 
 ## Code
 
-The two GUI files are generated; see [Development](README.md#development) in the README. Test with `-debug_mode` and check `logs/error.log` before opening a pull request.
+The two GUI files are generated; see [Development](README.md#development) in the README. Current state and the features still to check are in `dev/progress.md` and `dev/features.json`; `CLAUDE.md` has the working rules. Test with `-debug_mode` and check `logs/error.log` before opening a pull request.
