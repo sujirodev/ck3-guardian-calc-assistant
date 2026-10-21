@@ -1,4 +1,4 @@
-version="1.0.1"
+version="1.0.2"
 name="Guardian Calculation Assistant"
 tags={
 	"Interface"
