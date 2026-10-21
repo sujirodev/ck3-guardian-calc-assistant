@@ -14,6 +14,11 @@
 						alwaystransparent = yes
 						raw_text = "#low GCA#! [@S@.ScriptValue('tnt_ga_chance_value')|0]%"
 					}
+					# Gap between the score and the trait icon.
+					widget = {
+						size = { 8 26 }
+						alwaystransparent = yes
+					}
 					# Projected education trait icon (one per trait; only the match shows).
 					widget = {
 						size = { 26 26 }
