@@ -103,6 +103,12 @@
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
+									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' ) )]"
+									text = "tnt_ga_tt_rank5_locked"
+									default_format = "#low"
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
 									visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
 									raw_text = "#low [Localize('tnt_ga_tt_no_focus')] #V [Localize( Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)1' ), 'education_diplomacy', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)2' ), 'education_martial', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)3' ), 'education_stewardship', Select_CString( EqualTo_CFixedPoint( @S@.ScriptValue('tnt_ga_effective_focus_public_value'), '(CFixedPoint)4' ), 'education_intrigue', 'education_learning' ) ) ) ) )]#!#!"
 								}

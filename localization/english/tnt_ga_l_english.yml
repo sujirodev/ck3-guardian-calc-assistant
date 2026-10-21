@@ -49,6 +49,7 @@
  tnt_ga_proj_culture:0 "Ward's culture"
  tnt_ga_proj_tutor:0 "Court tutor at the guardian's court (average)"
  tnt_ga_tt_odds_header:0 "Chance of reaching each trait level (bonuses at their average):"
+ tnt_ga_tt_rank5_locked:0 "Rank 5 needs the dynasty legitimacy legacy for this skill or an estate with the tier 5 education upgrade."
  # Debug mode only (written to logs/debug.log).
  tnt_ga_debug_start:0 "GCA sort start | ward [SCOPE.sC('tnt_ga_sort_ward').GetFullNameNoTooltip] (id [SCOPE.sC('tnt_ga_sort_ward').GetID]) | rows [SCOPE.GetValue('tnt_ga_sort_n')|0]"
  tnt_ga_debug_row:0 "GCA row [SCOPE.GetValue('tnt_ga_sort_index')|0] | [SCOPE.sC('tnt_ga_dbg_char').GetFullNameNoTooltip] (id [SCOPE.sC('tnt_ga_dbg_char').GetID]) | chance [SCOPE.GetValue('tnt_ga_dbg_chance')|2]% S [SCOPE.GetValue('tnt_ga_dbg_s')|1] F [SCOPE.GetValue('tnt_ga_dbg_f')|1] | focus [SCOPE.GetValue('tnt_ga_dbg_focus')|0] real [SCOPE.GetValue('tnt_ga_dbg_hasfocus')|0] | points [SCOPE.GetValue('tnt_ga_dbg_current')|1] + rolls [SCOPE.GetValue('tnt_ga_dbg_rolls')|0] -> [SCOPE.GetValue('tnt_ga_dbg_pts')|2] rank [SCOPE.GetValue('tnt_ga_dbg_rank')|0] trait [SCOPE.GetValue('tnt_ga_dbg_trait')|0] | univ [SCOPE.GetValue('tnt_ga_dbg_univ')|1] kin [SCOPE.GetValue('tnt_ga_dbg_kin')|1] beacon [SCOPE.GetValue('tnt_ga_dbg_beacon')|0] culture [SCOPE.GetValue('tnt_ga_dbg_culture')|1] tutor_apt [SCOPE.GetValue('tnt_ga_dbg_tutorapt')|0] tutor [SCOPE.GetValue('tnt_ga_dbg_tutor')|2]"

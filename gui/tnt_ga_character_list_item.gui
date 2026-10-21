@@ -739,7 +739,6 @@ types TntGuardianAssistant
 										}
 									}
 									hbox = {
-										visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' )]"
 										spacing = 4
 										widget = {
 											size = { 30 30 }
@@ -785,6 +784,12 @@ types TntGuardianAssistant
 										}
 									}
 									expand = {}
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryRecipient.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' ) )]"
+									text = "tnt_ga_tt_rank5_locked"
+									default_format = "#low"
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
@@ -1563,7 +1568,6 @@ types TntGuardianAssistant
 										}
 									}
 									hbox = {
-										visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' )]"
 										spacing = 4
 										widget = {
 											size = { 30 30 }
@@ -1609,6 +1613,12 @@ types TntGuardianAssistant
 										}
 									}
 									expand = {}
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetSecondaryActor.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' ) )]"
+									text = "tnt_ga_tt_rank5_locked"
+									default_format = "#low"
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding
@@ -2387,7 +2397,6 @@ types TntGuardianAssistant
 										}
 									}
 									hbox = {
-										visible = "[GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' )]"
 										spacing = 4
 										widget = {
 											size = { 30 30 }
@@ -2433,6 +2442,12 @@ types TntGuardianAssistant
 										}
 									}
 									expand = {}
+								}
+								text_single = {
+									layoutpolicy_horizontal = expanding
+									visible = "[Not( GreaterThan_CFixedPoint( GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', CharacterInteractionConfirmationWindow.GetRecipient.MakeScope ).ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' ) )]"
+									text = "tnt_ga_tt_rank5_locked"
+									default_format = "#low"
 								}
 								text_single = {
 									layoutpolicy_horizontal = expanding

@@ -10,7 +10,7 @@ Each entry is one line starting with `- ` (one changelog line on Nexus Mods).
 - The tooltip names the projected education trait, with its icon.
 - Children without an education focus yet now get a projection too, assuming the guardian's best skill as the focus; the icon shows a ? and the tooltip names the assumed focus.
 - With an assumed focus, the child's childhood trait now counts for or against it, as it will once that focus is chosen.
-- The tooltip shows the chance of reaching each level of the projected education trait, from the exact odds of the birthday rolls.
+- The tooltip shows the chance of reaching each level of the projected education trait, from the exact odds of the birthday rolls, including rank 5 (0% unless the dynasty legacy or estate upgrade unlocks it).
 - The projection now adds the average coming-of-age bonuses that already apply: university, dynasty kin legacy, the ward's culture and the court tutor at the guardian's court, shown factor by factor in the tooltip.
 
 ## [1.0.1] - 2026-10-20

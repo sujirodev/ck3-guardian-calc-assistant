@@ -48,10 +48,7 @@ def odds_entry(rank):
 											size = {{ 30 30 }}
 											texture = "[Trait.GetIcon( Character.Self )]"
 										}}''' for f, name in enumerate(FOCI, 1))
-    # Rank 5 only exists for eligible wards.
-    vis = "" if rank < 5 else ("\n\t\t\t\t\t\t\t\t\t\tvisible = \"[GreaterThan_CFixedPoint( "
-                               "@S@.ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' )]\"")
-    return f'''									hbox = {{{vis}
+    return f'''									hbox = {{
 										spacing = 4
 										widget = {{
 											size = {{ 30 30 }}
