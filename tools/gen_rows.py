@@ -48,7 +48,10 @@ def odds_entry(rank):
 											size = {{ 30 30 }}
 											texture = "[Trait.GetIcon( Character.Self )]"
 										}}''' for f, name in enumerate(FOCI, 1))
-    return f'''									hbox = {{
+    # Rank 5 only exists for eligible wards.
+    vis = "" if rank < 5 else ("\n\t\t\t\t\t\t\t\t\t\tvisible = \"[GreaterThan_CFixedPoint( "
+                               "@S@.ScriptValue('tnt_ga_rank5_eligible_public_value'), '(CFixedPoint)0' )]\"")
+    return f'''									hbox = {{{vis}
 										spacing = 4
 										widget = {{
 											size = {{ 30 30 }}
@@ -59,7 +62,7 @@ def odds_entry(rank):
 											raw_text = "#V {pct}%#!"
 										}}
 									}}'''
-odds = "\n".join(odds_entry(r) for r in range(1, 5))
+odds = "\n".join(odds_entry(r) for r in range(1, 6))
 tpl = tpl.replace("@TRAIT_ICONS@", icons).replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds)
 
 def v(side,pick,other,gate,comment):

@@ -1,8 +1,10 @@
 ﻿# GCA native-list score sorting for the GCA guardian search, ported from MCA.
 # Start/context/finalize/clear are player-rooted; collect is candidate-rooted
 # and receives scope:actor = player. All persistent writes target the player.
-# Context = native list size + ward (the interaction recipient) + game day;
-# any change invalidates the snapshot and the GUI clears it.
+# Context = native list size + ward (the interaction recipient); any change
+# invalidates the snapshot and the GUI clears it. The game day is stored but
+# not checked: collecting a long list can span a day change while unpaused,
+# and the per-row score and identity guards already hide stale rows.
 # Packed key = (score + 10000) * 100000 + 99999 - native index, score being
 # the chance in tenths of a percent. Sort descending by score; equal scores
 # keep native order. Decode by subtracting the integer remainder first.
@@ -57,7 +59,6 @@ tnt_ga_sort_context_valid = {
 		has_variable = tnt_ga_sort_day
 		var:tnt_ga_sort_expected = scope:tnt_ga_sort_n
 		var:tnt_ga_sort_ward = { this = scope:tnt_ga_sort_ward }
-		var:tnt_ga_sort_day = scope:tnt_ga_sort_day
 	}
 }
 
@@ -95,7 +96,10 @@ tnt_ga_sort_collect = {
 					culture = { has_cultural_parameter = guardian_education_better_outcomes }
 				}
 			}
-			scope:actor = { change_variable = { name = tnt_ga_dbg_logged add = 1 } }
+			scope:actor = {
+				if = { limit = { has_variable = tnt_ga_dbg_logged } change_variable = { name = tnt_ga_dbg_logged add = 1 } }
+				else = { set_variable = { name = tnt_ga_dbg_logged value = 1 } }
+			}
 			save_scope_as = tnt_ga_dbg_char
 			save_temporary_scope_as = tnt_ga_guardian
 			scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
@@ -144,8 +148,7 @@ tnt_ga_sort_collect = {
 						has_variable = tnt_ga_sort_ward
 						var:tnt_ga_sort_ward = { this = scope:tnt_ga_other }
 						var:tnt_ga_sort_expected = scope:tnt_ga_sort_n
-						var:tnt_ga_sort_day = scope:tnt_ga_sort_day
-						var:tnt_ga_sort_received < var:tnt_ga_sort_expected
+										var:tnt_ga_sort_received < var:tnt_ga_sort_expected
 						scope:tnt_ga_sort_index >= 0
 						scope:tnt_ga_sort_index < var:tnt_ga_sort_expected
 						scope:tnt_ga_sort_score >= -10000

@@ -966,3 +966,71 @@ tnt_ga_effective_focus_public_value = {
 		value = tnt_ga_effective_focus_value
 	}
 }
+
+########################################################################
+# Rank 5: above education_level_3 vanilla rolls 50/50 between rank 4 and
+# rank 5, and rank 5 is only available with the dynasty legitimacy legacy
+# for that skill, or an estate with the tier 5 education upgrade (the
+# ward's own, or the liege's when the ward does not rule).
+########################################################################
+
+tnt_ga_rank5_eligible_value = {
+	value = 0
+	if = {
+		limit = {
+			OR = {
+		AND = {
+			tnt_ga_effective_focus_value = 1
+			scope:tnt_ga_ward.dynasty ?= { exists = var:ce1_legitimacy_legacy_5_education_diplomacy_5 }
+		}
+		AND = {
+			tnt_ga_effective_focus_value = 2
+			scope:tnt_ga_ward.dynasty ?= { exists = var:ce1_legitimacy_legacy_5_education_martial_5 }
+		}
+		AND = {
+			tnt_ga_effective_focus_value = 3
+			scope:tnt_ga_ward.dynasty ?= { exists = var:ce1_legitimacy_legacy_5_education_stewardship_5 }
+		}
+		AND = {
+			tnt_ga_effective_focus_value = 4
+			scope:tnt_ga_ward.dynasty ?= { exists = var:ce1_legitimacy_legacy_5_education_intrigue_5 }
+		}
+		AND = {
+			tnt_ga_effective_focus_value = 5
+			scope:tnt_ga_ward.dynasty ?= { exists = var:ce1_legitimacy_legacy_5_education_learning_5 }
+		}
+				scope:tnt_ga_ward.domicile ?= { has_domicile_parameter = estate_unlock_tier_5_education }
+				scope:tnt_ga_ward = {
+					is_ruler = no
+					liege ?= { domicile ?= { has_domicile_parameter = estate_unlock_tier_5_education } }
+				}
+			}
+		}
+		value = 1
+	}
+}
+
+tnt_ga_rank5_eligible_public_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_root_is_guardian_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_guardian
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_ward }
+		value = tnt_ga_rank5_eligible_value
+	}
+	else_if = {
+		limit = { tnt_ga_root_is_ward_trigger_value > 0 }
+		save_temporary_scope_as = tnt_ga_ward
+		scope:tnt_ga_other = { save_temporary_scope_as = tnt_ga_guardian }
+		value = tnt_ga_rank5_eligible_value
+	}
+}
+
+tnt_ga_odds_rank_5_value = {
+	value = 0
+	if = {
+		limit = { tnt_ga_rank5_eligible_public_value > 0 }
+		value = tnt_ga_odds_rank_4_value
+		multiply = 0.5
+	}
+}
