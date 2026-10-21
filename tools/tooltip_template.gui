@@ -1,0 +1,117 @@
+# Character tooltip with the GCA education block (generated into
+# gui/shared/zz_tnt_ga_character_tooltip.gui by tools/gen_rows.py).
+# Redefines only the vanilla type container_character_tooltip from
+# gui/shared/cooltip.gui (copied as is) and fills its empty extra_info block.
+types TntGaCharacterTooltip
+{
+	type container_character_tooltip = container
+	{
+		alwaystransparent = no
+
+		using = DefaultTooltipBackground
+
+		flowcontainer = {
+			direction = vertical
+
+			widget = {
+				name = "portrait area"
+				size = { 100% 210 }
+
+				background = {
+					using = Background_Area_Dark
+					margin = { -3 -3 }
+					margin_bottom = 10
+
+					modify_texture = {
+						name = "mask"
+						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
+						blend_mode = alphamultiply
+						mirror = vertical
+					}
+				}
+				datacontext = "[GetIllustration( 'character_view_bg' )]"
+				background = {
+					texture = "[Illustration.GetTexture( Character.MakeScope )]"
+					fittype = centercrop
+					#alpha = 0.7
+
+					using = Mask_Rough_Edges
+
+					modify_texture = {
+						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
+						blend_mode = alphamultiply
+					}
+
+					modify_texture = {
+						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
+						blend_mode = alphamultiply
+						mirror = vertical
+						alpha = 0.7
+					}
+				}
+
+				portrait_torso = {
+					name = "char"
+					parentanchor = bottom|hcenter
+
+					blockoverride "portrait_button_template_tooltip" {}
+				}
+			}
+
+			container = {
+				cooltip_type = {
+					blockoverride "bg_visible" {
+						visible = no
+					}
+
+					blockoverride "char_tooltip_opinion"
+					{
+						# don't show opinion again
+					}
+
+					# GCA: education progress of a child with a guardian.
+					blockoverride "extra_info"
+					{
+						vbox = {
+							layoutpolicy_horizontal = expanding
+							visible = "[And( Character.HasGuardian, GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' ) )]"
+							ignoreinvisible = yes
+							margin_top = 6
+							spacing = 3
+
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								text = "tnt_ga_ct_header"
+								default_format = "#T"
+							}
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								raw_text = "[Localize('tnt_ga_ct_guardian')] [Character.GetRelationOfType('guardian').GetShortUINameNoTooltip] | #V [@S@.ScriptValue('tnt_ga_chance_value')|0]%#! [Localize('tnt_ga_ct_per_birthday')]"
+							}
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								raw_text = "[Localize('tnt_ga_ct_points')] #V [@S@.ScriptValue('tnt_ga_current_points_value')|1]#! | [Localize('tnt_ga_tt_projection')] #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! ([@S@.ScriptValue('tnt_ga_rolls_left_value')|0] [Localize('tnt_ga_ct_birthdays_left')])"
+							}
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+								text = "tnt_ga_ct_no_focus"
+								default_format = "#low"
+							}
+							widget = {
+								size = { 420 30 }
+@TRAIT_LINES@
+							}
+							hbox = {
+								spacing = 14
+@ODDS@
+								expand = {}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}

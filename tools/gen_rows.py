@@ -1,5 +1,5 @@
 # Generates gui/tnt_ga_character_list_item.gui from tools/row_template.gui.
-# Usage: python tools/gen_rows.py tools/row_template.gui gui/tnt_ga_character_list_item.gui tools/gates.txt
+# Usage: python tools/gen_rows.py tools/row_template.gui gui/tnt_ga_character_list_item.gui tools/gates.txt [tools/tooltip_template.gui gui/shared/zz_tnt_ga_character_tooltip.gui]
 import sys
 tpl=open(sys.argv[1],encoding='utf-8').read()
 W="CharacterInteractionConfirmationWindow"
@@ -118,3 +118,11 @@ types TntGuardianAssistant
 open(sys.argv[2],'w',encoding='utf-8',newline='\n').write(out)
 # Gates for tools/gen_confirm.py, one per line.
 open(sys.argv[3],'w',encoding='utf-8').write(vanilla_gate + "\n" + gca_gate + "\n")
+
+# Optional: character tooltip (child with a guardian). The guardian is the
+# other pair member, so every public tnt_ga_* value works unchanged.
+if len(sys.argv) > 5:
+    ct = open(sys.argv[4], encoding='utf-8').read()
+    ct_scope = "GuiScope.SetRoot( Character.MakeScope ).AddScope( 'tnt_ga_other', Character.GetRelationOfType('guardian').MakeScope )"
+    ct = ct.replace("@TRAIT_LINES@", lines).replace("@ODDS@", odds).replace("@S@", ct_scope)
+    open(sys.argv[5], 'w', encoding='utf-8', newline='\n').write('﻿' + ct)
