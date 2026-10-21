@@ -19,6 +19,19 @@
 						size = { 8 26 }
 						alwaystransparent = yes
 					}
+					# University available at the guardian's ruler's realm. Fixed
+					# footprint, so the trait icon never shifts.
+					widget = {
+						size = { 22 26 }
+						alwaystransparent = yes
+						icon = {
+							visible = "[GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_university_available_value'), '(CFixedPoint)0' )]"
+							position = { 0 2 }
+							size = { 22 22 }
+							alwaystransparent = yes
+							texture = "gfx/interface/icons/building_types/icon_building_university.dds"
+						}
+					}
 					# Projected education trait icon (one per trait; only the match shows).
 					widget = {
 						size = { 26 26 }
