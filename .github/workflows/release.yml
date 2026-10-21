@@ -71,7 +71,10 @@ jobs:
         env:
           NEXUSMODS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY }}
         run: |
-          echo "mod_id=$(python tools/nexus_page.py resolve --game '${{ vars.NEXUS_GAME_DOMAIN }}' --game-mod-id '${{ vars.NEXUS_GAME_MOD_ID }}')" >> "$GITHUB_OUTPUT"
+          # Assign first so a failed lookup fails the step (inside echo it would not).
+          mod_id=$(python tools/nexus_page.py resolve --game '${{ vars.NEXUS_GAME_DOMAIN }}' --game-mod-id '${{ vars.NEXUS_GAME_MOD_ID }}')
+          echo "Nexus Mods unique mod id: $mod_id"
+          echo "mod_id=$mod_id" >> "$GITHUB_OUTPUT"
 
       # Adds the zip as a new version of the existing Nexus Mods file.
       # Pinned to the commit of Nexus-Mods/upload-action v1.0.0-beta.11.
