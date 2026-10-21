@@ -1,113 +1,552 @@
 # Character tooltip with the GCA education block (generated into
 # gui/shared/zz_tnt_ga_character_tooltip.gui by tools/gen_rows.py).
-# Redefines only the vanilla type container_character_tooltip from
-# gui/shared/cooltip.gui (copied as is) and fills its empty extra_info block.
+# Redefines the vanilla type cooltip_type from gui/shared/cooltip.gui
+# (copied as is) and fills its empty extra_info block. Portrait tooltips
+# instantiate cooltip_type directly, so this reaches them too.
 types TntGaCharacterTooltip
 {
-	type container_character_tooltip = container
-	{
+	type cooltip_type = widget {
+		name = "character_tooltip"
 		alwaystransparent = no
+		using = GeneralTooltipSetup
 
-		using = DefaultTooltipBackground
-
-		flowcontainer = {
-			direction = vertical
-
-			widget = {
-				name = "portrait area"
-				size = { 100% 210 }
-
-				background = {
-					using = Background_Area_Dark
-					margin = { -3 -3 }
-					margin_bottom = 10
-
-					modify_texture = {
-						name = "mask"
-						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
-						blend_mode = alphamultiply
-						mirror = vertical
-					}
-				}
-				datacontext = "[GetIllustration( 'character_view_bg' )]"
-				background = {
-					texture = "[Illustration.GetTexture( Character.MakeScope )]"
-					fittype = centercrop
-					#alpha = 0.7
-
-					using = Mask_Rough_Edges
-
-					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
-						blend_mode = alphamultiply
-					}
-
-					modify_texture = {
-						texture = "gfx/interface/component_masks/mask_fade_vertical.dds"
-						blend_mode = alphamultiply
-						mirror = vertical
-						alpha = 0.7
-					}
-				}
-
-				portrait_torso = {
-					name = "char"
-					parentanchor = bottom|hcenter
-
-					blockoverride "portrait_button_template_tooltip" {}
-				}
+		widget = {
+			name = "background"
+			using = DefaultTooltipBackground
+			size = { 100% 100% }
+			alwaystransparent = no
+			block "bg_visible" {
+				visible = yes
 			}
+		}
 
-			container = {
-				cooltip_type = {
-					blockoverride "bg_visible" {
-						visible = no
-					}
+		vbox = {
+			set_parent_size_to_minimum = yes
+			margin = { 15 15 }
+			margin_top = 3
+			maximumsize = { 600 -1 }
 
-					blockoverride "char_tooltip_opinion"
-					{
-						# don't show opinion again
-					}
+			## REAL CHARACTERS
+			vbox = {
+				visible = "[Character.IsValid]"
+				layoutpolicy_horizontal = expanding
 
-					# GCA: education progress of a child with a guardian.
-					blockoverride "extra_info"
-					{
+				vbox = {
+					name = "personal"
+					layoutpolicy_horizontal = expanding
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+
 						vbox = {
+							name = "name_etc"
 							layoutpolicy_horizontal = expanding
-							visible = "[And( Character.HasGuardian, GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' ) )]"
-							ignoreinvisible = yes
-							margin_top = 6
-							spacing = 3
+							minimumsize = { 0 35 }
 
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								text = "tnt_ga_ct_header"
-								default_format = "#T"
-							}
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								raw_text = "[Localize('tnt_ga_ct_guardian')] [Character.GetRelationOfType('guardian').GetShortUINameNoTooltip] | #V [@S@.ScriptValue('tnt_ga_chance_value')|0]%#! [Localize('tnt_ga_ct_per_birthday')]"
-							}
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								raw_text = "[Localize('tnt_ga_ct_points')] #V [@S@.ScriptValue('tnt_ga_current_points_value')|1]#! | [Localize('tnt_ga_tt_projection')] #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! ([@S@.ScriptValue('tnt_ga_rolls_left_value')|0] [Localize('tnt_ga_ct_birthdays_left')])"
-							}
-							text_single = {
-								layoutpolicy_horizontal = expanding
-								visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
-								text = "tnt_ga_ct_no_focus"
-								default_format = "#low"
-							}
-							widget = {
-								size = { 420 30 }
-@TRAIT_LINES@
-							}
+							## Name
 							hbox = {
-								spacing = 14
-@ODDS@
+								layoutpolicy_horizontal = expanding
+								margin_top = 8
+								margin_right = 7
+
+								background = {
+									using = Background_Area
+									margin = { 15 0 }
+									margin_bottom = 7
+								}
+
+								vbox = {
+									layoutpolicy_vertical = expanding
+									margin_top = 3
+
+									portrait_opinion = {
+										visible = "[And( Character.IsAlive, Not( Character.IsPlayer ) )]"
+									}
+
+									expand = {}
+								}
+
+								spacer = {
+									visible = "[And( Character.IsAlive, Not( Character.IsPlayer ) )]"
+									size = { 8 5 }
+								}
+
+								text_multi = {
+									name = "character_name"
+									text = "CHARACTER_TT_NAME_AGE"
+									default_format = "#high"
+									using = Font_Size_Medium
+									max_width = 350
+									autoresize = yes
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+								}
+
+								vbox = {
+									layoutpolicy_vertical = expanding
+									margin_left = 5
+
+									icon = {
+										visible = "[Not(Character.IsDeadAndValid)]"
+										size = { 23 23 }
+										framesize = { 60 60 }
+										frame = "[Character.GetHealthIconFrame]"
+										texture = "gfx/interface/icons/character_status/icon_health.dds"
+										tooltip = "[Character.GetHealthInfo]"
+										color = "[TooltipInfo.GetTintColor]"
+									}
+
+									expand = {}
+								}
+
 								expand = {}
 							}
 						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+
+						text_multi = {
+							name = "character_relation_to_you"
+							margin_top = 10
+							max_width = 308
+							text = "[Character.GetRelationToString( GetPlayer )]"
+							tooltip = "EXTENDED_RELATIONS_TOOLTIP"
+							default_format = "#high"
+							align = nobaseline
+							autoresize = yes
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+
+						expand = {}
+					}
+
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						margin_top = 10
+						margin_bottom = 10
+
+						hbox = {
+							name = "AI_personality"
+							layoutpolicy_horizontal = expanding
+							spacing = 2
+
+							text_single = {
+								visible = "[Not( Character.IsPlayer )]"
+								text = "[Character.GetAIPersonalityNoTooltip]"
+								default_format = "#L"
+								tooltip = "AI_PERSONALITY_TT"
+								align = nobaseline
+								fonttintcolor = "[TooltipInfo.GetTintColor]"
+							}
+
+							hbox = {
+								layoutpolicy_horizontal = expanding
+
+								icon = {
+									visible = "[Not(Character.IsFemale)]"
+									size = { 20 20 }
+									framesize = { 40 40 }
+									frame = "[Character.GetSexualityFrame]"
+									texture = "gfx/interface/icons/character_status/sexuality_icons_male.dds"
+									tooltip = "SEXUALITY_TT"
+									color = "[TooltipInfo.GetTintColor]"
+								}
+
+								icon = {
+									visible = "[Character.IsFemale]"
+									size = { 20 20 }
+									framesize = { 40 40 }
+									frame = "[Character.GetSexualityFrame]"
+									texture = "gfx/interface/icons/character_status/sexuality_icons_female.dds"
+									tooltip = "SEXUALITY_TT"
+									color = "[TooltipInfo.GetTintColor]"
+								}
+
+								portrait_status_icons = {
+									blockoverride "direction"
+									{
+										direction = horizontal
+									}
+
+									color = "[TooltipInfo.GetTintColor]"
+								}
+
+								expand = {}
+							}
+
+							expand = {}
+						}
+
+						hbox = {
+							layoutpolicy_horizontal = expanding
+
+							text_single = {
+								visible = "[Character.IsAlive]"
+								text = "[Character.Custom('CooltipSpouseListing')]"
+								layoutpolicy_horizontal = expanding
+								align = nobaseline
+								max_width = 350
+								fonttintcolor = "[TooltipInfo.GetTintColor]"
+							}
+
+							expand = {}
+						}
+
+						text_single = {
+							visible = "[And( Character.IsAlive, Not( Character.IsImprisoned ) )]"
+							layoutpolicy_horizontal = expanding
+							text = "CHARACTER_LOCATION_TOOLTIP"
+							align = nobaseline
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+
+						}
+
+						text_single = {
+							visible = "[And( Character.IsAlive, Character.IsImprisoned )]"
+							layoutpolicy_horizontal = expanding
+							text = "CHARACTER_IMPRISONED_TOOLTIP"
+							align = nobaseline
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+
+						# for people with regnal names, like the pope
+						text_single = {
+							visible = "[Character.HasRegnalName]"
+							layoutpolicy_horizontal	= expanding
+							text = "CHARACTER_BIRTH_NAME_TOOLTIP"
+							align = nobaseline
+							fonttintcolor = "[TooltipInfo.GetTintColor]"
+						}
+					}
+
+					hbox = {
+						layoutpolicy_horizontal = expanding
+						spacing = 10
+
+						background = {
+							using = Background_Area
+							margin = { 15 0 }
+						}
+
+						hbox = {
+							name = "faith_and_culture"
+
+							button_religion_icon = {
+								name = "faith_button"
+								datacontext = "[Character.GetFaith]"
+								size = { 45 45 }
+								color = "[TooltipInfo.GetTintColor]"
+							}
+
+							vbox = {
+								margin_right = 10
+								margin_left = 3
+
+								text_single = {
+									datacontext = "[Character.GetFaith]"
+									layoutpolicy_horizontal = expanding
+									text = "FAITH_COOLTIP_WINDOW"
+									align = nobaseline
+
+									tooltipwidget = { faith_tooltip_click = {} }
+
+									button_normal = {
+										size = { 100% 100% }
+										onclick = "[OpenGameViewData( 'faith', Faith.GetID )]"
+									}
+
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+
+								}
+
+								text_single = {
+									datacontext = "[Character.GetCulture]"
+									layoutpolicy_horizontal = expanding
+									text = "CULTURE_COOLTIP_WINDOW"
+									align = nobaseline
+
+									button_normal = {
+										size = { 100% 100% }
+										onclick = "[OpenGameViewData( 'culture_window', Culture.GetID )]"
+										# shortcut = "innovations_window"
+									}
+
+									fonttintcolor = "[TooltipInfo.GetTintColor]"
+								}
+							}
+						}
+
+						hbox = {
+							name = "house"
+							datacontext = "[Character.GetHouse]"
+							margin = { 10 5 }
+
+							coa_house_small = {
+								# has no effect, sadly...
+								# color = "[TooltipInfo.GetTintColor]"
+
+								container = {
+									name = "characters_status_in_house"
+									parentanchor = bottom|right
+
+									icon = {
+										name = "bastard"
+										visible = "[Not(Character.IsLegitimateMemberOfHouse)]"
+										framesize = { 40 40 }
+										frame = 4
+										size = { 25 25 }
+										texture = "gfx/interface/icons/portraits/relation.dds"
+										tooltip = "CV_TT_BASTARD"
+										color = "[TooltipInfo.GetTintColor]"
+									}
+
+									icon = {
+										name = "head_icon"
+										size = { 20 20 }
+										visible = "[LessThan_int32(Character.GetDynastyHeadRelationFrame('(bool)no'), '(int32)9')]"
+
+										texture = "gfx/interface/icons/portraits/relation.dds"
+										framesize = { 40 40 }
+										frame = "[Character.GetDynastyHeadRelationFrame('(bool)no')]"
+										tooltip = "[Character.GetDynastyHeadTooltip]"
+										color = "[TooltipInfo.GetTintColor]"
+									}
+								}
+							}
+
+							text_multi = {
+								visible = "[Character.HasDynasty]"
+								margin = { 5 0 }
+								text = "HOUSE_VIEW_NAME_WITH_HOUSE"
+								max_width = 100
+								autoresize = yes
+								fonttintcolor = "[TooltipInfo.GetTintColor]"
+							}
+						}
+					}
+				}
+
+				hbox = {
+					visible = "[Character.HasLandedTitles]"
+					minimumsize = { 0 82 }
+					spacing = 5
+
+					layoutpolicy_horizontal = expanding
+
+					widget = {
+						size = { 52 82 }
+
+						coa_realm_small_crown = {
+							name = "realm_flag"
+							parentanchor = bottom
+
+							blockoverride "coa_hover_glow_visible"
+							{
+								visible = no
+							}
+						}
+					}
+
+					realm_name_and_type_vbox = {
+						datacontext = "[Character.GetPrimaryTitle]"
+						margin_top = 24
+					}
+				}
+
+				# GCA: education progress of a child with a guardian.
+				block "extra_info" {
+					# Debug mode only: shows that this tooltip type is the one in use,
+					# with the guardian check, independent of the GCA block below.
+					text_single = {
+						visible = "[InDebugMode]"
+						raw_text = "#low GCA tooltip (debug) | guardian: [Select_CString( Character.HasGuardian, 'yes', 'no' )] | available: [@S@.ScriptValue('tnt_ga_available_value')|0]#!"
+					}
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						visible = "[And( Character.HasGuardian, GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_available_value'), '(CFixedPoint)0' ) )]"
+						ignoreinvisible = yes
+						margin_top = 6
+						spacing = 3
+
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							text = "tnt_ga_ct_header"
+							default_format = "#T"
+						}
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							raw_text = "[Localize('tnt_ga_ct_guardian')] [Character.GetRelationOfType('guardian').GetShortUINameNoTooltip] | #V [@S@.ScriptValue('tnt_ga_chance_value')|0]%#! [Localize('tnt_ga_ct_per_birthday')]"
+						}
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							raw_text = "[Localize('tnt_ga_ct_points')] #V [@S@.ScriptValue('tnt_ga_current_points_value')|1]#! | [Localize('tnt_ga_tt_projection')] #V [@S@.ScriptValue('tnt_ga_projected_points_value')|1]#! ([@S@.ScriptValue('tnt_ga_rolls_left_value')|0] [Localize('tnt_ga_ct_birthdays_left')])"
+						}
+						text_single = {
+							layoutpolicy_horizontal = expanding
+							visible = "[Not( GreaterThan_CFixedPoint( @S@.ScriptValue('tnt_ga_has_focus_value'), '(CFixedPoint)0' ) )]"
+							text = "tnt_ga_ct_no_focus"
+							default_format = "#low"
+						}
+						widget = {
+							size = { 420 30 }
+@TRAIT_LINES@
+						}
+						hbox = {
+							spacing = 14
+@ODDS@
+							expand = {}
+						}
+					}
+				}
+
+				# Keep this here for now, may want something in character view
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					text = "[Character.GetHeirToDesc]"
+				}
+
+				spacer = {
+					size = { 10 10 }
+				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					block "interaction_info" { }
+				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					text = "[Character.GetDebugTooltip]"
+					visible = "[InDebugMode]"
+				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					text = "CHARACTER_KILLER_TOOLTIP"
+					visible = "[And( InDebugMode, Character.GetKiller.IsValid )]"
+				}
+
+				cooltip_paragraph = {
+					layoutpolicy_horizontal	= expanding
+					raw_text = "[GetAnimationTooltip( PdxGuiWidget.Self, Character.Self )]"
+					visible = "[ShouldShowAnimationInfo]"
+				}
+
+				hbox = {
+					visible = "[And( InDebugMode, Not( Character.AccessDenied ) )]"
+					layoutpolicy_horizontal = expanding
+
+					spacing = 5
+
+					text_single = {
+						text = "DNA_MODIFIERS_LINK"
+
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+
+						tooltipwidget = {
+							container = {
+								name = "DnaModifierTooltip"
+								alwaystransparent = no
+
+								object_tooltip_pop_out = {
+									blockoverride "header_additions"
+									{
+										hbox = {
+											margin_right = 10
+											margin_top = 8
+											margin_left = -4
+
+											button_copy = {
+												size = { 52 52 }
+
+												onclick = "[Character.CopyDnaAccessoryToClipboard]"
+												raw_tooltip = "Copy DNA Modifiers"
+											}
+										}
+									}
+
+									blockoverride "title_text"
+									{
+										margin = { 0 8 }
+										text = "DNA_MODIFIERS"
+										default_format = "#T"
+									}
+
+									blockoverride "concept_link" {}
+
+									blockoverride "description_text"
+									{
+										max_width = 600
+										text = "[Character.GetDnaAccessoryTooltip]"
+									}
+								}
+							}
+						}
+					}
+
+					divider_light = {
+						layoutpolicy_vertical = expanding
+					}
+
+					text_single = {
+						text = "PORTRAIT_ANIMATION_LINK"
+
+						fonttintcolor = "[TooltipInfo.GetTintColor]"
+
+						tooltipwidget = {
+							container = {
+								name = "PortraitAnimationTooltip"
+								alwaystransparent = no
+
+								object_tooltip_pop_out = {
+									blockoverride "header_additions"
+									{
+										hbox = {
+											margin_right = 10
+											margin_top = 8
+											margin_left = -4
+
+											button_copy = {
+												size = { 52 52 }
+
+												onclick = "[Character.CopyPortraitAnimationToClipboard]"
+												raw_tooltip = "Copy Animation Data"
+											}
+										}
+									}
+
+									blockoverride "title_text"
+									{
+										margin = { 0 8 }
+										text = "PORTRAIT_ANIMATION_TITLE"
+										default_format = "#T"
+									}
+
+									blockoverride "concept_link" {}
+
+									blockoverride "description_text"
+									{
+										max_width = 600
+										text = "[Character.GetPortraitAnimationTooltip( PdxGuiWidget.Self )]"
+									}
+								}
+							}
+						}
+					}
+
+					expand = {}
+				}
+			}
+
+			## NULL CHARACTER
+			vbox = {
+				visible = "[Not( Character.IsValid )]"
+
+				cooltip_paragraph = {
+					block "portrait_button_no_character_text"
+					{
+						text = "CHARACTER_TOOLTIP_NO_PORTRAIT"
 					}
 				}
 			}
